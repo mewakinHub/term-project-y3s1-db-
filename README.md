@@ -10,9 +10,9 @@ Our project is an online platform or marketplace where users can digitally buy, 
 ### Group members:
 
 1. Mr. Piraboon Piyawarapong - 6422781466
-DB design/UI design/Main Frontend
+DB design/UI design/Frontend
 2. Mr. Kavinrath Jundang - 6422781516
-DB design/Main Backend
+DB design/Backend
 3. Mr. Teetawat Bussabarati - 6422782423
 DB design/Frontend/Backend
 
