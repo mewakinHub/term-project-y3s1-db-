@@ -1,67 +1,39 @@
 # Project Title
 
 Project: Good Games Garage - A video game digital storefront
-This is term-project of 3rd year 1st semester in CSS326 Database lab programming
+> This is term-project of 3rd year 1st semester in CSS326 Database lab programming
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Our project is an online platform or marketplace where users can digitally buy, download, and play our handpicked selection of high-quality video games. We exclusively offer polished and well-reviewed games, catering to the needs of avid gamers who seek to discover and purchase great games without sifting through mediocrity. In addition, our pricing is very competitive, as we only take a small cut on each sale.
 
 ### Group members:
 
-> Mr. Piraboon Piyawarapong - 6422781466
+1. Mr. Piraboon Piyawarapong - 6422781466
 DB design/UI design/Main Frontend
-> Mr. Kavinrath Jundang - 6422781516
+2. Mr. Kavinrath Jundang - 6422781516
 DB design/Main Backend
-> Mr. Teetawat Bussabarati - 6422782423
+3. Mr. Teetawat Bussabarati - 6422782423
 DB design/Frontend/Backend
 
 
 ## Getting Started
 
-### Dependencies
-
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
 ## Help
 
-Any advise for common problems or issues.
+we're not deployed to a domain, so you cannot access it through a url(example.com)
+
 ```
-command to run if program contains helper info
+"In our project, we have employed Structured Query Language (SQL) as our primary database management system, coupled with the utilization of the Macintosh, Apache, MySQL, and PHP (MAMP) stack as our server environment."
 ```
 
-## Authors
-
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
+<!-- ## Version History
 
 * 0.2
     * Various bug fixes and optimizations
     * See [commit change]() or See [release history]()
 * 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+    * Initial Release -->
 
 ## Acknowledgments
 
