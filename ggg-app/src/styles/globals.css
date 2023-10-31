@@ -70,7 +70,7 @@ button {
 }
 
 button:hover {
-  transform: scale(0.975);
+  transform: scale(0.965);
   transition: var(--transition-normal);
 }
 
