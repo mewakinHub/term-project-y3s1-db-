@@ -7,7 +7,7 @@ export default function Home() {
       <div className='login-container'>
         <Image className='center logo'
           src={logo}
-          style={{maxWidth: '225px', height: 'auto'}}
+          style={{maxWidth: '230px', height: 'auto'}}
         />
         <p>Hello! Please login.</p>
         <form>
