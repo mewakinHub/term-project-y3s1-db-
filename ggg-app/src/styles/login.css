@@ -31,7 +31,7 @@ p {
 form {
   display: grid;
   row-gap: 2rem;
-  margin: 0 0 7rem 0;
+  margin: 0 0 6.5rem 0;
 }
 
 input:not([type=submit]) {
@@ -78,9 +78,18 @@ input:not([type=submit]):not(:placeholder-shown) + svg {
 .password svg {
   width: 20px;
   left: 14px;
-  top: 11px;
+  top: 12px;
   color: var(--dim2);
-  rotate: 90deg;
+  rotate: 45deg;
+  transition: var(--transition-normal);
+}
+
+.username svg {
+  width: 20px;
+  left: 14px;
+  top: 10px;
+  color: var(--dim2);
+  transition: var(--transition-normal);
 }
 
 .button-container {
@@ -100,6 +109,6 @@ button.white {
 
 button.noaccount {
   background-color: var(--transparent);
-  border: 2px solid var(--dim2);
+  outline: 2px solid var(--dim2);
   color: var(--dim2);
 }

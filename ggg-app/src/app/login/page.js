@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import logo from '@/assets/logo.png'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -25,10 +26,14 @@ export default function Home() {
               <path d="M288-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 120q-100 0-170-70T48-480q0-100 70-170t170-70q78 0 140.5 46.5T516-552h324l72 72-132 159-84-87-72 72-72-72h-36q-24 75-86.925 121.5Q366.149-240 288-240Z" fill="currentColor"/>
             </svg>
           </div>
-          <button type='submit' className='full white'>Login</button>
+          <Link href='/store' passHref>
+            <button type='submit' className='full white'>Login</button>
+          </Link>
         </form>
         <div className='button-container'>
-          <button type="button" className='noaccount'>I don't have an account.</button>
+          <Link href='/login/signup' passHref>
+            <button type="button" className='noaccount'>I don't have an account.</button>
+          </Link>
         </div>
       </div>
     </main>
