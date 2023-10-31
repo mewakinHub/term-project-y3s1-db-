@@ -13,10 +13,10 @@ export default function Home() {
         <form>
           <input type='text' name='email' placeholder='E-mail'/>
           <input type='text' name='password' placeholder='Password'/>
-          <button type='submit' className='full'>Login</button>
+          <button type='submit' className='full white'>Login</button>
         </form>
         <div className='button-container'>
-          <button type="button" className='stick noaccount'>I don't have an account.</button>
+          <button type="button" className='noaccount'>I don't have an account.</button>
         </div>
       </div>
     </main>
