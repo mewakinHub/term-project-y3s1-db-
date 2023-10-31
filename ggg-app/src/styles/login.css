@@ -44,13 +44,18 @@ input:not([type=submit]) {
   font-size: 18px;
   font-weight: 300;
   padding: 10px 15px;
-  outline: 2px solid var(--transparent);
-  transition: var(--transition-normal);
+  outline: 1px solid var(--transparent);
+  transition: var(--transition-fast);
+}
+
+input:not([type=submit]):hover {
+  outline: 1px solid var(--dim2);
+  transition: var(--transition-fast);
 }
 
 input:not([type=submit]):focus {
   outline: 2px solid var(--dim1);
-  transition: var(--transition-normal);
+  transition: var(--transition-fast);
 }
 
 input:not([type=submit]).iconned {

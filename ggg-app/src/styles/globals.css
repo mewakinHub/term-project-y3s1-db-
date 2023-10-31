@@ -10,7 +10,8 @@
   --regular: 400;
   --medium: 500;
   --semibold: 600;
-  --transition-normal: 200ms;
+  --transition-normal: 200ms ease-in-out;
+  --transition-fast: 150ms ease-in-out;
 }
 
 * {
@@ -65,6 +66,12 @@ button {
   font-weight: 500;
   padding: 10px 15px;
   user-select: none;
+  transition: var(--transition-normal);
+}
+
+button:hover {
+  transform: scale(0.975);
+  transition: var(--transition-normal);
 }
 
 ::placeholder, ::-ms-input-placeholder {
