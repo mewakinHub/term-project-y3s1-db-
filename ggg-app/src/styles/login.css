@@ -1,0 +1,46 @@
+body {
+  background-color: var(--primary);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+div.login-container {
+  display: block;
+  width: 450px;
+  height: 700px;
+  background-color: var(--secondary);
+  border-radius: 15px;
+  padding: 0 30px;
+}
+
+p {
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 0.15rem;
+}
+
+img.logo {
+  padding: 3rem 0 2rem 0;
+}
+
+form {
+  display: grid;
+  row-gap: 30px;
+}
+
+div.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+button.noaccount {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid var(--dim2);
+  color: var(--dim2)
+}
