@@ -1,16 +1,23 @@
 :root {
+  --transparent: rgba(0, 0, 0, 0);
   --primary: #101010;
   --secondary: #1A1A1A;
   --dim1: #CBCBCB;
   --dim2: #8A8A8A;
   --dim3: #363636;
   --dim4: #2F2F2F;
+  --light: 300;
+  --regular: 400;
+  --medium: 500;
+  --semibold: 600;
+  --transition-normal: 200ms;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  letter-spacing: 0.05rem;
 }
 
 html,
@@ -32,11 +39,12 @@ a {
 
 p {
   color: white;
+  user-select: none;
+  letter-spacing: 0.1rem;
 }
 
-button,
-input {
-    font-family: inherit;
+img {
+  user-select: none;
 }
 
 img.center {
@@ -44,31 +52,30 @@ img.center {
   margin: auto;
 }
 
+button,
+input {
+    font-family: inherit;
+}
+
 button {
   border-radius: 10px;
   border-style: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   padding: 10px 15px;
+  user-select: none;
 }
 
-button.full {
-  width: 100%;
+::placeholder, ::-ms-input-placeholder {
+  color: var(--dim2);
+  opacity: 1;
 }
 
-button.white {
-  background-color: white;
-  color: black;
+.inputicon-container {
+  position: relative;
 }
 
-input[type=text] {
-  background-color: var(--dim4);
-  color: var(--dim1);
-  border: none;
-  border-radius: 20px;
-  border-style: none;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 10px 15px;
+.inputicon-container svg {
+  position: absolute;
 }
