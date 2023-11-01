@@ -1,0 +1,17 @@
+div.root {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+nav {
+  display: block;
+  background-color: var(--primary);
+  width: 50px;
+  height: 100%;
+}
+
+main {
+  display: flex;
+  background-color: var(--secondary);
+}

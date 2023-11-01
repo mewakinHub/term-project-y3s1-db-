@@ -6,13 +6,8 @@ module.exports = {
       {
         source: '/',
         destination: '/login',
-        permanent: true,
-      },
-      {
-        source: '/store',
-        destination: '/store/featured',
-        permanent: true,
-      },
+        permanent: false,
+      }
     ]
   },
 }

@@ -34,39 +34,6 @@ form {
   margin: 0 0 6.5rem 0;
 }
 
-input:not([type=submit]) {
-  width: 100%;
-  background-color: var(--dim4);
-  color: var(--dim1);
-  border: none;
-  border-radius: 20px;
-  border-style: none;
-  font-size: 18px;
-  font-weight: 300;
-  padding: 10px 15px;
-  outline: 1px solid var(--transparent);
-  transition: var(--transition-fast);
-}
-
-input:not([type=submit]):hover {
-  outline: 1px solid var(--dim2);
-  transition: var(--transition-fast);
-}
-
-input:not([type=submit]):focus {
-  outline: 2px solid var(--dim1);
-  transition: var(--transition-fast);
-}
-
-input:not([type=submit]).iconned {
-  padding-left: 42px;
-}
-
-input:not([type=submit]):not(:placeholder-shown) + svg {
-  color: white;
-  transition: var(--transition-normal);
-}
-
 .email svg {
   width: 20px;
   left: 14px;
@@ -102,13 +69,13 @@ button.full {
   width: 100%;
 }
 
-button.white {
-  background-color: white;
-  color: black;
-}
-
 button.noaccount {
   background-color: var(--transparent);
   outline: 2px solid var(--dim2);
   color: var(--dim2);
+}
+
+button.noaccount:hover {
+  box-shadow: 0 0 10px var(--dim2);
+  transition: var(--transition-normal);
 }

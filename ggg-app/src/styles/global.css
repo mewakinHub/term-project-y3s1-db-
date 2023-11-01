@@ -29,7 +29,7 @@ body {
   overflow-x: hidden;
 }
 
-div.layout {
+div.root {
   width: 100%;
   height: 100%;
 }
@@ -72,10 +72,46 @@ button {
   padding: 10px 15px;
   user-select: none;
   transition: var(--transition-normal);
+  background-color: white;
+  color: black;
 }
 
 button:hover {
-  transform: scale(0.975);
+  transform: scale(0.95);
+  transition: var(--transition-normal);
+  box-shadow: 0 0 10px var(--dim1);
+}
+
+input:not([type=submit]) {
+  width: 100%;
+  background-color: var(--dim4);
+  color: var(--dim1);
+  border: none;
+  border-radius: 20px;
+  border-style: none;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 10px 15px;
+  outline: 1px solid var(--transparent);
+  transition: var(--transition-fast);
+}
+
+input:not([type=submit]):hover {
+  transition: var(--transition-fast);
+  box-shadow: 0 0 5px var(--dim2);
+}
+
+input:not([type=submit]):focus {
+  outline: 2px solid var(--dim1);
+  transition: var(--transition-fast);
+}
+
+input:not([type=submit]).iconned {
+  padding-left: 42px;
+}
+
+input:not([type=submit]):not(:placeholder-shown) + svg {
+  color: white;
   transition: var(--transition-normal);
 }
 
