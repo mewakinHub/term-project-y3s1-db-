@@ -1,11 +1,11 @@
-div.root {
+.mainapp .root {
   background-color: white;
   display: flex;
   flex-direction: row;
   align-items: center
 }
 
-nav {
+.mainapp nav {
   display: block;
   background-color: var(--primary);
   flex-grow: 0;
@@ -14,7 +14,7 @@ nav {
   height: 100%;
 }
 
-main {
+.mainapp main {
   width: auto;
   height: 100%;
   background-color: var(--secondary);
