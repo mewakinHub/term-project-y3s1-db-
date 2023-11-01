@@ -7,11 +7,11 @@ export default function pageStore() {
   return (
     <div className='root'>
       <nav>
-        
+        <p>nav</p>
       </nav>
       <main>
-
+        <p>main</p>
       </main>
-    </div>
+    </div> 
   );
 }

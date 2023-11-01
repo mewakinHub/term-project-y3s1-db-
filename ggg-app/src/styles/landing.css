@@ -1,12 +1,9 @@
-body {
-  background-color: var(--primary);
-}
-
-main {
+.landing main {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  background-color: var(--primary);
 }
 
 .login-container {
@@ -22,13 +19,13 @@ img.logo {
   margin: 3.5rem auto 3.5rem auto;
 }
 
-p {
+.landing p {
   text-align: left;
   font-size: 24px;
   margin: 0 0 2rem 0;
 }
 
-form {
+.landing form {
   display: grid;
   row-gap: 2rem;
   margin: 0 0 6.5rem 0;
