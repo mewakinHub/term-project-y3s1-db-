@@ -46,7 +46,9 @@ export default function pageSignup() {
               </svg>
             </div>
             <Link href={Route('store')} passHref>
-              <button type='submit' className='full white'>Signup</button>
+              <div className='button-parent'>
+                <button type='submit' className='full white'>Signup</button>
+              </div>
             </Link>
           </form>
         </div>

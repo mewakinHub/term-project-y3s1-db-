@@ -77,6 +77,20 @@ button {
 }
 
 button:hover {
+  box-shadow: 0 0 10px var(--dim1);
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button-parent button {
+  pointer-events: none;
+}
+
+.button-parent:hover button {
   transform: scale(0.95);
   transition: var(--transition-normal);
   box-shadow: 0 0 10px var(--dim1);

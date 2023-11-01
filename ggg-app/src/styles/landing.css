@@ -56,12 +56,6 @@ img.logo {
   transition: var(--transition-normal);
 }
 
-.button-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
 button.full {
   width: 100%;
 }

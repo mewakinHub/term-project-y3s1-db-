@@ -29,12 +29,16 @@ export default function pageLogin() {
               </svg>
             </div>
             <Link href={Route('store')} passHref>
-              <button type='submit' className='full white'>Login</button>
+              <div className='button-parent'>
+                <button type='submit' className='full white'>Login</button>
+              </div>
             </Link>
           </form>
           <div className='button-container'>
             <Link href={Route('signup')} passHref>
-              <button type="button" className='noaccount'>I don't have an account.</button>
+              <div className='button-parent'>
+                <button type="button" className='noaccount'>I don't have an account.</button>
+              </div>
             </Link>
           </div>
         </div>
