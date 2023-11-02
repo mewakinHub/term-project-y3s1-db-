@@ -12,7 +12,16 @@ export default function pageSignup() {
             src={logo}
             style={{maxWidth: '200px', height: 'auto'}}
           />
-          <p>Welcome!</p>
+          <span className='message-container'>
+            <div className='back-wrapper'>
+              <Link href={Route('login')} passHref className='backlink'>
+                <svg className='backicon' fill='none' xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20">
+                  <path fill='currentColor' d="m343.152-438.5 195.739 195.739L480-183.869 183.869-480 480-776.131l58.891 58.892L343.152-521.5h432.979v83H343.152Z"/>
+                </svg>
+              </Link>
+            </div>
+            <p>Welcome!</p>
+          </span>
           <form autoComplete='off'>
             <div className='inputicon-container email'>
               <input type='text' name='email' placeholder='E-mail' maxLength='64' className='iconned'/>
@@ -46,7 +55,7 @@ export default function pageSignup() {
               </svg>
             </div>
             <Link href={Route('store')} passHref>
-              <div className='button-parent'>
+              <div className='button-wrapper'>
                 <button type='submit' className='full white'>Signup</button>
               </div>
             </Link>

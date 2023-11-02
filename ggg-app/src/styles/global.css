@@ -34,9 +34,14 @@ div.root {
   height: 100%;
 }
 
+span {
+  display: flex;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+  display: block;
 }
 
 p {
@@ -76,24 +81,24 @@ button {
   color: black;
 }
 
-button:hover {
-  box-shadow: 0 0 10px var(--dim1);
-}
-
 .button-container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.button-parent button {
+.button-wrapper button {
   pointer-events: none;
 }
 
-.button-parent:hover button {
-  transform: scale(0.95);
-  transition: var(--transition-normal);
+.button-wrapper:hover button {
+  transition: var(--transition-fast);
   box-shadow: 0 0 10px var(--dim1);
+}
+
+.button-wrapper:active button {
+  transform: scale(0.90);
+  transition: var(--transition-fast);
 }
 
 input:not([type=submit]) {

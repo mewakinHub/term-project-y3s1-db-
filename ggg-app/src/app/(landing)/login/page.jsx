@@ -12,7 +12,9 @@ export default function pageLogin() {
             src={logo}
             style={{maxWidth: '200px', height: 'auto'}}
           />
-          <p>Hello! Please login.</p>
+          <span className='message-container'>
+            <p>Hello! Please login.</p>
+          </span>
           <form autoComplete='off'>
             <div className='inputicon-container email'>
               <input type='text' name='email' placeholder='E-mail' maxLength='64' className='iconned'/>
@@ -29,14 +31,14 @@ export default function pageLogin() {
               </svg>
             </div>
             <Link href={Route('store')} passHref>
-              <div className='button-parent'>
+              <div className='button-wrapper'>
                 <button type='submit' className='full white'>Login</button>
               </div>
             </Link>
           </form>
           <div className='button-container'>
             <Link href={Route('signup')} passHref>
-              <div className='button-parent'>
+              <div className='button-wrapper'>
                 <button type="button" className='noaccount'>I don't have an account.</button>
               </div>
             </Link>

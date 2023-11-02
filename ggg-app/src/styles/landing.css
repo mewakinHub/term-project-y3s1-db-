@@ -19,10 +19,13 @@ img.logo {
   margin: 3.5rem auto 3.5rem auto;
 }
 
+.message-container {
+  margin: 0 0 2rem 0;
+}
+
 .landing p {
   text-align: left;
   font-size: 24px;
-  margin: 0 0 2rem 0;
 }
 
 .landing form {
@@ -66,7 +69,36 @@ button.noaccount {
   color: var(--dim2);
 }
 
-button.noaccount:hover {
+.button-wrapper:hover button.noaccount {
+  transition: var(--transition-fast);
   box-shadow: 0 0 10px var(--dim2);
+}
+
+.backicon {
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 20px;
   transition: var(--transition-normal);
+}
+
+.back-wrapper {
+  margin: 0 10px 0 0 ;
+  height: 30px;
+}
+
+a.backlink {
+  height: 30px;
+}
+
+a.backlink:hover .backicon {
+  transition: var(--transition-fast);
+  box-shadow: 0 0 9px var(--dim2);
+  background-color: var(--dim3);
+}
+
+a.backlink:active .backicon {
+  transition: var(--transition-fast);
+  box-shadow: 0 0 9px var(--dim2);
+  transform: scale(0.9);
 }
