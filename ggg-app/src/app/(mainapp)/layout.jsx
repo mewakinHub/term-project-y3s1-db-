@@ -22,22 +22,28 @@ export default function layoutMain({ children }) {
               style={{maxWidth: '70px', height: 'auto'}}
             />
             <div className='nav-main-buttons'>
-              <Link href={Route('featured')} passHref>
+              <Link href={Route('featured')} passHref className='button-wrapper'>
                 <button className={'featured'.concat(' ',pathname == Route('featured') ? ' active' : '')}>
                   {Icon('featured')}
                   Featured
                 </button>
               </Link>
-              <Link href={Route('browse')} passHref>
+              <Link href={Route('browse')} passHref className='button-wrapper'>
                 <button className={'browse'.concat(' ',pathname == Route('browse') ? ' active' : '')}>
                   {Icon('browse')}
                   Browse
                 </button>
               </Link>
-              <Link href={Route('library')} passHref>      
+              <Link href={Route('library')} passHref className='button-wrapper'>      
                 <button className={'library'.concat(' ',pathname == Route('library') ? ' active' : '')}>
                   {Icon('library')}
                   Library
+                </button>
+              </Link>
+              <Link href={Route('friends')} passHref className='button-wrapper'>      
+                <button className={'friends'.concat(' ',pathname == Route('friends') ? ' active' : '')}>
+                  {Icon('friends')}
+                  Friends
                 </button>
               </Link>
             </div>

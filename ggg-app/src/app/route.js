@@ -15,6 +15,9 @@ export function Route( page ) {
     case 'library':
       return '/library';
       break;
+    case 'friends':
+      return '/friends';
+      break;
     default: break;
   }
 }

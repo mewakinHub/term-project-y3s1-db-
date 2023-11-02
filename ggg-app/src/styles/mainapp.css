@@ -8,7 +8,7 @@
   background-color: var(--primary);
   width: var(--nav-width);
   height: 100%;
-  padding: 0 15px;
+  padding: 0 16px;
   position: fixed;
   justify-content: space-between;
 }
@@ -51,13 +51,14 @@
 }
 
 .mainapp .nav-main-buttons button.active {
-  background-color: var(--dim3);
+  background-color: var(--dim4);
   transition: var(--transition-fast);
   color: white;
+  outline: 1px solid var(--dim1);
 }
 
 .mainapp .nav-main-buttons svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   margin: auto 15px auto 20px;
 }

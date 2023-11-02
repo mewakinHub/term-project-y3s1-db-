@@ -96,5 +96,5 @@ a.backlink:hover .backicon {
 a.backlink:active .backicon {
   transition: var(--transition-fast);
   box-shadow: 0 0 9px var(--dim2);
-  transform: scale(0.95);
+  transform: scale(0.925);
 }

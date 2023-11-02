@@ -121,8 +121,8 @@ button.default {
   box-shadow: 0 0 10px var(--dim1);
 }
 
-.button-wrapper:active button.default {
-  transform: scale(0.95);
+.button-wrapper:active button {
+  transform: scale(0.925);
   transition: var(--transition-fast);
 }
 
