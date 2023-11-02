@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function page() {
   return (
     <main>
-      <p>featured content</p>
+      <p>browse content</p>
     </main>
   );
 }

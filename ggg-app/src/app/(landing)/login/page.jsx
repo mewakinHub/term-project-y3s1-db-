@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import logofull from '@/assets/logofull.png'
 
-export default function pageLogin() {
+export default function page() {
   return (
     <main>
       <div className='login-container'>

@@ -59,10 +59,6 @@ img.logofull{
   transition: var(--transition-normal);
 }
 
-button.full {
-  width: 100%;
-}
-
 button.noaccount {
   background-color: var(--transparent);
   outline: 2px solid var(--dim2);

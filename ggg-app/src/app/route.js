@@ -9,6 +9,12 @@ export function Route( page ) {
     case 'featured':
       return '/featured';
       break;
+    case 'browse':
+      return '/browse';
+      break;
+    case 'library':
+      return '/library';
+      break;
     default: break;
   }
 }

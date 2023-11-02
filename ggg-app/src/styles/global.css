@@ -3,17 +3,19 @@
   --primary: #101010;
   --secondary: #1A1A1A;
   --dim1: #CBCBCB;
-  --dim1_5: #A0A0A0;
   --dim2: #8A8A8A;
+  --dim2-5: #606060;
   --dim3: #363636;
   --dim4: #2F2F2F;
-  --dim5: #212121;
+  --dim5: #272727;
+  --dim6: #212121;
   --light: 300;
   --regular: 400;
   --medium: 500;
   --semibold: 600;
   --transition-normal: 150ms ease-in-out;
   --transition-fast: 100ms ease-in-out;
+  --nav-width: 250px;
 }
 
 * {
@@ -37,6 +39,19 @@ div.root {
 
 span {
   display: flex;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--transparent);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dim2-5);
+  border-radius: 10px;
 }
 
 a {
@@ -66,7 +81,7 @@ svg {
 
 button,
 input {
-    font-family: inherit;
+  font-family: inherit;
 }
 
 button {
@@ -75,6 +90,11 @@ button {
   cursor: pointer;
   font-size: 18px;
   font-weight: 400;
+  user-select: none;
+}
+
+button.full {
+  width: 100%;
 }
 
 button.default {
