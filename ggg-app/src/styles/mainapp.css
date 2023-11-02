@@ -1,4 +1,4 @@
-.mainapp .root {
+.mainapp {
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -12,6 +12,7 @@
   flex-shrink: 0;
   flex-basis: 250px;
   height: 100%;
+  padding: 0 15px;
 }
 
 .mainapp main {
@@ -19,4 +20,39 @@
   height: 100%;
   background-color: var(--secondary);
   flex-basis: 100%;
+}
+
+.mainapp img.logo {
+  margin: 25px auto;
+}
+
+.mainapp .nav-main-buttons {
+  display: grid;
+  row-gap: 3px;
+}
+
+.mainapp .nav-main-buttons button {
+  height: 60px;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--transparent);
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.mainapp .nav-main-buttons button:hover {
+  background-color: var(--secondary);
+  transition: var(--transition-fast);
+  box-shadow: 0 0 10px var(--dim5);
+}
+
+.mainapp .nav-main-buttons svg {
+  width: 20px;
+  height: 20px;
+  margin: auto 15px auto 20px;
+}
+
+.mainapp nav p {
+  font-size: 16px;
 }

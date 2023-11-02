@@ -15,7 +15,7 @@
   padding: 0 40px;
 }
 
-img.logo {
+img.logofull{
   margin: 3.5rem auto 3.5rem auto;
 }
 
@@ -71,7 +71,7 @@ button.noaccount {
 
 .button-wrapper:hover button.noaccount {
   transition: var(--transition-fast);
-  box-shadow: 0 0 10px var(--dim2);
+  box-shadow: 0 0 12px var(--dim2);
 }
 
 .backicon {
@@ -100,5 +100,5 @@ a.backlink:hover .backicon {
 a.backlink:active .backicon {
   transition: var(--transition-fast);
   box-shadow: 0 0 9px var(--dim2);
-  transform: scale(0.9);
+  transform: scale(0.95);
 }

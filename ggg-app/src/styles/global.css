@@ -7,6 +7,7 @@
   --dim2: #8A8A8A;
   --dim3: #363636;
   --dim4: #2F2F2F;
+  --dim5: #212121;
   --light: 300;
   --regular: 400;
   --medium: 500;
@@ -73,6 +74,10 @@ button {
   border-style: none;
   cursor: pointer;
   font-size: 18px;
+  font-weight: 400;
+}
+
+button.default {
   font-weight: 500;
   padding: 10px 15px;
   user-select: none;
@@ -87,17 +92,17 @@ button {
   justify-content: center;
 }
 
-.button-wrapper button {
+.button-wrapper button.default {
   pointer-events: none;
 }
 
-.button-wrapper:hover button {
+.button-wrapper:hover button.default {
   transition: var(--transition-fast);
   box-shadow: 0 0 10px var(--dim1);
 }
 
-.button-wrapper:active button {
-  transform: scale(0.90);
+.button-wrapper:active button.default {
+  transform: scale(0.95);
   transition: var(--transition-fast);
 }
 

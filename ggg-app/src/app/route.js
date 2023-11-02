@@ -6,8 +6,8 @@ export function Route( page ) {
     case 'signup':
       return '/signup';
       break;
-    case 'store':
-      return '/store';
+    case 'featured':
+      return '/featured';
       break;
     default: break;
   }
