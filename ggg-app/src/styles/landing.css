@@ -89,12 +89,13 @@ a.backlink {
 
 a.backlink:hover .backicon {
   transition: var(--transition-fast);
-  box-shadow: 0 0 9px var(--dim2);
+  box-shadow: 0 0 9px var(--dim2-5);
   background-color: var(--dim3);
 }
 
 a.backlink:active .backicon {
   transition: var(--transition-fast);
-  box-shadow: 0 0 9px var(--dim2);
+  box-shadow: 0 0 9px var(--dim2-5);
+  background-color: var(--dim3);
   transform: scale(0.925);
 }

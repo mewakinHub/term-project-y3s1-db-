@@ -13,6 +13,11 @@
   justify-content: space-between;
 }
 
+.mainapp nav .nav-wrapper {
+  height: 100%;
+  position: relative;
+}
+
 .mainapp main {
   width: calc(100% - var(--nav-width));
   left: var(--nav-width);
@@ -24,17 +29,27 @@
   overflow-y:scroll;
 }
 
-.mainapp img.logo {
-  margin: 25px auto;
+.mainapp nav img.logo {
+  max-width: 70px;
+  height: auto; 
+  margin: 16px auto;
 }
 
-.mainapp .nav-main-buttons {
+.mainapp nav .nav-main {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  background-color: var(--primary);
+}
+
+.mainapp nav .nav-main-buttons {
   display: grid;
   row-gap: 3px;
+  margin-bottom: 16px;
 }
 
-.mainapp .nav-main-buttons button {
-  height: 60px;
+.mainapp nav .nav-main-buttons button {
+  height: 50px;
   border-radius: 10px;
   color: var(--dim2);
   background-color: var(--transparent);
@@ -45,20 +60,120 @@
   width: 100%;
 }
 
-.mainapp .nav-main-buttons button:hover {
+.mainapp nav .nav-main-buttons button:hover {
   background-color: var(--secondary);
   transition: var(--transition-fast);
 }
 
-.mainapp .nav-main-buttons button.active {
+.mainapp nav .nav-main-buttons button.active {
   background-color: var(--dim4);
   transition: var(--transition-fast);
   color: white;
-  outline: 1px solid var(--dim1);
+  outline: 1px solid var(--dim2);
 }
 
-.mainapp .nav-main-buttons svg {
+.mainapp nav .nav-main-buttons svg {
   width: 24px;
   height: 24px;
-  margin: auto 15px auto 20px;
+  margin: auto 15px auto 17px;
+}
+
+.mainapp nav hr {
+  border-color: var(--dim5);
+}
+
+.mainapp nav .nav-user {
+  position: absolute;
+  bottom: 16px;
+  width: 100%;
+  transition: var(--transition-fast);
+}
+
+.mainapp nav .user-container {
+  display: flex;
+  align-items: center stretch;
+  padding: 8px 6px;
+  border-radius: 10px;
+  margin-top: 16px;
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.mainapp nav .user-container:hover {
+  background-color: var(--secondary);
+  transition: var(--transition-fast);
+}
+
+.mainapp nav .user-container .user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.mainapp nav .user-container .pfp {
+  max-width: 42px;
+  height: auto; 
+  border-radius: 30px;
+  margin-right: 10px;
+}
+
+.mainapp nav .user-container p {
+  font-weight: var(--light);
+}
+
+.mainapp nav .user-container p.username {
+  font-size: 15px;
+}
+
+.mainapp nav .user-container p.funds {
+  font-size: 14px;
+  color: var(--dim1-5)
+}
+
+.mainapp nav .nav-installed {
+  position: absolute;
+  top: 342px;
+  width: 100%;
+}
+
+.mainapp nav .nav-installed p {
+  font-weight: var(--light);
+  color: var(--dim1);
+}
+
+.mainapp nav .nav-installed svg {
+  width: 20px;
+  height: 20px;
+  color: var(--dim1);
+}
+
+.mainapp nav .installed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainapp nav .iconbutton-wrapper {
+  width: 26px;
+  height: 26px;
+  color: white;
+  border-radius: 20px;
+  transition: var(--transition-normal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainapp nav .iconbutton-wrapper:hover {
+  transition: var(--transition-fast);
+  box-shadow: 0 0 9px var(--dim2-5);
+  background-color: var(--dim4);
+}
+
+.mainapp nav .iconbutton-wrapper:active {
+  transition: var(--transition-fast);
+  box-shadow: 0 0 9px var(--dim2-5);
+  background-color: var(--dim4);
+  transform: scale(0.925);
 }
