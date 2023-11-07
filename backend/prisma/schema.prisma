@@ -1,0 +1,17 @@
+// generator client {
+//     provider = "prisma-prisma-client-js"
+// }
+
+// datasource db {
+//     provider = "mysql"
+//     url = env("DATABASE_URL")
+// }
+
+// model User {
+//     userid Int @id @default(autoincrement())
+//     email String
+//     password String
+//     balance Float
+//     bio String
+//     profilePicFile Bytes
+// }
