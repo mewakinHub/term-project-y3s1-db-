@@ -123,19 +123,19 @@
 
 .mainapp nav .nav-installed {
   position: absolute;
-  top: 295px;
+  top: 360px;
   width: 100%;
 }
 
 .mainapp nav .nav-installed p {
   font-weight: var(--light);
-  color: var(--dim1);
+  color: var(--dim1-5);
 }
 
 .mainapp nav .nav-installed svg {
   width: 20px;
   height: 20px;
-  color: var(--dim1);
+  color: var(--dim1-5);
 }
 
 .mainapp nav .installed-header {

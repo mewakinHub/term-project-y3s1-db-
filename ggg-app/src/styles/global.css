@@ -161,6 +161,6 @@ hr {
   border: 2.5px solid var(--dim3);
 }
 
-main {
-  padding: 0px;
+.hidden {
+  visibility: hidden;
 }
