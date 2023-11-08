@@ -41,12 +41,6 @@ export default function layoutMain({ children }) {
                     Library
                   </button>
                 </Link>
-                <Link href={Route('friends')} passHref className='button-wrapper'>      
-                  <button className={'friends'.concat(' ',pathname == Route('friends') ? ' active' : '')}>
-                    {Icon('friends')}
-                    Friends
-                  </button>
-                </Link>
               </div>
               <hr/>
             </div>
