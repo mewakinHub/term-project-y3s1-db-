@@ -1,24 +1,3 @@
-:root {
-  --transparent: rgba(0, 0, 0, 0);
-  --primary: #101010;
-  --secondary: #1A1A1A;
-  --dim1: #CBCBCB;
-  --dim1-5: #ABABAB;
-  --dim2: #8A8A8A;
-  --dim2-5: #606060;
-  --dim3: #363636;
-  --dim4: #2F2F2F;
-  --dim5: #272727;
-  --dim6: #212121;
-  --light: 300;
-  --regular: 400;
-  --medium: 500;
-  --semibold: 600;
-  --transition-normal: 150ms ease-in-out;
-  --transition-fast: 100ms ease-in-out;
-  --nav-width: 250px;
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -165,7 +144,7 @@ input:not([type=submit]):not(:placeholder-shown) + svg {
 }
 
 input::placeholder {
-  color: var(--dim2);
+  color: var(--dim1-5);
   opacity: 1;
 }
 
@@ -180,4 +159,8 @@ input::placeholder {
 hr {
   border-radius: 5px;
   border: 2.5px solid var(--dim3);
+}
+
+main {
+  padding: 0px;
 }

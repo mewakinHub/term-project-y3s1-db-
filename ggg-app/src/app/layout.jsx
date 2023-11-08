@@ -1,4 +1,5 @@
 import '@/styles/global.css'
+import '@/styles/variables.css'
 import { Lexend } from 'next/font/google';
 
 const lexend = Lexend({ subsets: ['latin'] })

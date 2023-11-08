@@ -18,21 +18,10 @@
   position: relative;
 }
 
-.mainapp main {
-  width: calc(100% - var(--nav-width));
-  left: var(--nav-width);
-  height: 100%;
-  background-color: var(--secondary);
-  display: flex;
-  flex-direction: column;
-  position:fixed;
-  overflow-y:scroll;
-}
-
 .mainapp nav img.logo {
   width: 60px;
   height: auto; 
-  margin: 16px auto;
+  margin: 20px auto;
 }
 
 .mainapp nav .nav-main {
@@ -58,6 +47,7 @@
   align-items: center;
   font-size: 18px;
   width: 100%;
+  font-weight: var(--medium);
 }
 
 .mainapp nav .nav-main-buttons button:hover {
@@ -176,4 +166,74 @@
   box-shadow: 0 0 9px var(--dim2-5);
   background-color: var(--dim4);
   transform: scale(0.925);
+}
+
+.mainapp main {
+  width: calc(100% - var(--nav-width));
+  left: var(--nav-width);
+  height: 100%;
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  position:fixed;
+  overflow-y:scroll;
+  padding-left: 25px;
+  padding-right: 20px;
+  margin:0;
+}
+
+.mainapp main .header {
+  position: relative;
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainapp main .header p {
+  position: absolute;
+  left: 0px;
+  font-size: 28px;
+  font-weight: var(--medium);
+  color: white;
+  transition: var(--transition-fast);
+}
+
+@media screen and (max-width: 1100px) {
+  .mainapp main .header p {
+    color: var(--transparent);
+    transition: var(--transition-fast);
+  }
+}
+
+.mainapp main .header .searchicon svg {
+  width: 20px;
+  height: 20px;
+  left: 11px;
+  top: 8px;
+  transition: var(--transition-normal);
+}
+
+.mainapp main .header .searchbox-wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+
+.mainapp input:not([type=submit]) {
+  font-size: 16px;
+  padding: 8px 15px;
+}
+
+.mainapp input:not([type=submit]):not(:placeholder-shown) + svg {
+  color: white;
+  transition: var(--transition-normal);
+}
+
+.mainapp input:not([type=submit]) + svg {
+  color: var(--dim1-5);
+  transition: var(--transition-normal);
+}
+
+.mainapp main .header input:not([type=submit]).iconned {
+  padding-left: 35px;
 }

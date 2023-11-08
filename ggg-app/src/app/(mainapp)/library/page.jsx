@@ -6,7 +6,16 @@ import Image from 'next/image'
 export default function page() {
   return (
     <main>
-      <p>library content</p>
+      <div className='header'>
+        <p>Library</p>
+        <div className='searchbox-wrapper'>
+          <div className='inputicon-container searchicon'>
+            <input type='text' name='searchlibrary' placeholder='Search library' maxLength='32' className='iconned'/>
+            {Icon('search')}
+          </div>
+        </div>
+      </div>
+      <hr/>
     </main>
   );
 }

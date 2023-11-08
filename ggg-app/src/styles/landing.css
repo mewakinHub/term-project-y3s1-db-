@@ -38,7 +38,7 @@ img.logofull{
   width: 20px;
   left: 14px;
   top: 10px;
-  color: var(--dim2);
+  color: var(--dim1-5);
   transition: var(--transition-normal);
 }
 
@@ -46,7 +46,7 @@ img.logofull{
   width: 20px;
   left: 14px;
   top: 12px;
-  color: var(--dim2);
+  color: var(--dim1-5);
   rotate: 45deg;
   transition: var(--transition-normal);
 }
@@ -55,7 +55,7 @@ img.logofull{
   width: 20px;
   left: 14px;
   top: 10px;
-  color: var(--dim2);
+  color: var(--dim1-5);
   transition: var(--transition-normal);
 }
 
