@@ -37,6 +37,18 @@ app.get('/todos', (request,response)=>{
     response.send(todoList); //in POSTMAN
 });
 
+//GET: only 1 id
+app.get('/todos/:id', (request,response)=>{
+    const todo = todoList.find(
+        (todo)=> todo.id === request.params.id
+    );
+    if(todo){
+        response.send(todo);
+    }
+
+    response.status(404).send("Todo not found");
+});
+
 //DELETE: delete todo
 app.delete('/todos/:id', (request,response)=>{
     // index of todoList array
