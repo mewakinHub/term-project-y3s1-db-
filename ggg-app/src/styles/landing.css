@@ -84,17 +84,17 @@ button.noaccount {
   height: 30px;
 }
 
-a.backlink {
+.backlink {
   height: 30px;
 }
 
-a.backlink:hover .backicon {
+.backlink:hover .backicon {
   transition: var(--transition-fast);
   box-shadow: 0 0 9px var(--dim2-5);
   background-color: var(--dim3);
 }
 
-a.backlink:active .backicon {
+.backlink:active .backicon {
   transition: var(--transition-fast);
   box-shadow: 0 0 9px var(--dim2-5);
   background-color: var(--dim3);  transform: scale(0.925);
