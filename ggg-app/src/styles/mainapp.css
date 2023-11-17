@@ -79,6 +79,12 @@
   transition: var(--transition-fast);
 }
 
+.mainapp nav button.full {
+  background-color: var(--primary);
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
 .mainapp nav .user-container {
   display: flex;
   align-items: center stretch;
