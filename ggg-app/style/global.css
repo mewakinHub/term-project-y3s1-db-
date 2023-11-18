@@ -1,6 +1,7 @@
 * {
    font-family: 'Lexend', sans-serif;
    letter-spacing: 0.05em;
+   margin-block: 0;
 }
 
 body {
@@ -46,6 +47,7 @@ h2 {
    color: white;
    font-size: 24px;
    font-weight: var(--regular);
+   margin: 0px;
 }
 
 .text-center {
@@ -62,10 +64,10 @@ h2 {
 
 input {
    width: 100%;
-   background-color: var(--gray6);
+   background-color: var(--gray5);
    color: var(--gray1);
    border: none;
-   border-radius: 30px;
+   border-radius: 50px;
    border-style: none;
    font-size: 16px;
    font-weight: var(--light);
@@ -88,7 +90,7 @@ input:focus {
    transition: var(--transition-normal);
 }
  
-input:not(:placeholder-shown) + svg {
+input:not([type=submit]):not(:placeholder-shown) + svg {
    color: white;
    transition: var(--transition-slow);
 }
@@ -116,5 +118,6 @@ button:hover {
 
 button:active {
    transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray1);
    transform: scale(0.95);
 }

@@ -12,10 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <?php include_once('script/icon.php'); ?>
   <!--Custom-->
-  <title>GGG</title>
-  
+  <title>Featured</title>
 </head>
 <body>
-
+   Display name of account:
 </body>
 </html>

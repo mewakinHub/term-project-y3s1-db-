@@ -1,41 +1,38 @@
-#signin {
+.signin {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--black-primary);
 }
 
-#signin-container {
+.signin .signin-container {
    width: 370px;
    height: 700px;
    background-color: var(--black-secondary);
    border-radius: 15px;
    padding: 0 40px;
+   box-shadow: 0 4px 0 black;
 }
 
-#logofull {  
-   margin: 55px auto 55px auto;
+.signin .logofull {  
+   margin: 60px auto;
 }
 
-.signin-message {
-   margin-bottom: 32px;
-}
-
-.form-signin {
+.signin .form-signin {
    display: grid;
-   row-gap: 2rem;
-   margin: 0 0 6.5rem 0;
+   row-gap: 2em;
+   margin-bottom: 105px;
 }
 
-.email svg {
+.signin .email svg {
    width: 20px;
    left: 13px;
-   top: 9px;
+   top: 10px;
    color: var(--gray3);
    transition: var(--transition-slow);
 }
 
-.password svg {
+.signin .password svg {
    width: 20px;
    left: 14px;
    top: 12px;
@@ -44,15 +41,15 @@
    transition: var(--transition-slow);
 }
 
-.username svg {
+.signin .username svg {
    width: 20px;
    left: 14px;
-   top: 10px;
+   top: 9px;
    color: var(--gray3);
    transition: var(--transition-slow);
 }
 
-#signup {
+.signin .button-signup {
    display: block;
    background-color: var(--transparent);
    outline: 2px solid var(--gray3);
@@ -61,8 +58,44 @@
    margin: 0 auto 0 auto; 
 }
 
-#signup:hover {
+.signin .button-signup:hover {
    transition: var(--transition-normal);
    box-shadow: 0 0 9px var(--gray3);
 }
- 
+
+.signin .button-signup:active {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray3);
+}
+
+
+.signin .message-container {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   margin-top: 0px;
+   margin-bottom: 32px;
+}
+
+.signin .button-back svg {
+   position: absolute;
+   left: 0px;
+   width: 32px;
+   height: 32px;
+   color: white;
+   border-radius: 20px;
+   transition: var(--transition-normal);
+}
+
+.signin .button-back:hover svg {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray4);
+   background-color: var(--gray5);
+}
+
+.signin .button-back:active svg {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray4);
+   background-color: var(--gray5);
+   transform: scale(0.9);
+}
