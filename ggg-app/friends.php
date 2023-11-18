@@ -12,10 +12,15 @@
    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
    <?php include_once('script/icon.php'); ?>
    <!--Custom-->
-   
-   
+   <title>GGG - Friends</title>
+   <?php include_once('component/navbar.php'); ?>
+   <link rel="stylesheet" href="style/navbar.css">
+   <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
-
+   <?php Navbar('friends') ?>
+   <main>
+      
+   </main>
 </body>
 </html>
