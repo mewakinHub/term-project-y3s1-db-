@@ -18,7 +18,11 @@
 <body>
   <main id="signin">
     <div id="signin-container">
-      
+    <img class='center logofull'
+      src="asset/logofull.png"
+      style="max-width: 200px; height: auto;"
+    />
+    
     </div>
   </main>
 </body>
