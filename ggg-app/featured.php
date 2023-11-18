@@ -42,6 +42,12 @@
                      Library
                   </button>
                </a>
+               <a href="friends.php" class='button-wrapper' draggable="false">      
+                  <button class="friends">
+                     <?php Icon('friends') ?>
+                     Friends
+                  </button>
+               </a>
             </div>
             <hr/>
          </div>
