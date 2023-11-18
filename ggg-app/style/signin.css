@@ -2,15 +2,67 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-color: var(--primary);
+  background-color: var(--black-primary);
 }
 
 #signin-container {
-  display: block;
-  width: 450px;
-  height: 700px;
-  background-color: var(--secondary);
-  border-radius: 15px;
-  padding: 0 40px;
+   width: 370px;
+   height: 700px;
+   background-color: var(--black-secondary);
+   border-radius: 15px;
+   padding: 0 40px;
 }
+
+#logofull {  
+   margin: 55px auto 55px auto;
+}
+
+.signin-message {
+   margin-bottom: 32px;
+}
+
+.form-signin {
+   display: grid;
+   row-gap: 2rem;
+   margin: 0 0 6.5rem 0;
+}
+
+.email svg {
+   width: 20px;
+   left: 13px;
+   top: 9px;
+   color: var(--gray3);
+   transition: var(--transition-slow);
+}
+
+.password svg {
+   width: 20px;
+   left: 14px;
+   top: 12px;
+   color: var(--gray3);
+   rotate: 45deg;
+   transition: var(--transition-slow);
+}
+ 
+.username svg {
+   width: 20px;
+   left: 14px;
+   top: 10px;
+   color: var(--gray3);
+   transition: var(--transition-slow);
+}
+
+#signup {
+   display: block;
+   background-color: var(--transparent);
+   outline: 2px solid var(--gray3);
+   outline-offset: -2px;
+   color: var(--gray3);
+   margin: 0 auto 0 auto; 
+}
+
+#signup:hover {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray3);
+}
+ 

@@ -1,11 +1,120 @@
+* {
+   font-family: 'Lexend', sans-serif;
+   letter-spacing: 0.05em;
+}
+
 body {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  background-color: var(--primary);
+   margin: 0;
+   width: 100vw;
+   height: 100vh;
+   overflow-x: hidden;
+   background-color: var(--black-primary);
+}
+
+::-webkit-scrollbar {
+   width: 8px;
+}
+
+::-webkit-scrollbar-track {
+   background: var(--transparent);
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: var(--gray4);
+   border-radius: 10px;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}
+
+input, button {
+   font: inherit;
+   box-sizing: border-box;
 }
 
 main {
-  height: 100%;
+   height: 100%;
+}
+
+img {
+   display: block;
+}
+
+h2 {
+   color: white;
+   font-size: 24px;
+   font-weight: var(--regular);
+}
+
+.text-center {
+   text-align: center;
+}
+
+.inputicon-container {
+   position: relative;
+}
+
+.inputicon-container svg {
+   position: absolute;
+}
+
+input {
+   width: 100%;
+   background-color: var(--gray6);
+   color: var(--gray1);
+   border: none;
+   border-radius: 30px;
+   border-style: none;
+   font-size: 16px;
+   font-weight: var(--light);
+   padding: 0.7em 1.25em;
+   outline: 1px solid var(--transparent);
+   transition: var(--transition-normal);
+}
+
+input::placeholder {
+   color: var(--gray3);
+}
+
+input:hover {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 5px var(--gray3);
+}
+
+input:focus {
+   outline: 2px solid var(--gray1);
+   transition: var(--transition-normal);
+}
+ 
+input:not(:placeholder-shown) + svg {
+   color: white;
+   transition: var(--transition-slow);
+}
+
+.input-iconned {
+   padding-left: 2.6em;
+}
+ 
+button {
+   border-radius: 10px;
+   border-style: none;
+   cursor: pointer;
+   font-size: 16px;
+   font-weight: var(--medium);
+   user-select: none;
+   background-color: white;
+   padding: 0.7em 1.25em;
+   transition: var(--transition-normal);
+}
+
+button:hover {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray1);
+}
+
+button:active {
+   transition: var(--transition-normal);
+   transform: scale(0.95);
 }
