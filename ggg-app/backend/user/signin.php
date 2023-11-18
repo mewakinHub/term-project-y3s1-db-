@@ -1,7 +1,9 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-// session_start();
+
+
 require_once('/Users/k.vinrath/Desktop/labproject2/term-project-y3s1-db-/ggg-app/backend/user/connect.php');
 
 $errors = array();
@@ -18,12 +20,15 @@ if (isset($_POST['submit'])) {
     mysqli_stmt_bind_param($stmt, 's', $username);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
+    
+   
 
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
 
         // Use password_verify to check the password
         if ($password === $row['password']) {
+            
             $_SESSION["ID"] = $row["userID"];
             $_SESSION["email"] = $row["email"];
             $_SESSION["username"] = $row["username"];

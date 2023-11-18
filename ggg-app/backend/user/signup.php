@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('/Users/k.vinrath/Desktop/labproject/term-project-y3s1-db-/backend/user/ connect.php');
 
 
@@ -19,7 +20,11 @@ if (isset($_POST['submit'])) {
         // Handle insert failure
         echo "INSERT failed. Error: " . $conn->error;
     } else {
-        
+        $_SESSION["ID"] = $new_user_id;
+        $_SESSION["email"] = $email;
+        $_SESSION["username"] = $username;
+        $_SESSION["balance"] = 0;
+        $_SESSION["bio"] = '';
         header("Location:/featured.php");
         exit();
     }

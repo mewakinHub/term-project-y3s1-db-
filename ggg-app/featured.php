@@ -8,9 +8,9 @@ if (isset($_SESSION['username'])) {
 }
 
 
-echo "<pre>Session variables in 'featured.php': ";
-print_r($_SESSION);
-echo "</pre>";
+// echo "<pre>Session variables in 'featured.php': ";
+// print_r($_SESSION);
+// echo "</pre>";
 ?>
 
 

@@ -1,8 +1,7 @@
 <?php require_once('connect.php'); 
 
 
-
-$userid = $_GET['userid'];
+session_start(); 
 
 $q = "SELECT * FROM USER where USER_ID = $userid";
 $result = $mysqli->query($q);
