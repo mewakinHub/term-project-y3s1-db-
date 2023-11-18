@@ -12,10 +12,8 @@ $conn = new mysqli($host, $user, $password, $database, $port);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
-    // Echo the success message
+ 
     // echo "Connected to MySQL";
 }
 
-// Note: Do not close the connection here
-// $conn->close();
 ?>

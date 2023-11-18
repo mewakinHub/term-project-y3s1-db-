@@ -1,7 +1,6 @@
 <?php
 session_start();
-require_once('/Users/k.vinrath/Desktop/labproject/term-project-y3s1-db-/backend/user/ connect.php');
-
+require_once('connect.php');
 
 //print_r($_POST);
 

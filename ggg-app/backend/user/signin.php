@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 
-require_once('/Users/k.vinrath/Desktop/labproject2/term-project-y3s1-db-/ggg-app/backend/user/connect.php');
+require_once('connect.php');
 
 $errors = array();
 
