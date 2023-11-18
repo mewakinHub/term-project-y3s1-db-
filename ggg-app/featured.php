@@ -1,3 +1,19 @@
+<?php
+session_start(); 
+
+if (isset($_SESSION['username'])) {
+  $username = $_SESSION['username']; 
+} else {
+  $username = 'Guest'; 
+}
+
+
+echo "<pre>Session variables in 'featured.php': ";
+print_r($_SESSION);
+echo "</pre>";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +31,6 @@
   <title>Featured</title>
 </head>
 <body>
-   Display name of account: 
+  Display name of account: <?php echo htmlspecialchars($username); ?>
 </body>
 </html>
