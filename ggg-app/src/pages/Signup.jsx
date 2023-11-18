@@ -18,15 +18,21 @@ export default function Login() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post('http://localhost:80/api/addUser.php', inputs);
+    try {
+      e.preventDefault();
+      e.persist();
+      axios.post('http://localhost:80/api/', { withCredentials: true }, inputs);
+    }
+    catch (error) {
+      throw error;
+    }
   }
 
   return (
     <div className='root landing'>
       <main>
         <div className='login-container'>
-          <img className='center logofull'
+          <img className='center logofull' alt='logo'
             src={logofull}
             style={{maxWidth: '200px', height: 'auto'}}
           />
