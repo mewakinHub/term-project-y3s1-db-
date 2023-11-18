@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <?php include_once('script/icon.php'); ?>
   <!--Custom-->
-  <title>Sign up</title>
+  <title>GGG - Sign up</title>
   <link rel="stylesheet" href="style/signin.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
             </a>
             <h2 class="signin-message text-center">Create account</h2>
          </div>
-         <form class="form-signin" action="featured.php">
+         <form class="form-signin" action="featured.php" method="post">
             <div class="inputicon-container email">
                <input class="input-iconned"
                   type='text' name='email' placeholder='E-mail' required

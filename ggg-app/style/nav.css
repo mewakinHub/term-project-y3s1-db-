@@ -1,0 +1,179 @@
+nav {
+   background-color: var(--primary);
+   width: var(--nav-width);
+   height: 100%;
+   padding: 0 16px;
+   position: fixed;
+   justify-content: space-between;
+ }
+
+nav .nav-wrapper {
+   height: 100%;
+   position: relative;
+}
+
+nav img.logo {
+   width: 60px;
+   height: auto; 
+   margin: 16px auto;
+}
+
+nav .nav-main {
+   position: absolute;
+   width: 100%;
+   z-index: 2;
+   background-color: var(--black-primary);
+}
+
+nav .nav-main-buttons {
+   display: grid;
+   row-gap: 3px;
+   margin-bottom: 16px;
+}
+
+nav .nav-main-buttons button {
+   height: 55px;
+   border-radius: 10px;
+   color: var(--gray3);
+   background-color: var(--transparent);
+   transition: var(--transition-normal);
+   display: flex;
+   align-items: center;
+   font-size: 18px;
+   width: 100%;
+   padding: 0;
+   font-weight: var(--regular);
+}
+
+nav .nav-main-buttons button:hover, button:active:not(:hover) {
+   background-color: var(--black-secondary);
+   transition: var(--transition-normal);
+   box-shadow: none;
+}
+
+nav .nav-main-buttons button.selected {
+   background-color: var(--gray6);
+   transition: var(--transition-normal);
+   color: white;
+   box-shadow: none;
+   outline: 1px solid var(--gray3);
+}
+
+nav .nav-main-buttons svg {
+   width: 24px;
+   height: 24px;
+   margin: auto 15px auto 17px;
+}
+
+nav hr {
+   border-radius: 5px;
+   border: 2.5px solid var(--gray7);
+}
+
+nav .nav-user {
+   position: absolute;
+   bottom: 16px;
+   width: 100%;
+   transition: var(--transition-normal);
+}
+
+nav .user-container {
+   display: flex;
+   align-items: center stretch;
+   padding: 8px 6px;
+   border-radius: 10px;
+   transition: var(--transition-normal);
+   cursor: pointer;
+}
+
+nav .user-container:hover, .user-container:active {
+   background-color: var(--black-secondary);
+   transition: var(--transition-normal);
+}
+
+nav .user-container .user-info {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   text-align: left;
+}
+
+nav .user-container .pfp {
+   max-width: 42px;
+   height: auto; 
+   border-radius: 30px;
+   margin-right: 10px;
+}
+
+nav .user-container p {
+   font-weight: var(--light);
+   color: white;
+}
+
+nav .user-container p.username {
+   font-size: 15px;
+}
+
+nav .user-container p.funds {
+   font-size: 14px;
+   color: var(--gray2)
+}
+
+nav .nav-installed {
+   position: absolute;
+   top: 295px;
+   width: 100%;
+}
+
+nav .nav-installed p {
+   font-weight: var(--light);
+   color: var(--gray1);
+   user-select: none;
+}
+
+nav .nav-installed svg {
+   width: 20px;
+   height: 20px;
+   color: var(--gray2);
+}
+
+nav .installed-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+} 
+
+nav .iconbutton-wrapper {
+   width: 26px;
+   height: 26px;
+   color: white;
+   border-radius: 20px;
+   transition: var(--transition-normal);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+nav .iconbutton-wrapper:hover {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray4);
+   background-color: var(--gray6);
+}
+
+nav .iconbutton-wrapper:active {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray4);
+   background-color: var(--gray6);
+   transform: scale(0.925);
+}
+
+nav .button-user {
+   background-color: var(--transparent);
+   padding: 0;
+   width: 100%;
+   margin-top: 16px;
+}
+
+nav .button-user:hover {
+   box-shadow: none;
+}
