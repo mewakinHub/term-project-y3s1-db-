@@ -11,15 +11,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!--Custom-->
-  <title>Login</title>
-  <link rel="stylesheet" href="style/signin.css">
-  <?php include_once('script/icon.php'); ?>
+  <title>GGG</title>
+  
 </head>
 <body>
-  <main id="signin">
-    <div id="signin-container">
-      
-    </div>
-  </main>
+
 </body>
 </html>
