@@ -1,5 +1,5 @@
 <?php
-   include_once('script/icon.php');
+   include_once('component/icon.php');
    function Navbar($page) {
       echo "
          <nav>
