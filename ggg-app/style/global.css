@@ -121,3 +121,13 @@ button:active {
    box-shadow: 0 0 9px var(--gray1);
    transform: scale(0.95);
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active,
+input:-internal-autofill-selected,
+input:-internal-autofill-previewed {
+   -webkit-box-shadow: 0 0 0 30px var(--gray5) inset !important;
+   -webkit-text-fill-color: var(--gray1) !important;
+}

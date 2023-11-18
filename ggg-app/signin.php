@@ -24,7 +24,7 @@
          <div class="message-container">
             <h2 class="text-center">Welcome!</h2>
          </div>
-         <form class="form-signin" autocomplete="off" action="featured.php">
+         <form class="form-signin" action="featured.php">
             <div class="inputicon-container email">
                <input class="input-iconned"
                   type="text" name="email" placeholder="E-mail" required
