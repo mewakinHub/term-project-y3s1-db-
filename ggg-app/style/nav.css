@@ -36,7 +36,7 @@ nav .nav-main-buttons button {
    border-radius: 10px;
    color: var(--gray3);
    background-color: var(--transparent);
-   transition: var(--transition-normal);
+   transition: var(--transition-fast);
    display: flex;
    align-items: center;
    font-size: 18px;
@@ -47,13 +47,13 @@ nav .nav-main-buttons button {
 
 nav .nav-main-buttons button:hover, button:active:not(:hover) {
    background-color: var(--black-secondary);
-   transition: var(--transition-normal);
+   transition: var(--transition-fast);
    box-shadow: none;
 }
 
 nav .nav-main-buttons button.selected {
    background-color: var(--gray6);
-   transition: var(--transition-normal);
+   transition: var(--transition-fast);
    color: white;
    box-shadow: none;
    outline: 1px solid var(--gray3);
@@ -74,7 +74,7 @@ nav .nav-user {
    position: absolute;
    bottom: 16px;
    width: 100%;
-   transition: var(--transition-normal);
+   transition: var(--transition-fast);
 }
 
 nav .user-container {
@@ -82,13 +82,13 @@ nav .user-container {
    align-items: center stretch;
    padding: 8px 6px;
    border-radius: 10px;
-   transition: var(--transition-normal);
+   transition: var(--transition-fast);
    cursor: pointer;
 }
 
 nav .user-container:hover, .user-container:active {
    background-color: var(--black-secondary);
-   transition: var(--transition-normal);
+   transition: var(--transition-fast);
 }
 
 nav .user-container .user-info {
