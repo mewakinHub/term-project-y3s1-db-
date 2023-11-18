@@ -24,8 +24,9 @@
          <div class="message-container">
             <h2 class="text-center">Welcome!</h2>
          </div>
-         <form class="form-signin" action="featured.php">
-            <div class="inputicon-container email">
+         <form class="form-signin" action="/backend/user/signin.php" method="post">
+         
+         <div class="inputicon-container email">
                <input class="input-iconned"
                   type="text" name="email" placeholder="E-mail" required
                />
@@ -37,10 +38,10 @@
                />
                <?php Icon("key") ?>
             </div>
-            <button type="submit">Sign in</button>
+            <button type="submit" name="submit">Sign in</button>
          </form>
          <a href="signup.php" draggable="false">
-            <button class="button-signup" type="button">Create account</button>
+            <button class="button-signup" type="button" name="submit">Create account</button>
          </a>
       </div>
    </main>

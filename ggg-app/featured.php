@@ -15,6 +15,6 @@
   <title>Featured</title>
 </head>
 <body>
-   Display name of account:
+   Display name of account: 
 </body>
 </html>

@@ -27,14 +27,15 @@
             </a>
             <h2 class="signin-message text-center">Create account</h2>
          </div>
-         <form class="form-signin" action="featured.php">
+         <form class="form-signin" action="/backend/user/signup.php" method = "post" >
+            
             <div class="inputicon-container email">
                <input class="input-iconned"
                   type='text' name='email' placeholder='E-mail' required
                />
                <?php Icon('mail') ?>
             </div>
-            <div class="inputicon-container password">
+            <div class="inputicon-container password" enctype="multipart/form-data">
                <input class="input-iconned"
                   type='password' name='password' placeholder='Password' required
                />
@@ -52,7 +53,7 @@
                />
                <?php Icon('id') ?>
             </div>
-            <button type="submit">Sign up</button>
+            <button type="submit" name="submit">Sign up</button>
          </form>
       </div>
    </main>
