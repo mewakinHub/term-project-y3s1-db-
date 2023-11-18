@@ -43,7 +43,7 @@
    rotate: 45deg;
    transition: var(--transition-slow);
 }
- 
+
 .username svg {
    width: 20px;
    left: 14px;
