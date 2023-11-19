@@ -1,5 +1,5 @@
 <?php
-   include_once('component/icon.php');
+   include('component/icon.php');
    function PageHeader($Page) {
       echo "
       <div class='header'>

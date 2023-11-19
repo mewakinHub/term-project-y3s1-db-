@@ -7,12 +7,12 @@
    <link rel="icon" href="asset/logo.png">
    <link rel="stylesheet" href="style/global.css">
    <link rel="stylesheet" href="style/variables.css">
-   <?php include_once('component/icon.php'); ?>
+   <?php include('component/icon.php'); ?>
    <!--Custom-->
    <title>GGG - Library</title>
-   <?php include_once('component/navbar.php'); ?>
+   <?php include('component/navbar.php'); ?>
    <link rel="stylesheet" href="style/navbar.css">
-   <?php include_once('component/pageheader.php'); ?>
+   <?php include('component/pageheader.php'); ?>
    <link rel="stylesheet" href="style/pageheader.css">
 </head>
 <body>
