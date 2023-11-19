@@ -21,16 +21,15 @@
    <main class="browse">
       <?php PageHeader('Browse') ?>
       <div class="game-grid">
-         <div class="card">
+         <a href="storepage.php" class="card">
             <img class="game-poster" draggable="false"
                src="asset/Picture1.png"
             />
-            <p class="game-name">Baldur's Gate 3</p>
-            <div class="game-sub">
+            <p class="game-name webkitclamp">Baldur's Gate 3</p>
+            <div class="card-sub">
                <p class="game-price">฿ 1699.00</p>
             </div>
-         </div>
-         
+         </a>
       </div>
    </main>
 </body>

@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=block');
+@font-face {
+   font-family: 'Lexend';
+   src: url('../asset/Lexend-VariableFont_wght.ttf');
+}
 
 * {
    font-family: 'Lexend';
@@ -48,7 +51,7 @@ main {
    position:fixed;
    overflow-y: scroll;
    overflow-x: hidden;
-   padding-left: 25px;
+   padding-left: 30px;
    padding-right: 20px;
    margin: 0;
 }
@@ -165,4 +168,36 @@ hr {
 
 .hidden {
    visibility: hidden;
+}
+
+.webkitclamp {
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+}
+
+.button-back {
+   display: block;
+   width: 32px;
+}
+
+.button-back svg {
+   color: white;
+   width: 32px;
+   height: 32px;
+   border-radius: 20px;
+   transition: var(--transition-normal);
+}
+
+.button-back:hover svg {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray4);
+   background-color: var(--gray5);
+}
+
+.button-back:active svg {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray4);
+   background-color: var(--gray5);
+   transform: scale(0.9);
 }
