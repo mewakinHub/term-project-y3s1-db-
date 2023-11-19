@@ -65,11 +65,6 @@ nav .nav-main-buttons svg {
    margin: auto 15px auto 17px;
 }
 
-nav hr {
-   border-radius: 5px;
-   border: 2.5px solid var(--gray7);
-}
-
 nav .nav-user {
    position: absolute;
    bottom: 16px;

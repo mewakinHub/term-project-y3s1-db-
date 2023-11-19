@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=block');
+
 * {
-   font-family: 'Lexend', sans-serif;
+   font-family: 'Lexend';
    letter-spacing: 0.05em;
    margin-block: 0;
    box-sizing: border-box;
@@ -37,7 +39,17 @@ input, button {
 }
 
 main {
+   width: calc(100% - var(--nav-width));
+   left: var(--nav-width);
    height: 100%;
+   background-color: var(--black-secondary);
+   display: flex;
+   flex-direction: column;
+   position:fixed;
+   overflow-y:scroll;
+   padding-left: 25px;
+   padding-right: 20px;
+   margin:0;
 }
 
 img {
@@ -45,11 +57,22 @@ img {
    user-select: none;
 }
 
+p {
+   color: white;
+   font-weight: var(--light);
+}
+
+h1 {
+   color: white;
+   font-size: 28px;
+   font-weight: var(--medium);
+   transition: var(--transition-normal);
+}
+
 h2 {
    color: white;
    font-size: 24px;
    font-weight: var(--regular);
-   margin: 0px;
 }
 
 .text-center {
@@ -134,7 +157,8 @@ input:-webkit-autofill:active {
 
 hr {
    border-radius: 5px;
-   border: 2.5px solid var(--gray53);
+   border: 2.5px solid var(--gray7);
+   width: 100%;
 }
 
 .hidden {
