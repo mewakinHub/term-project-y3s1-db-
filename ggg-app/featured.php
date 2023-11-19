@@ -40,7 +40,7 @@ include_once('component/icon.php');
 
 <?php
 include_once('component/navbar.php');
-Navbar('featured', $username); ?>
+Navbar('featured'); ?>
    <main class='featured'>
       <div class='header'>
          <p>Featured</p>

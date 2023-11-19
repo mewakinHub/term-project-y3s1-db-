@@ -9,25 +9,16 @@
    <link rel="stylesheet" href="style/variables.css">
    <?php include('component/icon.php'); ?>
    <!--Custom-->
-   <title>GGG - Browse</title>
+   <title>GGG - Friends</title>
    <?php include('component/navbar.php'); ?>
    <link rel="stylesheet" href="style/navbar.css">
    <?php include('component/pageheader.php'); ?>
-   <link rel="stylesheet" href="style/pageheader.css"> 
-   <link rel="stylesheet" href="style/browse.css"> 
+   <link rel="stylesheet" href="style/pageheader.css">
 </head>
 <body>
-   <?php Navbar('browse') ?>
+   <?php Navbar('friends') ?>
    <main>
-      <?php PageHeader('Featured') ?>
-      <div class="game-grid">
-         <div class="card">
-            <img class="poster" src="asset/Picture1.png"
-               style="max-width: 180px; height: auto;" draggable="false"
-            />
-            <p>Baldur's Gate 3</p>
-         </div>
-      </div>
+      <?php PageHeader('Friends') ?>
    </main>
 </body>
 </html>

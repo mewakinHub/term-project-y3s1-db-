@@ -56,19 +56,14 @@ if (isset($_POST['update_profile'])) {
    }
    
    // Update profile picture
-   $update_image = $_FILES['update_image']['name'];
-   $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
-   $upload_path = '/Users/k.vinrath/Desktop/labproject2/term-project-y3s1-db-/ggg-app/backend/user/account_setting/upload_profile/';
-   if (!empty($update_image)) {
-      $new_image_name = uniqid('IMG-', true) . '.' . pathinfo($update_image, PATHINFO_EXTENSION);
-      $final_upload_path = $upload_path . $new_image_name;
-      if (move_uploaded_file($update_image_tmp_name, $final_upload_path)) {
-         mysqli_query($conn, "UPDATE `user` SET profilePicFile = '$new_image_name' WHERE userID = '$user_id'") or die('query failed');
-         echo 'Image updated successfully!';
-      } else {
-         echo 'Failed to upload image!';
-      }
+   if(file_exists("upload/ .$FILES['profilePicFile']['name'])){
+      $filename = $_FILES['profilePicFile']['name']:
+      $_SESSION['status'] = "Image already Exists ".$filename;
+      header("Location: account_setting.php");
    }
+   else 
+   {
+      $q = "
 }
 
 ?>

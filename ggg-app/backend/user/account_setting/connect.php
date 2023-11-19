@@ -7,12 +7,12 @@ $port = 8889;
 
 // Create a connection
 $conn = new mysqli($host, $user, $password, $database, $port);
-
+// var_dump($conn);
 // Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
-    echo "Connected to MySQL";
+    // echo "Connected to MySQL";
 }
 
 // // Test query to fetch data from the user table

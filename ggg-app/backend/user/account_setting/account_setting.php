@@ -26,7 +26,7 @@ session_start(); ?>
 
         <label for="profilepic">Profile Picture:</label>
         <input type="file" name="profilepic" id="profilepic" accept="image/*"><br>
- 
+        
         <!-- Hidden field for user ID -->
         <input type="hidden" name="userid" value="<?php echo htmlspecialchars($_SESSION['ID']); ?>">
 
