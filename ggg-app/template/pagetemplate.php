@@ -8,7 +8,7 @@
    <link rel="stylesheet" href="style/global.css">
    <link rel="stylesheet" href="style/variables.css">
    
-   <?php include_once('component/icon.php'); ?>
+   <?php include_once('component/icon.php'); include_once('component/alert.php'); ?>
    <!--Custom-->
 
    

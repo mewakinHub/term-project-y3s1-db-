@@ -7,10 +7,26 @@
    <link rel="icon" href="asset/logo.png">
    <link rel="stylesheet" href="style/global.css">
    <link rel="stylesheet" href="style/variables.css">
-   <?php include_once('component/icon.php'); ?>
+   <?php include_once('component/icon.php'); include_once('component/alert.php'); ?>
    <!--Custom-->
    <title>GGG - Sign up</title>
    <link rel="stylesheet" href="style/signin.css">
+   <?php 
+      require_once('script/connect.php');
+      session_start();
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      $confirmpassword = $_POST['confirmpassword'];
+      $username = $_POST['username'];
+      if(isset($email)) {
+         if($password != $confirmpassword) {
+            Alert('Password mismatch');
+         }
+         else {
+            
+         }
+      }
+   ?>
 </head>
 <body class="signin">
    <div class="signin-container">
@@ -23,7 +39,7 @@
          </a>
          <h2 class="signin-message text-center">Create account</h2>
       </div>
-      <form class="form-signin" action="featured.php" method="post">
+      <form class="form-signin" action="signup.php" method="post">
          <div class="inputicon-container email">
             <input class="input-iconned"
                type='text' name='email' placeholder='E-mail' required
