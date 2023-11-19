@@ -7,12 +7,15 @@
    <link rel="icon" href="asset/logo.png">
    <link rel="stylesheet" href="style/global.css">
    <link rel="stylesheet" href="style/variables.css">
-   <?php include_once('component/icon.php'); include_once('component/alert.php'); ?>
+   <?php
+      require_once('script/connect.php');
+      include_once('component/icon.php');
+      include_once('component/alert.php');
+   ?>
    <!--Custom-->
    <title>GGG - Sign up</title>
    <link rel="stylesheet" href="style/signin.css">
    <?php 
-      require_once('script/connect.php');
       session_start();
       $email = $_POST['email'];
       $password = $_POST['password'];
@@ -20,10 +23,18 @@
       $username = $_POST['username'];
       if(isset($email)) {
          if($password != $confirmpassword) {
-            Alert('Password mismatch');
+            Alert('Password mismatch!');
          }
          else {
-            
+            $q = "INSERT INTO user (email, password, username) VALUES ('$email', '$password', '$username')";
+            $result = $conn->query($q);
+            if (!$result) {
+               Alert("Query error: " . $conn->error);
+            }
+            else {
+               $_SESSION['username'] = $username;
+               header('Location: featured.php');
+            }
          }
       }
    ?>

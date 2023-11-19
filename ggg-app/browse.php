@@ -10,14 +10,17 @@
    <?php include_once('component/icon.php'); include_once('component/alert.php'); ?>
    <!--Custom-->
    <title>GGG - Browse</title>
-   <?php include_once('component/navbar.php'); ?>
    <link rel="stylesheet" href="style/navbar.css">
-   <?php include_once('component/pageheader.php'); ?>
    <link rel="stylesheet" href="style/pageheader.css"> 
    <link rel="stylesheet" href="style/maincontent.css"> 
+   <?php
+      session_start();
+      include_once('component/navbar.php');
+      include_once('component/pageheader.php');  
+   ?>
 </head>
 <body>
-   <?php Navbar('browse') ?>
+   <?php Navbar('browse', $_SESSION['username']) ?>
    <main class="browse">
       <?php PageHeader('Browse') ?>
       <div class="game-grid">
