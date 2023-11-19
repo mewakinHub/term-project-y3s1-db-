@@ -7,7 +7,7 @@
    <link rel="icon" href="asset/logo.png">
    <link rel="stylesheet" href="style/global.css">
    <link rel="stylesheet" href="style/variables.css">
-   <?php include('component/icon.php'); ?>
+   <?php include_once('component/icon.php'); ?>
    <!--Custom-->
    <title>GGG - Sign up</title>
    <link rel="stylesheet" href="style/signin.css">

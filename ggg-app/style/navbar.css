@@ -52,7 +52,7 @@ nav .nav-main-buttons button:hover, button:active:not(:hover) {
 }
 
 nav .nav-main-buttons button.selected {
-   background-color: var(--gray6);
+   background-color: var(--gray7);
    transition: var(--transition-fast);
    color: white;
    box-shadow: none;
@@ -67,8 +67,10 @@ nav .nav-main-buttons svg {
 
 nav .nav-user {
    position: absolute;
-   bottom: 16px;
+   padding-bottom: 16px;
+   bottom: 0px;
    width: 100%;
+   background-color: var(--black-primary);
    transition: var(--transition-fast);
 }
 

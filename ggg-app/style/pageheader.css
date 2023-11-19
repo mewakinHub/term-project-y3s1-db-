@@ -11,7 +11,7 @@ main .header h1 {
    left: 0px;
 }
  
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1050px) {
    main .header h1.hidable {
       color: var(--transparent);
       transition: var(--transition-normal);
@@ -28,7 +28,7 @@ main .header .searchicon svg {
  
 main .header .searchbox-wrapper {
    width: 100%;
-   max-width: 500px;
+   max-width: 400px;
 }
  
 main .header input {
@@ -56,4 +56,40 @@ main .header .hr-header {
 
 main .hr-header {
    margin-bottom: 25px;
+}
+
+main .header h1 {
+   position: absolute;
+   left: 0px;
+}
+
+main .header svg {
+   width: 28px;
+   height: 28px;
+   color: var(--gray2);
+}
+
+main .header .iconbutton-wrapper {
+   width: 35px;
+   height: 35px;
+   color: white;
+   border-radius: 50px;
+   transition: var(--transition-normal);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 10px;
+}
+
+main .header .iconbutton-wrapper:hover {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray4);
+   background-color: var(--gray5);
+}
+
+main .header .iconbutton-wrapper:active {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray4);
+   background-color: var(--gray5);
+   transform: scale(0.925);
 }

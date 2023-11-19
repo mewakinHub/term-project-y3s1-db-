@@ -1,0 +1,74 @@
+.game-grid {
+   margin: 0 auto;
+   display: grid;
+   gap: 30px;
+   justify-items: center;
+   justify-content: space-between;
+   margin: 0;
+   grid-template-columns: repeat(1, 1fr);
+}
+
+@media screen and (min-width: 700px) {
+   .game-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media screen and (min-width: 910px) {
+   .game-grid {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
+
+@media screen and (min-width: 1120px) {
+   .game-grid {
+      grid-template-columns: repeat(4, 1fr);
+   }
+}
+
+@media screen and (min-width: 1330px) {
+   .game-grid {
+      grid-template-columns: repeat(5, 1fr);
+   }
+}
+
+.game-poster {
+   width: 180px;
+   height: 240px;
+   border-radius: 10px;
+   transition: var(--transition-normal);
+}
+
+.game-name {
+   margin: 10px 0 8px 0;
+}
+
+.game-price {
+   color: var(--gray2);
+}
+
+.card {
+   cursor: pointer;
+   transition: var(--transition-fast);
+   max-width: 180px;
+   height: 320px;
+   overflow-wrap: break-word;
+}
+
+.card:hover .game-poster{
+   box-shadow: 0 0 5px white;
+   transition: var(--transition-normal);
+}
+
+.card:active {
+   transition: var(--transition-fast);
+   scale: 0.965;
+}
+
+.card p {
+   width: 100%;
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+}

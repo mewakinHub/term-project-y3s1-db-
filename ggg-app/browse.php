@@ -7,26 +7,30 @@
    <link rel="icon" href="asset/logo.png">
    <link rel="stylesheet" href="style/global.css">
    <link rel="stylesheet" href="style/variables.css">
-   <?php include('component/icon.php'); ?>
+   <?php include_once('component/icon.php'); ?>
    <!--Custom-->
    <title>GGG - Browse</title>
-   <?php include('component/navbar.php'); ?>
+   <?php include_once('component/navbar.php'); ?>
    <link rel="stylesheet" href="style/navbar.css">
-   <?php include('component/pageheader.php'); ?>
+   <?php include_once('component/pageheader.php'); ?>
    <link rel="stylesheet" href="style/pageheader.css"> 
-   <link rel="stylesheet" href="style/browse.css"> 
+   <link rel="stylesheet" href="style/maincontent.css"> 
 </head>
 <body>
    <?php Navbar('browse') ?>
-   <main>
-      <?php PageHeader('Featured') ?>
+   <main class="browse">
+      <?php PageHeader('Browse') ?>
       <div class="game-grid">
          <div class="card">
-            <img class="poster" src="asset/Picture1.png"
-               style="max-width: 180px; height: auto;" draggable="false"
+            <img class="game-poster" draggable="false"
+               src="asset/Picture1.png"
             />
-            <p>Baldur's Gate 3</p>
+            <p class="game-name">Baldur's Gate 3</p>
+            <div class="game-sub">
+               <p class="game-price">฿ 1699.00</p>
+            </div>
          </div>
+         
       </div>
    </main>
 </body>

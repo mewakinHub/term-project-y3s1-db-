@@ -25,7 +25,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-   background-color: var(--gray4);
+   background-color: var(--gray5);
    border-radius: 10px;
 }
 
@@ -46,10 +46,11 @@ main {
    display: flex;
    flex-direction: column;
    position:fixed;
-   overflow-y:scroll;
+   overflow-y: scroll;
+   overflow-x: hidden;
    padding-left: 25px;
    padding-right: 20px;
-   margin:0;
+   margin: 0;
 }
 
 img {
@@ -60,6 +61,7 @@ img {
 p {
    color: white;
    font-weight: var(--light);
+   user-select: none;
 }
 
 h1 {
