@@ -134,5 +134,9 @@ input:-webkit-autofill:active {
 
 hr {
    border-radius: 5px;
-   border: 2.5px solid var(--dim3);
+   border: 2.5px solid var(--gray53);
+}
+
+.hidden {
+   visibility: hidden;
 }

@@ -19,8 +19,17 @@
 </head>
 <body>
    <?php Navbar('featured') ?>
-   <main>
-      
+   <main class='featured'>
+      <div class='header'>
+         <p>Featured</p>
+         <div class='searchbox-wrapper'>
+            <div class='inputicon-container searchicon'>
+              <input type='text' name='searchstore' placeholder='Search store' maxLength='32' class='iconned'/>
+              <?php Icon('search') ?>
+            </div>
+         </div>
+      </div>
+      <hr/>
    </main>
 </body>
 </html>
