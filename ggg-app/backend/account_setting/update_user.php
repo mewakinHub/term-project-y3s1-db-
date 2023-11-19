@@ -2,6 +2,7 @@
 session_start();
 //connect to database user table
 require_once("connect.php");
+
 // $host = "127.0.0.1";
 // $user = "user";
 // $password = "userggg";
@@ -44,7 +45,7 @@ if (isset($_GET['userID'])) {
 
         $stmtSelect->close();
     } else {
-        echo "Error preparing select statement: " . $mysqli->error;
+        echo "Error preparing select statement: " . $conn->error;
         exit;
     }
 } else {
@@ -88,6 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userID'], $_GET['userI
             echo "User data updated successfully!";
             // Redirect back to admin.php
             // header("Location: admin.php");
+            $_SESSION["ID"] = $new_user_id;
+            $_SESSION["email"] = $email;
+            $_SESSION["username"] = $username;
+            $_SESSION["balance"] = 0;
+            $_SESSION["bio"] = '';
+
+            $userID = 
             exit;
         } else {
             echo "Error updating user data: " . $stmtUpdate->error;
@@ -104,6 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userID'], $_GET['userI
 $conn->close();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,40 +123,22 @@ $conn->close();
 <body>
     <h1>Edit User</h1>
 
+    <!-- <form method="post" action="upload.php" enctype="multipart/form-data"> -->
     <form method="post" action="">
         <?php
         // Display form fields dynamically based on user data columns
-        foreach ($userData as $key => $value) {
-            echo "<label for=\"$key\">$key:</label>";
-            echo "<input type=\"text\" id=\"$key\" name=\"$key\" value=\"$value\"><br>";
+        if (isset($userData)) {
+            foreach ($userData as $key => $value) {
+                echo "<label for=\"$key\">$key:</label>";
+                echo "<input type=\"text\" id=\"$key\" name=\"$key\" value=\"$value\"><br>";
+            }
         }
         ?>
-
-        <input type="hidden" name="userID" value="<?php echo $userID; ?>">
+         <input type="hidden" name="userID" value="<?php echo isset($userID) ? $userID : ''; ?>">
         <input type="submit" value="Update User">
-        <!-- <label>profile</label>
-            <input type="file" name="profile" class="form-control" required> -->
-        <label for="upload">Upload profile</label>
-        <?php if(isset($_SESSION["success"])){
-            <div class ="alert aleart-success">
-                <?php 
-                    echo $_SESSION["success"];
-                    unset($_SESSION["success"]);
-                ?>
-            </div>  
-        <?php if (isset($_SESSION["error"])) {?>
-            <div class="alert alert-danger">
-                <?PHP  
-                    echo $_SESSION["error"];
-                    unset($_SESSION["error"]);
-                ?>
-            </div>
-        <?php } ?>
-        }       
-        }
-        <input type="file" class = "form-control" name="image">
-        </form>
-        <hr>
-        <h3?>Uploaded images</h3>
+       
+    </form>
+    <hr>
+    <h3>Uploaded images</h3>
 </body>
 </html>
