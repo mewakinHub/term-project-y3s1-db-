@@ -2,6 +2,8 @@
    font-family: 'Lexend', sans-serif;
    letter-spacing: 0.05em;
    margin-block: 0;
+   box-sizing: border-box;
+   padding: 0;
 }
 
 body {
@@ -32,7 +34,6 @@ a {
 
 input, button {
    font: inherit;
-   box-sizing: border-box;
 }
 
 main {
@@ -41,6 +42,7 @@ main {
 
 img {
    display: block;
+   user-select: none;
 }
 
 h2 {
@@ -125,9 +127,16 @@ button:active {
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
-input:-webkit-autofill:active,
-input:-internal-autofill-selected,
-input:-internal-autofill-previewed {
+input:-webkit-autofill:active {
    -webkit-box-shadow: 0 0 0 30px var(--gray5) inset !important;
    -webkit-text-fill-color: var(--gray1) !important;
+}
+
+hr {
+   border-radius: 5px;
+   border: 2.5px solid var(--gray53);
+}
+
+.hidden {
+   visibility: hidden;
 }

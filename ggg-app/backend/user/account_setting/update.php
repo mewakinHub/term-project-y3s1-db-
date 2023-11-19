@@ -1,174 +1,153 @@
-<?php require_once('connect.php'); 
+<?php
+session_start();
 
+$host = "127.0.0.1";
+$user = "user";
+$password = "userggg";
+$database = "ggg";
+$port = 8889;
 
-session_start(); 
+// Create a connection
+$conn = new mysqli($host, $user, $password, $database, $port);
 
-$q = "SELECT * FROM USER where USER_ID = $userid";
-$result = $mysqli->query($q);
-echo "<form action='edit_user.php' method='post'>";
-$_SESSION["ID"] = $row["userID"];
-$_SESSION["email"] = $row["email"];
-$_SESSION["username"] = $row["username"];
-$_SESSION["balance"] = $row["balance"];
-$_SESSION["bio"] = $row["bio"];
-
-if (isset($_POST['profileclick'])) {
-    // Extra all data from POST
-
-    $email= $_POST['email'];
-    $username = $_POST['username'];
-    $balance = $_POST['balance'];
-    $bio = $_POST['bio'];
-
-    $userid = $_POST['userid'];
-
-    
- $q ="UPDATE USER SET USER_TITLE='$title',USER_FNAME='$firstname',USER_LNAME='$lastname',USER_GENDER='$gender',USER_EMAIL='$email',USER_NAME='$username',
-    USER_PASSWD='$passwd',USER_GROUPID='$usergroup',DISABLE='$disabled' where USER_ID='$userid'";
-
-
-
-    $result = $mysqli->query($q);
-
-    if (!$result) {
-        echo "Update failed. Error: " . $mysqli->error;
-        return false;
-    }
-    header("Location: user.php");
-    
+ 
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Connected to MySQL";
 }
+$_SESSION['user_id'] == 20; 
+
+
+
+echo "<pre>Session variables in 'updated.php': ";
+print_r($_SESSION);
+echo "</pre>";
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+// include 'config.php'; // Make sure this points to your actual configuration file
+// $_SESSION['user_id'] == 20;
+$user_id = $_SESSION['user_id'];
+
+if (isset($_POST['update_profile'])) {
+   $update_email = mysqli_real_escape_string($conn, $_POST['update_email']);
+   $update_pass = mysqli_real_escape_string($conn, md5($_POST['update_pass']));
+   $new_pass = mysqli_real_escape_string($conn, md5($_POST['new_pass']));
+   $confirm_pass = mysqli_real_escape_string($conn, md5($_POST['confirm_pass']));
+   $old_pass = $_POST['old_pass'];
+   
+   // Update email
+   mysqli_query($conn, "UPDATE `user` SET email = '$update_email' WHERE userID = '$user_id'") or die('query failed');
+   
+   // Update password
+   if (!empty($update_pass) && !empty($new_pass) && !empty($confirm_pass)) {
+      if ($update_pass == $old_pass) {
+         if ($new_pass == $confirm_pass) {
+            mysqli_query($conn, "UPDATE `user` SET password = '$new_pass' WHERE userID = '$user_id'") or die('query failed');
+            echo 'Password updated successfully!';
+         } else {
+            echo 'New password and confirm password do not match!';
+         }
+      } else {
+         echo 'Old password does not match!';
+      }
+   }
+   
+   // Update profile picture
+   $update_image = $_FILES['update_image']['name'];
+   $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
+   $upload_path = '/Users/k.vinrath/Desktop/labproject2/term-project-y3s1-db-/ggg-app/backend/user/account_setting/upload_profile/';
+   if (!empty($update_image)) {
+      $new_image_name = uniqid('IMG-', true) . '.' . pathinfo($update_image, PATHINFO_EXTENSION);
+      $final_upload_path = $upload_path . $new_image_name;
+      if (move_uploaded_file($update_image_tmp_name, $final_upload_path)) {
+         mysqli_query($conn, "UPDATE `user` SET profilePicFile = '$new_image_name' WHERE userID = '$user_id'") or die('query failed');
+         echo 'Image updated successfully!';
+      } else {
+         echo 'Failed to upload image!';
+      }
+   }
+}
+
 ?>
-
-
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>CSS326 Sample</title>
-    <link rel="stylesheet" href="default.css">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Update profile</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-    <div id="wrapper">
-        <?php include 'header.php'; ?>
-        <div id="div_main">
-            <div id="div_left">
+<div class="update-profile">
+   <form action="" method="post" enctype="multipart/form-data">
+      <h3>Update profile</h3>
+      <img src="path_to_default_image.jpg"> <!-- Replace with the path to the default image -->
+      <div class="flex">
+         <div class="inputBox">
+            <span>Your email:</span>
+            <input type="email" name="update_email" value="" class="box form-control">
+            <span>Update your pic:</span>
+            <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="box form-control">
+         </div>
+         <div class="inputBox">
+            <input type="hidden" name="old_pass" value="">
+            <span>Old password:</span>
+            <input type="password" name="update_pass" placeholder="enter previous password" class="box form-control">
+            <span>New password:</span>
+            <input type="password" name="new_pass" placeholder="enter new password" class="box form-control">
+            <span>Confirm password:</span>
+            <input type="password" name="confirm_pass" placeholder="confirm new password" class="box form-control">
+         </div>
+      </div>
+      <input type="submit" value="update profile" name="update_profile" class="btn">
+      <a href="home.php" class="delete-btn">go back</a>
+   </form>
+</div>
 
-            </div>
-            <div id="div_content" class="form">
-                <!--%%%%% Main block %%%%-->
-                <!--Form -->
-                <h2>Edit User Profile</h2>
-                <?php
-                $userid = $_GET['userid'];
-
-                $q = "SELECT * FROM USER where USER_ID = $userid";
-                $result = $mysqli->query($q);
-                echo "<form action='edit_user.php' method='post'>";
-                echo "<label>Title</label>";
-                echo "<select name='title'>";
-                while ($row = $result->fetch_array()) {
-                    $q1 = "select TITLE_ID,TITLE_NAME from TITLE";
-                    if ($result1 = $mysqli->query($q1)) {
-                        while ($row1 = $result1->fetch_array()) {
-                            echo "<option value= $row1[0] ";
-                            if ($row1[0] == $row['USER_TITLE'])
-                                echo "SELECTED";
-                            echo "> $row1[1] </option>";
-                        }
-                    } else {
-                        echo 'Query error: ' . $mysqli->error;
-                    }
-
-                    echo "</select>";
-                    echo "<label>First name</label>";
-                    echo "<input type='text' name='firstname' value=" . $row['USER_FNAME'] . ">";
-
-                    echo "<label>Last name</label>";
-                    echo "<input type='text' name='lastname' value=" . $row['USER_LNAME'] . ">";
-
-                    echo "<label>Gender</label>";
-
-                    $q2 = 'select GENDER_ID, GENDER_NAME from GENDER;';
-                    if ($result2 = $mysqli->query($q2)) {
-                        while ($row2 = $result2->fetch_array()) {
-                            echo "<input ";
-                            if ($row2[0] == $row['USER_GENDER'])
-                                echo "CHECKED='CHECKED'";
-                            echo "type='radio' name='gender' value='$row2[0]' >" . $row2[1];
-                        }
-                    } else {
-                        echo 'Query error: ' . $mysqli->error;
-                    }
-
-
-
-                    echo "<div>";
-                    echo "</div>";
-
-
-                    echo "<label>Email</label>";
-                    echo "<input type='text' name='email' value=" . $row['USER_EMAIL'] . ">";
-                    
-                    echo "<h2> Account Profile</h2>";
-
-                    echo "<label>Username</label>";
-                    echo "<input type='text' name='username' value='" . $row['USER_NAME'] . "'>";
-
-                    echo "<label>Password</label>";
-                    echo "<input type='password' name='passwd' value=" . $row['USER_PASSWD'] . ">";
-
-                    echo "<label>Confirmed password</label>";
-                    echo "<input type='password' name='cpasswd'>";
-
-                    echo "<label>User group</label>";
-                    echo "<select name='usergroup'>";
-
-                    $q3 = 'SELECT USERGROUP_ID, USERGROUP_NAME FROM USER_GROUP;';
-						if ($result3 = $mysqli->query($q3)) {
-							while ($row3 = $result3->fetch_array()) {
-								echo '<option value="' . $row3[0] . '"';
-								if ($row3[0] == $row['USER_GROUPID']) {
-									echo ' selected';
-								}
-								echo '>' . $row3[1] . '</option>';
-							}
-							$result3->free(); // Free the result set
-						} else {
-							echo 'Query error: ' . $mysqli->error;
-						}
-
-                    
-
-                    echo "</select>";
-                    echo "<label>Disabled</label>";
-
-
-
-                    echo "<input ";
-                    if ($row['DISABLE'] == 1)
-                        echo "CHECKED='CHECKED'";
-                    echo "type='checkbox' name='disabled' >";
-
-
-
-                    echo "<input type='hidden' name='userid' value=" . $row['USER_ID'] . " >";
-                    echo "<div class='center'>";
-                    echo "<input type='submit' name='sub' value='Submit'>";
-                    echo "</div>";
-                }
-                ?>
-                </form>
-            </div> <!-- end div_content -->
-
-        </div> <!-- end div_main -->
-
-        <div id="div_footer">
-
-        </div>
-
-    </div>
 </body>
-
 </html>
+
+<!-- 
+//     if (!isset($_SESSION["userID"])) {
+//         die("User ID is not set in the session.");
+//     }
+
+// $userid = $_SESSION["userID"];
+
+// // Assuming you're using $mysqli in connect.php
+// $email = $mysqli->real_escape_string($_POST['email']);
+// $username = $mysqli->real_escape_string($_POST['username']);
+// $balance = floatval($_POST['balance']); // Assuming balance is a float
+// $bio = $mysqli->real_escape_string($_POST['bio']);
+// $profilePicPath = NULL; // This should be set to the file path if a file was uploaded
+
+// // Code for handling file upload would go here...
+
+// // Prepare the update statement
+// $q = "UPDATE user SET email = ?, username = ?, balance = ?, bio = ?, profilePicFile = ? WHERE userID = ?";
+
+// if ($stmt = $mysqli->prepare($q)) {
+//     $stmt->bind_param('ssdsbi', $email, $username, $balance, $bio, $profilePicPath, $userid);
+//     if ($stmt->execute()) {
+//         if ($stmt->affected_rows > 0) {
+//             echo "Profile updated successfully!";
+//         } else {
+//             echo "No changes made to the profile.";
+//         }
+//     } else {
+//         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+//     }
+//     $stmt->close();
+// } else {
+//     echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+// }
+
+// $mysqli->close();
+// ?> -->

@@ -1,22 +1,3 @@
-<?php
-// session_start(); 
-// echo "<pre>Session variables in 'featured.php': ";
-// print_r($_SESSION);
-// echo "</pre>";
-session_start();
-include_once('component/navbar.php');
-
-if (isset($_SESSION['username'])) {
-  $username = $_SESSION['username']; 
-} else {
-  $username = 'Guest'; 
-}
-include_once('component/navbar.php');  // Include the navbar component here
-include_once('component/icon.php'); 
-// $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest';
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,19 +12,16 @@ include_once('component/icon.php');
    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
    <?php include_once('component/icon.php'); ?>
    <!--Custom-->
-   <title>GGG - Featured</title>
+   <title>GGG - Browse</title>
    <?php include_once('component/navbar.php'); ?>
    <link rel="stylesheet" href="style/navbar.css">
    <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
-
-<?php
-include_once('component/navbar.php');
-Navbar('featured', $username); ?>
+   <?php Navbar('browse') ?>
    <main class='featured'>
       <div class='header'>
-         <p>Featured</p>
+         <p>Browse</p>
          <div class='searchbox-wrapper'>
             <div class='inputicon-container searchicon'>
               <input type='text' name='searchstore' placeholder='Search store' maxLength='32' class='iconned'/>
