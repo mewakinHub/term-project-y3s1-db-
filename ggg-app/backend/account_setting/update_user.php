@@ -123,8 +123,8 @@ $conn->close();
 <body>
     <h1>Edit User</h1>
 
-    <!-- <form method="post" action="upload.php" enctype="multipart/form-data"> -->
-    <form method="post" action="">
+    <form method="post" action="upload.php" enctype="multipart/form-data">
+    <!-- <form method="post" action=""> -->
         <?php
         // Display form fields dynamically based on user data columns
         if (isset($userData)) {
@@ -136,9 +136,31 @@ $conn->close();
         ?>
          <input type="hidden" name="userID" value="<?php echo isset($userID) ? $userID : ''; ?>">
         <input type="submit" value="Update User">
+        <label for="upload">Upload profile</label>
+        <?php if (isset($_SESSION["success"])): ?>
+            <div class="alert alert-success">
+                <?php 
+                    echo $_SESSION["success"];
+                    unset($_SESSION["success"]);
+                ?>
+            </div>  
+        <?php endif; ?>
+        <?php if (isset($_SESSION["error"])): ?>
+            <div class="alert alert-danger">
+                <?php  
+                    echo $_SESSION["error"];
+                    unset($_SESSION["error"]);
+                ?>
+            </div>
+        <?php endif; ?>
+        <input type="file" class="form-control" name="image">
+        
        
     </form>
     <hr>
     <h3>Uploaded images</h3>
+    
+
+
 </body>
 </html>

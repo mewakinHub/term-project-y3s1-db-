@@ -1,5 +1,11 @@
-<?
+<?php
+
 session_start();
+
+// session_start(); 
+echo "<pre>Session variables in 'upload.php': ";
+print_r($_SESSION);
+echo "</pre>";
 require("connect.php");
 
 // Check if an image file was sent and the userID is set
