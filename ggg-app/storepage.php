@@ -55,21 +55,22 @@
                   <?php Icon('arrowLeft'); ?>
                </span>
                <?php
-                  $i = 1;
-                  while ($row = $result->fetch_array()) {
-                     echo "
-                     <span class='dot-wrapper' onclick='currentSlide($i)'>
-                        <div class='dot'></div>
-                     </span>";
-                     $i++;
+                  $q = "SELECT COUNT(mediaID) FROM media WHERE gameID='$gameID'";
+                  $result = $conn->query($q);
+                  if (!$result) {
+                     Alert("Query error: " . $conn->error);
+                  }
+                  else {
+                     for($i = 1; $i <= 5; $i++){
+                        echo '
+                        <span class="dot-wrapper" onclick="currentSlide('.$i.')">
+                           <div class="dot"></div>
+                        </span>';
+                     }
                   }
                ?>
-               <span class="dot-wrapper" onclick="currentSlide(1)">
-                  <div class="dot"></div>
-               </span><span class="dot-wrapper" onclick="currentSlide(1)">
-                  <div class="dot"></div>
-               </span><span class="dot-wrapper" onclick="currentSlide(1)">
-                  <div class="dot"></div>
+               <span class="next button-icon" onclick="plusSlides(1)">
+                  <?php Icon('arrowRight'); ?>
                </span>
              </div>
          </div>
@@ -81,7 +82,23 @@
             </span>
             <div class="grid-info">
                <span>Tags:</span>
-               <h5>RPG, Strategy, Story-rich</h5>
+               <h5>
+               <?php
+                  $q = "SELECT tag.name FROM tag
+                        INNER JOIN game_tag ON game_tag.tagID = tag.tagID
+                        WHERE game_tag.gameID = '$gameID'";
+                  $result = $conn->query($q);
+                  if (!$result) {
+                     Alert("Query error: " . $conn->error);
+                  }
+                  else {
+                     $row = $result->fetch_array()
+                     while ($row) {
+                        echo "$row[0], ";
+                     }
+                  }
+               ?>
+               </h5>
                <span>Developer:</span>
                <h5>Larian Studios</h5>
                <span>Publisher:</span>
