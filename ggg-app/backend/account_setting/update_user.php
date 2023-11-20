@@ -117,8 +117,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'], $_POST['user
 <body>
     <h1>Edit User</h1>
 
-    <!-- <form method="post" action="upload.php" enctype="multipart/form-data"> -->
-    <form method="post" action="">
+    <form method="post" action="upload.php" enctype="multipart/form-data">
+    <!-- <form method="post" action=""> -->
         <?php
         // Display form fields dynamically based on user data columns
         if (isset($userData)) {
@@ -131,14 +131,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'], $_POST['user
          <input type="hidden" name="userID" value="<?php echo isset($userID) ? $userID : ''; ?>">
          <input type="submit" name="submit" value="Update User">
         echo "<a href='delete_user.php?userID=" . $row['USER_ID'] . "' class='button-link'>Delete User</a>";
-        
-    <form method="post" action="upload.php" enctype="multipart/form-data">
+
         <label for="upload">Upload profile</label> 
         <input type="file" class="form-control" name="image">
-    </form>
 
    <?php 
-   
    $stmt = $conn->prepare("SELECT profilePicFile FROM user WHERE userID = ?");
    $stmt->bind_param("i", $userID); // Bind the $userID variable.
    $stmt->execute();
@@ -152,7 +149,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'], $_POST['user
        // Display a default image or icon if no profile picture is available
        echo '<img src="/backend/friend/user%20(2).png" style="width: 50px; height: 50px; border-radius: 50%;">';
    }
-   ?>
     ?>
 
 
