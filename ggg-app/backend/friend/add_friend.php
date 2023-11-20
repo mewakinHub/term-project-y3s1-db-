@@ -4,43 +4,47 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 // Include database connection
-require_once("connect.php");
+require_once("connect.php"); ?>
 
-// Check if the form was submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Call the AddInstalledGame stored procedure
-    $stmt = $conn->prepare("CALL AddInstalledGame(?, ?)");
-    $stmt->bind_param("ii", $userID, $gameID);
-    $userID = $_POST['userID']; 
-    $gameID = $_POST['gameID']; 
-    
-    if ($stmt->execute()) {
-        echo "<p>Game added to installed list!</p>";
-    } else {
-        echo "<p>Error: " . $stmt->error . "</p>";
-    }
-    
-    $stmt->close();
-}
 
-?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Installed Game</title>
+    <title>Add Friend Form</title>
 </head>
 <body>
-    <h2>Add Installed Game</h2>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <label for="userID">Your User ID:</label>
-        <input type="text" id="userID" name="userID" required><br><br>
+    <h2>Add Friend</h2>
+    <form action="add_friend.php" method="post">
+        <label for="fromID">Your User ID:</label>
+        <input type="text" id="fromID" name="fromID" required><br><br>
         
-        <label for="gameID">Game ID:</label>
-        <input type="text" id="gameID" name="gameID" required><br><br>
+        <label for="toID">Friend's User ID:</label>
+        <input type="text" id="toID" name="toID" required><br><br>
         
-        <input type="submit" value="Add Game as Installed">
+        <input type="submit" value="Send Friend Request">
+        
+       <?php
+        
+        // Call the AddFriend stored procedure
+        $stmt = $conn->prepare("CALL AddFriend(?, ?)");
+        $stmt->bind_param("ii", $fromUserID, $toUserID);
+        $fromUserID = $_POST['fromID']; 
+        $toUserID = $_POST['toID']; 
+        
+        
+        
+        
+        if ($stmt->execute()) {
+            echo "Friend request sent!";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+        
+        $stmt->close();
+        
+        ?>
     </form>
 </body>
 </html>

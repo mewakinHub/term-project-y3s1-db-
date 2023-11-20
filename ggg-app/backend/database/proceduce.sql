@@ -8,7 +8,7 @@ END //
 
 DELIMITER ;
 
-
+-- Installed game
 DELIMITER $$
 
 CREATE PROCEDURE AddInstalledGame(IN user_id INT, IN game_id INT)
@@ -26,3 +26,13 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+-- top-up balance
+
+DELIMITER //
+CREATE PROCEDURE TopUpBalance(IN user_id INT, IN top_up_amount FLOAT)
+BEGIN
+    UPDATE user SET balance = balance + top_up_amount WHERE userID = user_id;
+END //
+DELIMITER ;
+
