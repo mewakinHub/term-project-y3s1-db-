@@ -1,4 +1,6 @@
 <?php
+// for test in get_browser
+// http://localhost/backend/account_setting/update_user.php?userID=2
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -57,60 +59,51 @@ if (isset($_GET['userID'])) {
 }
 
 // Check if the form is submitted for updating user data
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userID'], $_GET['userID'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'], $_POST['userID'])) {
     // Prepare the update SQL dynamically based on form fields
     
     $userID = $_POST['userID'];
     $updateSql = "UPDATE user SET ";
     $updateParams = array();
+    $paramTypes = '';
+    
     foreach ($_POST as $key => $value) {
-        // Skip fields that are not meant for updating or are empty
-        if ($key == "userID" || empty($value)) {
+        if ($key == "userID" || $key == "submit" || $key == "image" || empty($value)) {
             continue;
         }
 
         $updateSql .= "$key = ?, ";
         $updateParams[] = $value;
+        // $paramTypes .= 's'; 
     }
 
-    
-    $updateSql = rtrim($updateSql, ", ");
+        $updateSql = rtrim($updateSql, ", ");
+        $updateSql .= " WHERE userID = ?";
+        $updateParams[] = $userID;
+        // $paramTypes .= 'i'; 
 
-    $updateSql .= " WHERE userID = ?";
-    $updateParams[] = $userID;
-
-    $stmtUpdate = $conn->prepare($updateSql);
+         $stmtUpdate = $conn->prepare($updateSql);
 
     if ($stmtUpdate) {
-        
-        $bindTypes = str_repeat("s", count($updateParams));
-        $stmtUpdate->bind_param($bindTypes, ...$updateParams);
+        $stmtUpdate->bind_param($paramTypes, ...$updateParams);
 
         if ($stmtUpdate->execute()) {
             echo "User data updated successfully!";
-            // Redirect back to admin.php
-            // header("Location: admin.php");
-            $_SESSION["ID"] = $new_user_id;
-            $_SESSION["email"] = $email;
-            $_SESSION["username"] = $username;
-            $_SESSION["balance"] = 0;
-            $_SESSION["bio"] = '';
-
-            $userID = $_SESSION["ID"]; 
-            exit;
+            // Redirect or handle the session update logic here
         } else {
             echo "Error updating user data: " . $stmtUpdate->error;
         }
 
         $stmtUpdate->close();
     } else {
-        echo "Error preparing update statement: " . $mysqli->error;
+        echo "Error preparing update statement: " . $conn->error;
     }
 }
 
 
 
-$conn->close();
+
+// $conn->close();
 ?>
 
 
@@ -124,8 +117,8 @@ $conn->close();
 <body>
     <h1>Edit User</h1>
 
-    <form method="post" action="upload.php" enctype="multipart/form-data">
-    <!-- <form method="post" action=""> -->
+    <!-- <form method="post" action="upload.php" enctype="multipart/form-data"> -->
+    <form method="post" action="">
         <?php
         // Display form fields dynamically based on user data columns
         if (isset($userData)) {
@@ -136,22 +129,33 @@ $conn->close();
         }
         ?>
          <input type="hidden" name="userID" value="<?php echo isset($userID) ? $userID : ''; ?>">
-        <input type="submit" value="Update User">
+         <input type="submit" name="submit" value="Update User">
         echo "<a href='delete_user.php?userID=" . $row['USER_ID'] . "' class='button-link'>Delete User</a>";
-
+        
+    <form method="post" action="upload.php" enctype="multipart/form-data">
         <label for="upload">Upload profile</label> 
         <input type="file" class="form-control" name="image">
-<?php 
-    if (isset($userData['profilePicFile'])) {
-        // Assuming the image data is in $userData['profilePicFile']
-        $imageData = $userData['profilePicFile'];
-        $finfo = new finfo(FILEINFO_MIME_TYPE);
-        // Use finfo::buffer to determine the MIME type of the image data
-        $mimeType = $finfo->buffer($imageData);
-        // Output the image using base64 encoding
-        echo '<img src="data:' . $mimeType . ';base64,' . base64_encode($imageData) . '" alt="Profile Picture" style="max-width: 100%; height: auto;"/>';
-    }
-?>
+    </form>
+
+   <?php 
+   
+   $stmt = $conn->prepare("SELECT profilePicFile FROM user WHERE userID = ?");
+   $stmt->bind_param("i", $userID); // Bind the $userID variable.
+   $stmt->execute();
+   $result = $stmt->get_result();
+   $row = $result->fetch_assoc();
+   
+   if (isset($row['profilePicFile']) && !empty($row['profilePicFile'])) {
+       // Display the user's profile picture if available
+       echo '<img src="data:image/jpeg;base64,' . base64_encode($row['profilePicFile']) . '" alt="Profile picture" style="width: 50px; height: 50px; border-radius: 50%;">';
+   } else {
+       // Display a default image or icon if no profile picture is available
+       echo '<img src="/backend/friend/user%20(2).png" style="width: 50px; height: 50px; border-radius: 50%;">';
+   }
+   ?>
+    ?>
+
+
        
     </form>
     <hr>
@@ -160,4 +164,4 @@ $conn->close();
 
 
 </body>
-</html>
+</html> 
