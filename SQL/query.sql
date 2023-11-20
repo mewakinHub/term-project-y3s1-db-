@@ -1,3 +1,6 @@
+SET GLOBAL net_buffer_length=1000000; 
+SET GLOBAL max_allowed_packet=1000000000;
+
 CREATE USER IF NOT EXISTS ggguser IDENTIFIED BY 'ggguser';
 
 GRANT SELECT ON ggg.* TO ggguser;

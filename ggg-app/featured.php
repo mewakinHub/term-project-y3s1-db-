@@ -23,7 +23,7 @@
    ?>
 </head>
 <body>
-   <?php Navbar('featured', $_SESSION['username']) ?>
+   <?php Navbar('featured', $_SESSION['email']) ?>
    <main>
       <?php PageHeader('Featured') ?>
    </main>

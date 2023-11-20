@@ -46,7 +46,7 @@
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
         <span class="prev" onclick="plusSlides(-1)">&#10094;</span>
-        <span class="next" onclick="plusSlides(1)">&#10095;</span>
+        <span class="next" onclick="plusSlides(-1)">&#10094;</span>
       </div>
    </main>
 </body>

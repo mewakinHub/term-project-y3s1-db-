@@ -7,7 +7,11 @@
    <link rel="icon" href="asset/logo.png">
    <link rel="stylesheet" href="style/global.css">
    <link rel="stylesheet" href="style/variables.css">
-   <?php include_once('component/icon.php'); include_once('component/alert.php'); ?>
+   <?php
+      require_once('script/connect.php');
+      include_once('component/icon.php');
+      include_once('component/alert.php');
+   ?>
    <!--Custom-->
    <title>GGG - Browse</title>
    <link rel="stylesheet" href="style/navbar.css">
@@ -16,23 +20,36 @@
    <?php
       session_start();
       include_once('component/navbar.php');
-      include_once('component/pageheader.php');  
+      include_once('component/pageheader.php');
    ?>
 </head>
 <body>
-   <?php Navbar('browse', $_SESSION['username']) ?>
+   <?php Navbar('browse', $_SESSION['email']) ?>
    <main class="browse">
       <?php PageHeader('Browse') ?>
       <div class="game-grid">
-         <a href="storepage.php" class="card">
-            <img class="game-poster" draggable="false"
-               src="asset/Picture1.png"
-            />
-            <p class="game-name webkitclamp">Baldur's Gate 3</p>
-            <div class="card-sub">
-               <p class="game-price">฿ 1699.00</p>
-            </div>
-         </a>
+         <?php 
+            $q = "SELECT gameID, poster, name, price FROM game";
+            $result = $conn->query($q);
+            if (!$result) {
+               Alert("Query error: " . $conn->error);
+            }
+            else {
+               while ($row = $result->fetch_array()) {
+                  echo '
+                  <a class="card" href="storepage.php?gameID='.$row[0].'">
+                     <img class="game-poster" draggable="false"
+                        src="data:image/png;base64,'.base64_encode($row[1]).'"
+                     />
+                     <p class="game-name webkitclamp">'.$row[2].'</p>
+                     <div class="card-sub">
+                        <p class="game-price">฿ '.$row[3].'</p>
+                     </div>
+                  </a>
+                  ';
+               }
+            }
+         ?>
       </div>
    </main>
 </body>

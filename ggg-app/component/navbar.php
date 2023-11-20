@@ -1,18 +1,19 @@
 <?php
    include_once('component/icon.php');
-   function Navbar($page, $username) {
+   function Navbar($page, $email) {
       $conn = new mysqli('localhost','ggguser','ggguser','ggg');
       if($conn->connect_errno){
          echo $conn->connect_errno.": ".$conn->connect_error;
       }
-      $q = "SELECT balance FROM user WHERE username='$username'";
+      $q = "SELECT username, balance FROM user WHERE email='$email'";
       $result = $conn->query($q);
       if (!$result) {
          Alert("Query error: " . $conn->error);
       }
       else {
          $row = $result->fetch_array();
-         $balance = $row[0];
+         $username = $row[0];
+         $balance = $row[1];
       }
       echo "
          <nav>
@@ -72,7 +73,7 @@
                         <img class='pfp' src='asset/pfp.png' draggable='false'/>
                         <div class='user-info'>
                            <p class='username'>$username</p>
-                           <p class='funds'>฿$balance</p>
+                           <p class='funds'>฿ $balance</p>
                         </div>
                      </div>
                   </button>

@@ -1,10 +1,11 @@
 @font-face {
    font-family: 'Lexend';
    src: url('../asset/Lexend-VariableFont_wght.ttf');
+   font-display: swap;
 }
 
 * {
-   font-family: 'Lexend';
+   font-family: 'Trebuchet MS', sans-serif;
    letter-spacing: 0.05em;
    margin-block: 0;
    box-sizing: border-box;
@@ -15,7 +16,6 @@ body {
    margin: 0;
    width: 100vw;
    height: 100vh;
-   overflow-x: hidden;
    background-color: var(--black-primary);
 }
 

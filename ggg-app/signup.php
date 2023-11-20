@@ -17,11 +17,11 @@
    <link rel="stylesheet" href="style/signin.css">
    <?php 
       session_start();
-      $email = $_POST['email'];
-      $password = $_POST['password'];
-      $confirmpassword = $_POST['confirmpassword'];
-      $username = $_POST['username'];
-      if(isset($email)) {
+      if(isset($_POST['submit'])) {
+         $email = $_POST['email'];
+         $password = $_POST['password'];
+         $confirmpassword = $_POST['confirmpassword'];
+         $username = $_POST['username'];
          if($password != $confirmpassword) {
             Alert('Password mismatch!');
          }
@@ -32,7 +32,7 @@
                Alert("Query error: " . $conn->error);
             }
             else {
-               $_SESSION['username'] = $username;
+               $_SESSION['email'] = $email;
                header('Location: featured.php');
             }
          }
@@ -53,7 +53,7 @@
       <form class="form-signin" action="signup.php" method="post">
          <div class="inputicon-container email">
             <input class="input-iconned"
-               type='text' name='email' placeholder='E-mail' required
+               type='email' name='email' placeholder='E-mail' required
             />
             <?php Icon('mail') ?>
          </div>
@@ -75,7 +75,7 @@
             />
             <?php Icon('id') ?>
          </div>
-         <button type="submit">Sign up</button>
+         <button type="submit" value="submit" name="submit">Sign up</button>
       </form>
    </div>
 </body>
