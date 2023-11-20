@@ -50,10 +50,6 @@ main .header input + svg {
    transition: var(--transition-slow);
 }
 
-main .header .hr-header {
-   border: 2.5px solid var(--gray);
-}
-
 main .hr-header {
    margin-bottom: 25px;
 }
@@ -92,4 +88,8 @@ main .header .iconbutton-wrapper:active {
    box-shadow: 0 0 9px var(--gray4);
    background-color: var(--gray5);
    transform: scale(0.925);
+}
+
+main .header hr {
+   border: 2.5px solid var(--gray6);
 }

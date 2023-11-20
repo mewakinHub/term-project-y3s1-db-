@@ -45,7 +45,7 @@
          style="max-width: 185px; height: auto;" draggable="false"
       />
       <div class="message-container">
-         <a class="button-back" href="signin.php" draggable="false">
+         <a class="button-icon" href="signin.php" draggable="false">
             <?php Icon('back') ?>
          </a>
          <h2 class="signin-message text-center">Create account</h2>

@@ -77,12 +77,12 @@
    margin-bottom: 32px;
 }
 
-.signin .button-back svg {
+.signin .button-icon svg {
    position: absolute;
    left: 0px;
 }
 
-.signin .button-back {
+.signin .button-icon {
    position: absolute;
    left: 0px;
 }

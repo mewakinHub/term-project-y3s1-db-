@@ -10,10 +10,10 @@
    --gray6: #2F2F2F;
    --gray7: #272727;
    --gray8: #212121;
-   --light: 400;
-   --regular: 500;
-   --medium: 600;
-   --semibold: 700;
+   --light: 300;
+   --regular: 400;
+   --medium: 500;
+   --semibold: 600;
    --transition-slow: 150ms ease-out;
    --transition-normal: 100ms ease-out;
    --transition-fast: 50ms ease-out;
