@@ -7,10 +7,10 @@ require_once("connect.php");
 
 if (isset($_GET['user_id'])) {
     $currentUserId = $_GET['user_id']; // Assign the value to $currentUserId
-    $sql = "SELECT u.username
+    $sql = "SELECT u.userID, u.username, u.profilePicFile 
             FROM user u
             JOIN friend f ON u.userID = f.toID OR u.userID = f.fromID
-            WHERE (f.fromID = ? OR f.toID = ?) AND u.userID != ?;";
+            WHERE (f.fromID = ? OR f.toID = ?) AND u.userID != ?;"; // Removed the extra quote
 
     $statement = $conn->prepare($sql);
 
@@ -18,8 +18,7 @@ if (isset($_GET['user_id'])) {
         throw new Exception('Prepare failed: ' . htmlspecialchars($conn->error));
     }
 
-// Bind the current user ID to the SQL query
-    // You need three parameters since there are three placeholders
+    // Bind the current user ID to the SQL query
     $statement->bind_param("iii", $currentUserId, $currentUserId, $currentUserId);
     $statement->execute() or die("<b>Error:</b> Problem on Retrieving Friends List<br/>" . htmlspecialchars($statement->error));
     $result = $statement->get_result();
@@ -32,10 +31,23 @@ if (isset($_GET['user_id'])) {
             echo '<img src="data:image/jpeg;base64,' . base64_encode($row['profilePicFile']) . '" alt="Profile picture" style="width: 50px; height: 50px; border-radius: 50%;"> ';
         } else {
             // Display a default image or icon if no profile picture is available
-            echo '<img src="/Users/k.vinrath/Desktop/labproject2/term-project-y3s1-db-/ggg-app/backend/friend/user.png" style="width: 50px; height: 50px; border-radius: 50%;"> ';
+            echo '<img src="/backend/friend/user%20(2).png" style="width: 50px; height: 50px; border-radius: 50%;">';
+
         }
         // Display the user's username
         echo htmlspecialchars($row['username']);
+        
+        // Check if the 'userID' key exists in the $row array before using it
+        if (isset($row['userID'])) {
+            // Include this 'userID' in the form
+            echo '<form action="delete_friend.php" method="post">';
+            echo '<input type="hidden" name="currentUserId" value="' . htmlspecialchars($currentUserId) . '">';
+            echo '<input type="hidden" name="friendUserId" value="' . htmlspecialchars($row['userID']) . '">';
+            echo '<input type="submit" name="deleteFriend" value="Delete Friend">';
+            echo '</form>';
+        } else {
+            echo 'Error: userID is missing for this friend.';
+        }
         echo "</li>";
     }
     echo "</ul>"; // End the list

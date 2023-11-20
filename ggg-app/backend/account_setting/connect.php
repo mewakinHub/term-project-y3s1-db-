@@ -1,7 +1,7 @@
 <?php
 $host = "127.0.0.1";
-$user = "user";
-$password = "userggg";
+$user = "ggguser";
+$password = "ggguser"; 
 $database = "ggg";
 $port = 8889;
 

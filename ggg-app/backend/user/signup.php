@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('connect.php');
+include_once('component/alert.php'); 
 
 //print_r($_POST);
 
@@ -9,7 +10,13 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
- 
+    $username = $_POST['username'];
+    if(isset($email)) {
+       if($password != $confirmpassword) {
+          Alert('Password mismatch');
+          Alert('Password mismatch!');
+       }
+       else {
     // Corrected SQL query
     $q = "INSERT INTO user (email, password, username) VALUES ('$email', '$password', '$username')";
 
@@ -27,5 +34,7 @@ if (isset($_POST['submit'])) {
         header("Location:/featured.php");
         exit();
     }
+}
+}
 }
 ?>

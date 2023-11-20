@@ -1,8 +1,20 @@
 <?php
+   include_once('component/icon.php');
 
-   include_once('/Users/k.vinrath/Desktop/labproject2/term-project-y3s1-db-/ggg-app/component/icon.php');
-   
-   function Navbar($page) {
+   function Navbar($page, $username) {
+      $conn = new mysqli('localhost','ggguser','ggguser','ggg');
+      if($conn->connect_errno){
+         echo $conn->connect_errno.": ".$conn->connect_error;
+      }
+      $q = "SELECT balance FROM user WHERE username='$username'";
+      $result = $conn->query($q);
+      if (!$result) {
+         Alert("Query error: " . $conn->error);
+      }
+      else {
+         $row = $result->fetch_array();
+         $balance = $row[0];
+      }
       echo "
          <nav>
             <div class='nav-wrapper'>
@@ -60,8 +72,8 @@
                      <div class='user-container'>
                         <img class='pfp' src='asset/pfp.png' draggable='false'/>
                         <div class='user-info'>
-                           <p class='username'><?php echo htmlspecialchars($username); ?></p>
-                           <p class='funds'>฿0.00</p>
+                           <p class='username'>$username</p>
+                           <p class='funds'>฿$balance</p>
                         </div>
                      </div>
                   </button>

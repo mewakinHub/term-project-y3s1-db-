@@ -1,11 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 //connect to database user table
 require_once("connect.php");
-
 // $host = "127.0.0.1";
-// $user = "user";
-// $password = "userggg";
+// $user = "ggguser";
+// $password = "ggguser"; 
 // $database = "ggg";
 // $port = 8889;
 
@@ -23,7 +25,7 @@ if (isset($_GET['userID'])) {
     $userID = $_GET['userID'];
 
     // Fetch user data based on userID
-    $selectSql = "SELECT * FROM user WHERE userID = ?";
+    $selectSql = "SELECT userID, email, password, username, bio FROM user WHERE userID = ?";
     $stmtSelect = $conn->prepare($selectSql);
 
     if ($stmtSelect) {
@@ -42,6 +44,7 @@ if (isset($_GET['userID'])) {
             echo "Error fetching user data: " . $stmtSelect->error;
             exit;
         }
+      
 
         $stmtSelect->close();
     } else {
@@ -70,18 +73,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userID'], $_GET['userI
         $updateParams[] = $value;
     }
 
-    // Remove the trailing comma and space from the update SQL
+    
     $updateSql = rtrim($updateSql, ", ");
 
-    // Add the WHERE clause for the userID
     $updateSql .= " WHERE userID = ?";
     $updateParams[] = $userID;
 
-    // Prepare and execute the dynamic update statement
     $stmtUpdate = $conn->prepare($updateSql);
 
     if ($stmtUpdate) {
-        // Dynamically bind parameters based on form fields
+        
         $bindTypes = str_repeat("s", count($updateParams));
         $stmtUpdate->bind_param($bindTypes, ...$updateParams);
 
@@ -95,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userID'], $_GET['userI
             $_SESSION["balance"] = 0;
             $_SESSION["bio"] = '';
 
-            $userID = 
+            $userID = $_SESSION["ID"]; 
             exit;
         } else {
             echo "Error updating user data: " . $stmtUpdate->error;
@@ -108,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userID'], $_GET['userI
 }
 
 
-// Close the database connection
+
 $conn->close();
 ?>
 
@@ -136,25 +137,19 @@ $conn->close();
         ?>
          <input type="hidden" name="userID" value="<?php echo isset($userID) ? $userID : ''; ?>">
         <input type="submit" value="Update User">
-        <label for="upload">Upload profile</label>
-        <?php if (isset($_SESSION["success"])): ?>
-            <div class="alert alert-success">
-                <?php 
-                    echo $_SESSION["success"];
-                    unset($_SESSION["success"]);
-                ?>
-            </div>  
-        <?php endif; ?>
-        <?php if (isset($_SESSION["error"])): ?>
-            <div class="alert alert-danger">
-                <?php  
-                    echo $_SESSION["error"];
-                    unset($_SESSION["error"]);
-                ?>
-            </div>
-        <?php endif; ?>
+        <label for="upload">Upload profile</label> 
         <input type="file" class="form-control" name="image">
-        
+<?php 
+    if (isset($userData['profilePicFile'])) {
+        // Assuming the image data is in $userData['profilePicFile']
+        $imageData = $userData['profilePicFile'];
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+        // Use finfo::buffer to determine the MIME type of the image data
+        $mimeType = $finfo->buffer($imageData);
+        // Output the image using base64 encoding
+        echo '<img src="data:' . $mimeType . ';base64,' . base64_encode($imageData) . '" alt="Profile Picture" style="max-width: 100%; height: auto;"/>';
+    }
+?>
        
     </form>
     <hr>
