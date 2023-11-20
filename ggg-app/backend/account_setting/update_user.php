@@ -137,6 +137,8 @@ $conn->close();
         ?>
          <input type="hidden" name="userID" value="<?php echo isset($userID) ? $userID : ''; ?>">
         <input type="submit" value="Update User">
+        echo "<a href='delete_user.php?userID=" . $row['USER_ID'] . "' class='button-link'>Delete User</a>";
+
         <label for="upload">Upload profile</label> 
         <input type="file" class="form-control" name="image">
 <?php 
