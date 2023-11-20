@@ -54,77 +54,180 @@
                <span class="prev button-icon" onclick="plusSlides(-1)">
                   <?php Icon('arrowLeft'); ?>
                </span>
-               <?php
-                  $q = "SELECT COUNT(mediaID) FROM media WHERE gameID='$gameID'";
-                  $result = $conn->query($q);
-                  if (!$result) {
-                     Alert("Query error: " . $conn->error);
-                  }
-                  else {
-                     for($i = 1; $i <= 5; $i++){
-                        echo '
-                        <span class="dot-wrapper" onclick="currentSlide('.$i.')">
-                           <div class="dot"></div>
-                        </span>';
+                  <?php
+                     $q = "SELECT file FROM media WHERE gameID='$gameID'";
+                     $result = $conn->query($q);
+                     $count = mysqli_num_rows($result);
+                     if (!$result) {
+                        Alert("Query error: " . $conn->error);
                      }
-                  }
-               ?>
+                     else {
+                        for($i = 1; $i <= $count; $i++){
+                           echo '
+                           <span class="dot-wrapper" onclick="currentSlide('.$i.')">
+                              <div class="dot"></div>
+                           </span>';
+                        }
+                     }
+                  ?>
                <span class="next button-icon" onclick="plusSlides(1)">
                   <?php Icon('arrowRight'); ?>
                </span>
              </div>
          </div>
          <div class="subheader-container">
-            <h1 class="title webkitclamp">Baldur's Gate 3</h1>
-            <span class="buy-container flex-row">
-               <button>BUY NOW</button>
-               <h3>฿ 1699</h3>
-            </span>
-            <div class="grid-info">
-               <span>Tags:</span>
-               <h5>
+            <h1 class="title webkitclamp">
                <?php
-                  $q = "SELECT tag.name FROM tag
-                        INNER JOIN game_tag ON game_tag.tagID = tag.tagID
-                        WHERE game_tag.gameID = '$gameID'";
+                  $q = "SELECT name FROM game
+                        WHERE game.gameID = '$gameID'";
                   $result = $conn->query($q);
+                  $count = mysqli_num_rows($result);
                   if (!$result) {
                      Alert("Query error: " . $conn->error);
                   }
                   else {
-                     $row = $result->fetch_array()
-                     while ($row) {
-                        echo "$row[0], ";
+                     while ($row = $result->fetch_array()) {
+                        echo "$row[0]";
                      }
                   }
                ?>
+            </h1>
+            <span class="buy-container flex-row">
+               <button>BUY NOW</button>
+               <h3>฿ 
+                  <?php
+                     $q = "SELECT price FROM game
+                           WHERE game.gameID = '$gameID'";
+                     $result = $conn->query($q);
+                     if (!$result) {
+                        Alert("Query error: " . $conn->error);
+                     }
+                     else {
+                        while ($row = $result->fetch_array()) {
+                           echo "$row[0]";
+                        }
+                     }
+                  ?>
+               </h3>
+            </span>
+            <div class="grid-info">
+               <span>Tags:</span>
+               <h5>
+                  <?php
+                     $q = "SELECT tag.name FROM tag
+                           INNER JOIN game_tag ON game_tag.tagID = tag.tagID
+                           WHERE game_tag.gameID = '$gameID'";
+                     $result = $conn->query($q);
+                     $count = mysqli_num_rows($result);
+                     if (!$result) {
+                        Alert("Query error: " . $conn->error);
+                     }
+                     else {
+                        while ($row = $result->fetch_array()) {
+                           echo "$row[0]";
+                           if ($count != 1) {
+                              echo ", ";
+                              $count--;
+                           }
+                        }
+                     }
+                  ?>
                </h5>
                <span>Developer:</span>
-               <h5>Larian Studios</h5>
+               <h5>
+                  <?php
+                     $q = "SELECT studio.name FROM studio
+                           INNER JOIN game_studio ON game_studio.studioID = studio.studioID
+                           WHERE game_studio.gameID = '$gameID' AND type='developer'";
+                     $result = $conn->query($q);
+                     $count = mysqli_num_rows($result);
+                     if (!$result) {
+                        Alert("Query error: " . $conn->error);
+                     }
+                     else {
+                        while ($row = $result->fetch_array()) {
+                           echo "$row[0]";
+                           if ($count != 1) {
+                              echo ", ";
+                              $count--;
+                           }
+                        }
+                     }
+                  ?>
+               </h5>
                <span>Publisher:</span>
-               <h5>Larian Studios</h5>
+               <h5>
+                  <?php
+                     $q = "SELECT studio.name FROM studio
+                           INNER JOIN game_studio ON game_studio.studioID = studio.studioID
+                           WHERE game_studio.gameID = '$gameID' AND type='publisher'";
+                     $result = $conn->query($q);
+                     $count = mysqli_num_rows($result);
+                     if (!$result) {
+                        Alert("Query error: " . $conn->error);
+                     }
+                     else {
+                        while ($row = $result->fetch_array()) {
+                           echo "$row[0]";
+                           if ($count != 1) {
+                              echo ", ";
+                              $count--;
+                           }
+                        }
+                     }
+                  ?>
+               </h5>
                <span>Release Date:</span>
-               <h5>03/08/2023</h5>
+               <h5>
+                  <?php
+                     $q = "SELECT releaseDate FROM game
+                           WHERE game.gameID = '$gameID'";
+                     $result = $conn->query($q);
+                     if (!$result) {
+                        Alert("Query error: " . $conn->error);
+                     }
+                     else {
+                        while ($row = $result->fetch_array()) {
+                           echo "$row[0]";
+                        }
+                     }
+                  ?>
+               </h5>
             </div>
          </div>
       </div>
       <hr/>
       <div class="description">
          <h5>
-            Baldur’s Gate 3 is a story-rich, party-based RPG set in the universe of Dungeons & Dragons, where your choices shape a tale of fellowship and betrayal, survival and sacrifice, and the lure of absolute power.
+            <?php
+               $q = "SELECT shortDesc FROM game
+                     WHERE game.gameID = '$gameID'";
+               $result = $conn->query($q);
+               if (!$result) {
+                  Alert("Query error: " . $conn->error);
+               }
+               else {
+                  while ($row = $result->fetch_array()) {
+                     echo "$row[0]";
+                  }
+               }
+            ?>
          </h5>
          <br>
-         <p>Gather your party and return to the Forgotten Realms in a tale of fellowship and betrayal, sacrifice and survival, and the lure of absolute power.</p>
+         <?php
+            $q = "SELECT description FROM game
+                  WHERE game.gameID = '$gameID'";
+            $result = $conn->query($q);
+            if (!$result) {
+               Alert("Query error: " . $conn->error);
+            }
+            else {
+               while ($row = $result->fetch_array()) {
+                  echo "$row[0]";
+               }
+            }
+         ?>
          <br>
-         <p>Mysterious abilities are awakening inside you, drawn from a mind flayer parasite planted in your brain. Resist, and turn darkness against itself. Or embrace corruption, and become ultimate evil.</p>
-         <br>
-         <p>From the creators of Divinity: Original Sin 2 comes a next-generation RPG, set in the world of Dungeons & Dragons.</p>
-         <br>
-         <h3>GATHER YOUR PARTY</h3>
-         <p>Choose from 12 classes and 11 races from the D&D Player's Handbook and create your own identity, or play as an Origin hero with a hand-crafted background. Or tangle with your inner corruption as the Dark Urge, a fully customisable Origin hero with its own unique mechanics and story. Whoever you choose to be, adventure, loot, battle and romance your way across the Forgotten Realms and beyond. Gather your party. Take the adventure online as a party of up to four.</p>
-         <br>
-         <h3>AN EXPANSIVE ORIGINAL STORY</h3>
-         <p>Abducted, infected, lost. You are turning into a monster, but as the corruption inside you grows, so does your power. That power may help you to survive, but there will be a price to pay, and more than any ability, the bonds of trust that you build within your party could be your greatest strength. Caught in a conflict between devils, deities, and sinister otherworldly forces, you will determine the fate of the Forgotten Realms together.</p>
       </div>
    </main>
 </body>
