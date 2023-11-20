@@ -9,16 +9,35 @@
     <div>
         <h2>Login</h2>
         <?php
+            $servername = "localhost";
+            $username = "admin";
+            $password = "admin";
+            $database = "ggg";
+
+            // Create a connection
+            $mysqli = new mysqli($servername, $username, $password, $database);
+
+            // Check the connection
+            if ($mysqli->connect_error) {
+                die("Connection failed: " . $mysqli->connect_error);
+            }
+            session_start();
+
             // Enable error reporting for debugging purposes
 			error_reporting(E_ALL);
 			ini_set('display_errors', 1);
 		
-			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			if (isset($_POST['submit'])) {
                 // Retrieve values from the submitted form
-				$username = $_POST['username'];
-				$password = $_POST['password'];
+                $username = mysqli_real_escape_string($mysqli, $_POST['username']);
+                $password = mysqli_real_escape_string($mysqli, $_POST['password']);
+
 
 				if ($username == 'admin' && $password == 'admin') {
+                    $_SESSION["admin_loggedin"] = true;
+                    // Regenerate session ID to prevent session fixation
+                    session_regenerate_id(true);
+
                     // if correct, redirect to admin.php
 					header("Location: admin.php");
 					exit();
@@ -39,7 +58,7 @@
 
             <br>
 
-            <button type="submit">Login</button>
+            <button type="submit" name="submit">Login</button>
         </form>
     </div>
 </body>

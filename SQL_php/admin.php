@@ -13,6 +13,24 @@ if ($mysqli->errno) {
 }
 
 session_start();
+// In PHP, the session_start() function must be called at the beginning of every script where you want to work with session variables. 
+// If you want to access the $_SESSION variables across different files, you need to call session_start() in each of those files.
+// $_SESSION Array: user's session
+
+// Check if the user is logged in, if not, redirect to the login page
+if (!isset($_SESSION["admin_loggedin"]) || $_SESSION["admin_loggedin"] !== true) {
+    header("Location: login.php");
+    exit;
+}
+
+// Logout logic
+if (isset($_GET["logout"]) && $_GET["logout"] == true) {
+    $_SESSION["admin_loggedin"] = false;
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +86,9 @@ session_start();
 <body>
 
     <h1>Welcome, Admin!</h1>
+
+    <!-- a logout button -->
+    <p><a href="?logout=true">Logout</a></p>
 
     <section>
         <h2>Games</h2>
