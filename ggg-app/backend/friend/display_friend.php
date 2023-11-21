@@ -39,17 +39,25 @@ if (isset($_GET['user_id'])) {
         
         // Check if the 'userID' key exists in the $row array before using it
         if (isset($row['userID'])) {
-            // Include this 'userID' in the form
-            echo '<form action="delete_friend.php" method="post">';
+            // Delete friend form
+            echo '<form action="delete_friend.php" method="post" style="display: inline;">';
             echo '<input type="hidden" name="currentUserId" value="' . htmlspecialchars($currentUserId) . '">';
             echo '<input type="hidden" name="friendUserId" value="' . htmlspecialchars($row['userID']) . '">';
             echo '<input type="submit" name="deleteFriend" value="Delete Friend">';
+            echo '</form>';
+    
+            // Add friend form
+            echo '<form action="add_friend.php" method="post" style="display: inline;">';
+            echo '<input type="hidden" name="fromID" value="' . htmlspecialchars($currentUserId) . '">';
+            echo '<input type="hidden" name="toID" value="' . htmlspecialchars($row['userID']) . '">';
+            echo '<input type="submit" name="addFriend" value="Add Friend">';
             echo '</form>';
         } else {
             echo 'Error: userID is missing for this friend.';
         }
         echo "</li>";
     }
+    
     echo "</ul>"; // End the list
 } else {
     echo "User ID not specified.";
