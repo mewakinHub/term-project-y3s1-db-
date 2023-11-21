@@ -17,7 +17,7 @@
    <link rel="stylesheet" href="style/signin.css">
    <?php 
       session_start();
-      if(isset($_SESSION['email'])){
+      if(isset($_SESSION['userID'])){
          header('Location: featured.php');
       }
       if(isset($_POST['submit'])) {
@@ -35,7 +35,7 @@
                Alert("Query error: " . $conn->error);
             }
             else {
-               $_SESSION['email'] = $email;
+               $_SESSION['userID'] = $email;
                header('Location: featured.php');
             }
          }

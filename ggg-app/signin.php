@@ -17,7 +17,7 @@
    <link rel="stylesheet" href="style/signin.css">
    <?php 
       session_start();
-      if(isset($_SESSION['email'])){
+      if(isset($_SESSION['userID'])){
          header('Location: featured.php');
       }
       if(isset($_POST['submit'])) {
@@ -38,9 +38,16 @@
                if ($password != $correctpassword) {
                   Alert('Invalid E-mail or Password');
                }
-               else{
-                  $_SESSION['email'] = $email;
-                  header('Location: featured.php');
+               else {
+                  $q = "SELECT userID FROM user WHERE email='$email'";
+                  $result = $conn->query($q);
+                  if (!$result) {
+                     Alert("Query error: " . $conn->error);
+                  }
+                  else {
+                     $_SESSION['userID'] = 1;
+                     header('Location: featured.php');
+                  }
                }
             }
          }

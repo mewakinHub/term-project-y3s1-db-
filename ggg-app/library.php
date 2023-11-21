@@ -20,13 +20,13 @@
       session_start();
       include_once('component/navbar.php');
       include_once('component/pageheader.php'); 
-      if(!isset($_SESSION['email'])){
+      if(!isset($_SESSION['userID'])){
          header('Location: signin.php');
       } 
    ?>
 </head>
 <body>
-   <?php Navbar('library', $_SESSION['email']) ?>
+   <?php Navbar('library', $_SESSION['userID']) ?>
    <main>
       <?php PageHeader('Library') ?>
    </main>

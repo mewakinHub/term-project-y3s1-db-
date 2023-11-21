@@ -3,7 +3,7 @@
       // Call the AddInstalledGame stored procedure
       $stmt = $conn->prepare("CALL BuyGame(?, ?)");
       $stmt->bind_param("ii", $userID, $gameID);
-      $userID = $_POST['userID']; 
+      $userID = $_SESSION['userID']; 
       $gameID = $_POST['gameID']; 
       
       if ($stmt->execute()) {

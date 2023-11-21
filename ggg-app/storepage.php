@@ -21,7 +21,7 @@
       session_start();
       include_once('component/navbar.php');
       include_once('component/pageheader.php');
-      if(!isset($_SESSION['email'])){
+      if(!isset($_SESSION['userID'])){
          header('Location: signin.php');
       }   
       $gameID = $_GET['gameID']
@@ -29,7 +29,7 @@
    <script src='script/slides.js'></script>
 </head>
 <body onload="currentSlide(1)">
-   <?php Navbar('', $_SESSION['email']) ?>
+   <?php Navbar('', $_SESSION['userID']) ?>
    <main class="storepage">
       <a class="button-icon back" onclick="history.back()" draggable="false">
          <?php Icon('back') ?>

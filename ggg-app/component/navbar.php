@@ -1,12 +1,12 @@
 <script src='script/popup.js'></script>
 <?php
    include_once('component/icon.php');
-   function Navbar($page, $email) {
+   function Navbar($page, $userID) {
       $conn = new mysqli('localhost','ggguser','ggguser','ggg');
       if($conn->connect_errno){
          echo $conn->connect_errno.": ".$conn->connect_error;
       }
-      $q = "SELECT username, balance FROM user WHERE email='$email'";
+      $q = "SELECT username, balance FROM user WHERE userID='$userID'";
       $result = $conn->query($q);
       if (!$result) {
          Alert("Query error: " . $conn->error);
