@@ -8,16 +8,16 @@ error_reporting(E_ALL);
 require_once("connect.php");
 
 // Output the current userID in the session
-echo "User ID in session: " . $_SESSION['userID'] . "<br>";
+// echo "User ID in session: " . $_SESSION['userID'] . "<br>";
 
 // Check if the 'userID' is set in the URL
 if (isset($_GET['userID'])) {
-    $currentUserId = $_GET['userID'];
+    $userId = $_GET['userID'];
 
     // Set the user ID in the session for future use
-    $_SESSION['userID'] = $currentUserId;
+    $_SESSION['userID'] = $userId;
 } elseif (isset($_SESSION['userID'])) {
-    $currentUserId = $_SESSION['userID'];
+    $userID = $_SESSION['userID'];
 } else {
     // If user ID is not in session or URL, exit with an error message
     die("User ID not specified.");
