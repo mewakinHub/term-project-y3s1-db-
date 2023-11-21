@@ -17,29 +17,39 @@
    <link rel="stylesheet" href="style/signin.css">
    <?php 
       session_start();
+      // (c.)Check if the user is logged in, if yes, redirect back to the store page
+      // not let them switch back after login(need to sign out)
       if(isset($_SESSION['userID'])){
          header('Location: store.php');
       }
       if(isset($_POST['submit'])) {
+         // Retrieve values from the submitted form (get user input)
          $email = $_POST['email'];
          $password = $_POST['password'];
          $confirmpassword = $_POST['confirmpassword'];
          $username = $_POST['username'];
+         
+         // Check if passwords match
          if($password != $confirmpassword) {
             Alert('Password mismatch!');
-         }
-         else {
-            $q = "INSERT INTO user (email, password, username) VALUES ('$email', '$password', '$username')";
-            $result = $conn->query($q);
-            if (!$result) {
-               Alert("Query error: " . $conn->error);
-            }
-            else {
+         } else {
+            // (a.)Prepared statement to prevent SQL injection
+            // (b.)password_hash: in the case that database breaching
+            $stmt = $conn->prepare("INSERT INTO user (email, password, username) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $email, password_hash($password, PASSWORD_DEFAULT), $username);
+
+            // Execute the prepared statement
+            if ($stmt->execute()) {
                $_SESSION['userID'] = $email;
                header('Location: store.php');
+            } else {
+               Alert("Query error: " . $stmt->error);
             }
+            
+            // Close the prepared statement
+            $stmt->close();
          }
-      }
+      }   
    ?>
 </head>
 <body class="signin">

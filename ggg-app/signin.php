@@ -17,41 +17,40 @@
    <link rel="stylesheet" href="style/signin.css">
    <?php 
       session_start();
+
+      // (1.)Check if the user is logged in, if yes, redirect back to the store page
+      // Not let them switch back after login(need to sign out)
+      // also, send the userID across file with SESSION
       if(isset($_SESSION['userID'])){
          header('Location: store.php');
       }
       if(isset($_POST['submit'])) {
-         $email = $_POST['email'];
-         $password = $_POST['password'];
-         $q = "SELECT password FROM user WHERE email='$email'";
-         $result = $conn->query($q);
-         if (!$result) {
-            Alert("Query error: " . $conn->error);
+         // Retrieve values from the submitted form (get user input)
+         // (2.)real escape string for prevent weird input(prevent injection)
+         $email = mysqli_real_escape_string($conn, $_POST['email']);
+         $password = mysqli_real_escape_string($conn, $_POST['password']);
+         // (3.)prepare state to prevent injection also(stronger than real escape string)
+         $stmt = $conn->prepare("SELECT * FROM user WHERE email=?");
+         $stmt->bind_param("s", $email);
+         $stmt->execute();
+         $result = $stmt->get_result();
+
+         if ($result->num_rows > 0) {
+         $user = $result->fetch_assoc();
+         // (4.) verify password(just hash) w/ record's hashed password
+         if (password_verify($password, $user['password'])) {
+            $_SESSION['userID'] = $user['userID'];
+            header('Location: store.php');
+         } else {
+            Alert('Invalid email or password');
          }
-         else {
-            $row = $result->fetch_array();
-            if (!$row) {
-               Alert('Invalid E-mail or Password');
-            }
-            else {
-               $correctpassword = $row[0];
-               if ($password != $correctpassword) {
-                  Alert('Invalid E-mail or Password');
-               }
-               else {
-                  $q = "SELECT userID FROM user WHERE email='$email'";
-                  $result = $conn->query($q);
-                  if (!$result) {
-                     Alert("Query error: " . $conn->error);
-                  }
-                  else {
-                     $_SESSION['userID'] = 1;
-                     header('Location: store.php');
-                  }
-               }
-            }
+         } else {
+         Alert('Invalid email or password');
          }
-      }
+
+         $stmt->close();
+         $conn->close();
+         }
    ?>
 </head>
 <body class="signin">
