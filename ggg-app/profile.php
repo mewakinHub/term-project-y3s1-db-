@@ -35,8 +35,28 @@
             $email = $row[0];
             $username = $row[1];
             $password = $row[2];
+         } 
+      }
+      if(isset($_POST['submit'])){
+         if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] === UPLOAD_ERR_OK) {
+            $pfp = file_get_contents($_FILES['pfp']['tmp_name']);
+         } else {
+               // No poster image uploaded, display a message and a button to go back
+               echo "<p>No pfp image uploaded. Please go back to the previous page.</p>";
+               echo "<button onclick='history.go(-1);'>Go Back</button>";
+               exit;
          }
-         
+         $stmt = $conn->prepare("CALL UpdateAccount(?, ?, ?, ?, ?)");
+         $stmt->bind_param("issss", $userID, $pfp, $email, $username, $password);
+         $userID = $_SESSION['userID']; 
+         $email = $_POST['email'];
+         $username = $_POST['username'];
+         $password = $_POST['password'];
+         $result = $stmt->execute();
+         if (!$result) {
+            echo "Query error: " . $conn->error;
+         }
+         $stmt->close();
       }
    ?>
 </head>
@@ -64,7 +84,7 @@
                <input class="doubleleft" type="password" id="password" name="password" placeholder="Password" required>
                <input class="doubleright" type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required>
             </div>
-            <button type="submit">Apply changes</button>
+            <button type="submit" name="submit" value="submit">Apply changes</button>
          </form>
       </div>
    </main>

@@ -41,6 +41,7 @@
                $row = $result->fetch_array();
                echo "<h1>฿ $row[0]</h1>";
             }
+            
          ?>
          <a href="script/addBalance.php?topUpAmount=100">
             <button>Add ฿100</button>
