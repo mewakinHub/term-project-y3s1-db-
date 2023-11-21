@@ -97,7 +97,7 @@
 }
 
 .game-grid .card.disabled img {
-   opacity: 55%;
+   opacity: 35%;
 }
 
 main hr {
@@ -150,7 +150,12 @@ main hr {
    pointer-events: none;
 }
 
-.popup#card-popup {
+.popup.card-installed {
+   z-index: 100;
+   top: 120px;
+}
+
+.popup.card-uninstalled {
    z-index: 100;
    top: 160px;
 }

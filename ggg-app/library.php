@@ -32,45 +32,7 @@
    <main>
       <?php PageHeader('Library') ?>
       <div class="game-grid">
-         <?php 
-            $q = "SELECT g.gameID, g.poster, g.name FROM own o
-                  JOIN game g ON o.gameID = g.gameID
-                  WHERE o.userID = '".$_SESSION['userID']."' AND o.installed = 0";
-            $result = $conn->query($q);
-            if (!$result) {
-               Alert("Query error: " . $conn->error);
-            }
-            else {
-               while ($row = $result->fetch_array()) {
-                  echo '
-                  <div class="card disabled" onclick="cardPopup()">
-                     <a>
-                        <img class="game-poster" draggable="false"
-                           src="data:image/png;base64,'.base64_encode($row[1]).'"
-                        />
-                        <p class="game-name webkitclamp">'.$row[2].'</p>
-                     </a>
-                     <div class="card-sub">
-                        <p class="card-sub-p">Not installed</p>
-                        <div class="button-icon dots">';
-                           Icon('dotsHori');
-                        echo '
-                        </div>
-                     </div>
-                     <div class="popup" id="card-popup">
-                        <a href="storepage.php?gameID='.$row[0].'">
-                           <p>Visit store page</p>
-                        </a>
-                        <a href="script/installGame.php?gameID='.$row[0].'">
-                           <p>Install</p>
-                        </a>
-                     </div>
-                  </div>
-                  ';
-               }
-            }
-         ?>
-         <?php 
+      <?php 
             $q = "SELECT g.gameID, g.poster, g.name, o.playtime FROM own o
                   JOIN game g ON o.gameID = g.gameID
                   WHERE o.userID = '".$_SESSION['userID']."' AND o.installed = 1";
@@ -81,7 +43,7 @@
             else {
                while ($row = $result->fetch_array()) {
                   echo '
-                  <div class="card" onclick="cardPopup()">
+                  <div class="card" onclick="'; echo"cardPopup('card-popup$row[0]')"; echo'">
                      <a>
                         <img class="game-poster" draggable="false"
                            src="data:image/png;base64,'.base64_encode($row[1]).'"
@@ -96,7 +58,48 @@
                         echo '
                         </div>
                      </div>
-                     <div class="popup" id="card-popup">
+                     <div class="popup card-installed" id="card-popup'.$row[0].'">
+                        <a href="storepage.php?gameID='.$row[0].'">
+                           <p>Visit store page</p>
+                        </a>
+                        <a href="script/uninstallGame.php?gameID='.$row[0].'">
+                           <p>Uninstall</p>
+                        </a>
+                        <a>
+                           <p>Launch game</p>
+                        </a>
+                     </div>
+                  </div>
+                  ';
+               }
+            }
+         ?>
+         <?php 
+            $q = "SELECT g.gameID, g.poster, g.name FROM own o
+                  JOIN game g ON o.gameID = g.gameID
+                  WHERE o.userID = '".$_SESSION['userID']."' AND o.installed = 0";
+            $result = $conn->query($q);
+            if (!$result) {
+               Alert("Query error: " . $conn->error);
+            }
+            else {
+               while ($row = $result->fetch_array()) {
+                  echo '
+                  <div class="card disabled" onclick="'; echo"cardPopup('card-popup$row[0]')"; echo'">
+                     <a>
+                        <img class="game-poster" draggable="false"
+                           src="data:image/png;base64,'.base64_encode($row[1]).'"
+                        />
+                        <p class="game-name webkitclamp">'.$row[2].'</p>
+                     </a>
+                     <div class="card-sub">
+                        <p class="card-sub-p">Not installed</p>
+                        <div class="button-icon dots">';
+                           Icon('dotsHori');
+                        echo '
+                        </div>
+                     </div>
+                     <div class="popup card-uninstalled" id="card-popup'.$row[0].'">
                         <a href="storepage.php?gameID='.$row[0].'">
                            <p>Visit store page</p>
                         </a>

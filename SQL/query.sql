@@ -22,7 +22,7 @@ DELIMITER ;
 
 DELIMITER $$
 
--- Installed Game
+-- Install Game
 CREATE PROCEDURE InstallGame(IN user_id INT, IN game_id INT)
 BEGIN
     -- Check if the game is already owned by the user
@@ -31,6 +31,22 @@ BEGIN
         UPDATE `own`
         SET `installed` = 1
         WHERE `userID` = user_id AND `gameID` = game_id AND `installed` = 0;
+    END IF;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+-- Uninstall Game
+CREATE PROCEDURE UninstallGame(IN user_id INT, IN game_id INT)
+BEGIN
+    -- Check if the game is already owned by the user
+    IF EXISTS (SELECT 1 FROM `own` WHERE `userID` = user_id AND `gameID` = game_id) THEN
+    -- Update the installed status only if it is currently 1
+        UPDATE `own`
+        SET `installed` = 0
+        WHERE `userID` = user_id AND `gameID` = game_id AND `installed` = 1;
     END IF;
 END$$
 

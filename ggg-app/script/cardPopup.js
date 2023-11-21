@@ -1,4 +1,4 @@
-function cardPopup() {
-   var popup = document.getElementById('card-popup');
+function cardPopup(popupName) {
+   var popup = document.getElementById(popupName);
    popup.classList.toggle("show");
 }
