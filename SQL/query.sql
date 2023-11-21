@@ -121,3 +121,12 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddBalance(IN user_id INT, IN top_up_amount FLOAT)
+BEGIN
+    UPDATE user SET balance = balance + top_up_amount WHERE userID = user_id;
+END$$
+
+DELIMITER ;

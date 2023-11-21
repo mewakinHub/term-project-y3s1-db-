@@ -20,7 +20,6 @@
    <?php
       session_start();
       include_once('component/navbar.php');
-      include_once('component/pageheader.php');
       if(!isset($_SESSION['userID'])){
          header('Location: signin.php');
       } 

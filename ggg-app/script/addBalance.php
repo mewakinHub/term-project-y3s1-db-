@@ -1,10 +1,10 @@
 <?php
    require_once('connect.php');
-   session_start();
-   $userID = $_SESSION['userID'];
-   $gameID = $_SESSION['gameID'];
-   $q = "CALL BuyGame($userID, $gameID)";
+   session_start(); 
+   $stmt = $conn->prepare("CALL TopUpBalance(?, ?)");
    $stmt->bind_param("ii", $userID, $gameID);
+   $userID = $_SESSION['userID'];
+   $topUpAmount = $_POST['topUpAmount'];
    $result = $stmt->execute();
    if (!$result) {
       echo "Query error: " . $conn->error;

@@ -9,5 +9,6 @@
    if (!$result) {
       echo "Query error: " . $conn->error;
    }
+   $stmt->close();
    header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
