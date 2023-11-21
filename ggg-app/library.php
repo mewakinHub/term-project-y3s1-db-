@@ -59,14 +59,14 @@
                         </div>
                      </div>
                      <div class="popup card-installed" id="card-popup'.$row[0].'">
+                        <a>
+                           <p>Launch game</p>
+                        </a>
                         <a href="storepage.php?gameID='.$row[0].'">
                            <p>Visit store page</p>
                         </a>
                         <a href="script/uninstallGame.php?gameID='.$row[0].'">
                            <p>Uninstall</p>
-                        </a>
-                        <a>
-                           <p>Launch game</p>
                         </a>
                      </div>
                   </div>
