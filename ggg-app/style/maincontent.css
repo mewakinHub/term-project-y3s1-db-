@@ -1,0 +1,161 @@
+.game-grid {
+   margin: 0 auto;
+   display: grid;
+   gap: 30px;
+   justify-items: center;
+   justify-content: space-between;
+   margin: 0;
+   grid-template-columns: repeat(1, 1fr);
+}
+
+@media screen and (min-width: 700px) {
+   .game-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media screen and (min-width: 910px) {
+   .game-grid {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
+
+@media screen and (min-width: 1120px) {
+   .game-grid {
+      grid-template-columns: repeat(4, 1fr);
+   }
+}
+
+@media screen and (min-width: 1330px) {
+   .game-grid {
+      grid-template-columns: repeat(5, 1fr);
+   }
+}
+
+@media screen and (min-width: 1540px) {
+   .game-grid {
+      grid-template-columns: repeat(6, 1fr);
+   }
+}
+
+@media screen and (min-width: 1750px) {
+   .game-grid {
+      grid-template-columns: repeat(7, 1fr);
+   }
+}
+
+.game-grid .game-poster {
+   width: 180px;
+   height: 240px;
+   border-radius: 10px;
+   transition: var(--transition-normal);
+}
+
+.game-grid .game-name {
+   margin: 10px 0 8px 0;
+}
+
+.game-grid .card-sub-p {
+   color: var(--gray2);
+}
+
+.game-grid .card {
+   transition: var(--transition-fast);
+   max-width: 180px;
+   height: 320px;
+   overflow-wrap: break-word;
+   position: relative;
+   display: block;
+}
+
+.game-grid .card:not(.disabled) a:hover .game-poster {
+   box-shadow: 0 0 5px white;
+   transition: var(--transition-normal);
+}
+
+.game-grid .card a {
+   cursor: pointer;
+}
+
+.game-grid .card a:active img {
+   transition: var(--transition-fast);
+   scale: 0.965;
+}
+
+.game-grid .card p {
+   width: 100%;
+}
+
+.game-grid .card-sub {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.game-grid .card-sub svg {
+   color: var(--gray2);
+}
+
+.game-grid .card.disabled img {
+   opacity: 35%;
+}
+
+main hr {
+   border: 2.5px solid var(--gray6);
+}
+
+.button-icon.dots svg {
+   width: 24px;
+   height: 24px;
+}
+
+.popup {
+   position: absolute;
+   width: 100%;
+   background-color: var(--gray6);
+   border-radius: 10px;
+   box-shadow: 0px 3px 5px black;
+   opacity: 0%;
+   pointer-events: none;
+   overflow: hidden;
+   transition: var(--transition-normal);
+}
+
+.popup p {
+   padding: 10px 15px;
+   cursor: pointer;
+   transition: var(--transition-fast);
+}
+
+.popup p:hover {
+   background-color: var(--gray5);
+   transition: var(--transition-fast);
+}
+
+.popup.show {
+   opacity: 100%;
+   pointer-events: auto;
+   transition: var(--transition-normal);
+}
+
+.popup .red {
+   color: #FF7777;
+}
+
+.button-off {
+   background-color: var(--transparent);
+   outline: 2px solid var(--gray3);
+   outline-offset: -2px;
+   color: var(--gray3);
+   pointer-events: none;
+}
+
+.popup.card-installed {
+   z-index: 100;
+   top: 120px;
+}
+
+.popup.card-uninstalled {
+   z-index: 100;
+   top: 160px;
+}

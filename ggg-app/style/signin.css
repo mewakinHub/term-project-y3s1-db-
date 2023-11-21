@@ -1,0 +1,88 @@
+.signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black-primary);
+}
+
+.signin .signin-container {
+   width: 450px;
+   height: 700px;
+   background-color: var(--black-secondary);
+   border-radius: 15px;
+   padding: 0 40px;
+   box-shadow: 0 4px 0 black;
+}
+
+.signin .logofull {  
+   margin: 60px auto;
+}
+
+.signin .form-signin {
+   display: grid;
+   row-gap: 2em;
+   margin-bottom: 105px;
+}
+
+.signin .email svg {
+   width: 20px;
+   left: 13px;
+   top: 10px;
+   color: var(--gray4);
+   transition: var(--transition-slow);
+}
+
+.signin .password svg {
+   width: 20px;
+   left: 14px;
+   top: 12px;
+   color: var(--gray4);
+   rotate: 45deg;
+   transition: var(--transition-slow);
+}
+
+.signin .username svg {
+   width: 20px;
+   left: 14px;
+   top: 9px;
+   color: var(--gray4);
+   transition: var(--transition-slow);
+}
+
+.signin .button-signup {
+   display: block;
+   background-color: var(--gray6);
+   outline: 2px solid var(--gray3);
+   outline-offset: -2px;
+   color: var(--gray3);
+   margin: 0 auto 0 auto; 
+}
+
+.signin .button-signup:hover {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray3);
+}
+
+.signin .button-signup:active {
+   transition: var(--transition-normal);
+   box-shadow: 0 0 9px var(--gray3);
+}
+
+
+.signin .message-container {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   margin-top: 0px;
+   margin-bottom: 32px;
+}
+
+.signin .button-icon svg {
+   position: absolute;
+   left: 0px;
+}
+
+.signin .button-icon {
+   position: absolute;
+   left: 0px;
+}

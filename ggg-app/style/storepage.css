@@ -1,0 +1,166 @@
+.storepage {
+   padding-top: 25px;
+}
+
+.storepage .back {
+   margin-bottom: 30px;
+   height: 40px;
+   width: 40px;
+}
+
+.storepage .back svg {
+   height: 40px;
+   width: 40px;
+}
+
+.storepage .slideshow-container {
+  max-width: 650px;
+  position: relative;
+  margin: 0 40px 0 0;
+  background-color: var(--gray7);
+  border-radius: 15px;
+}
+
+.storepage .mySlides {
+  display: none;
+}
+
+.storepage .slideshow-container .prev, .next {
+   display: block;
+   color: white;
+   width: 32px;
+   height: 32px;
+   box-sizing: border-box;
+   cursor: pointer;
+}
+
+.storepage .slideshow-container svg {
+   width: 32px;
+   height: 32px;
+}
+
+.storepage .next {
+  right: 0;
+}
+
+.storepage .text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.storepage .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.storepage .dot-wrapper {
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  background-color: var(--transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.storepage .dot {
+   height: 18px;
+   width: 18px;
+   background-color: var(--gray4);
+   border-radius: 100%;
+   transition: var(--transition-normal);
+ }
+
+.storepage .active {
+  background-color: white;
+  transition: var(--transition-normal);
+}
+
+.storepage .fade {
+  animation-name: fade;
+  animation-duration: 0.75s;
+}
+
+@keyframes fade {
+  from {opacity: .5}
+  to {opacity: 1}
+}
+
+.storepage .slideshow-controller {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 8px auto;
+}
+
+.storepage .slideshow-image img{
+   border-radius: 15px;
+}
+
+.storepage .header-container {
+   display: flex;
+   flex-direction: row;
+   margin-bottom: 25px;
+}
+
+@media screen and (max-width: 1500px) {
+   .storepage .header-container {
+      flex-direction: column;
+   }
+   .storepage .slideshow-container {
+      margin: 0 0 20px 0;
+   }
+}
+
+.storepage .title {
+   font-size: 42px;
+}
+
+.storepage .buy-container {
+   margin: 30px 0 45px 0;
+}
+
+.storepage .buy-container button {
+   font-size: 18px;
+   margin-right: 15px;
+}
+
+.storepage .grid-info {
+   display: inline-grid;
+   grid-template-columns: auto auto;
+   grid-gap: 25px 15px;
+   justify-items: end;
+}
+
+.storepage .grid-info span {
+   color: var(--gray2);
+   font-size: 18px;
+}
+
+.storepage .grid-info h5 {
+   justify-self: start;
+}
+
+.storepage .description {
+   margin-top: 30px;
+   line-height: 2em;
+}
+
+.storepage .description p {
+   margin-left: 2em;
+   color: var(--gray2);
+}
+
+.storepage .mySlides img {
+   max-width: 650px;
+   width: 100%;
+   height: 100%;
+}
