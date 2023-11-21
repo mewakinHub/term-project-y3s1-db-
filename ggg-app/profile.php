@@ -45,7 +45,7 @@
       <h1>Manage Account</h1>
       <hr/>
       <div class="acc-container">
-         <form action="updateAccount.php" method="post">
+         <form action="script/updateAccount.php" method="post">
             <div class="entry">
                <label for="email"><h4>Email</h4></label>
                <input type="text" id="email" name="email" value="<?php echo $email;?>">
