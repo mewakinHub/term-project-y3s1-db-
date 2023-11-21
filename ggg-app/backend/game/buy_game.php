@@ -1,0 +1,48 @@
+
+<?php
+//test
+//http://localhost:8888/backend/game/buy_game.php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once("connect.php");
+
+// Check if the form was submitted and the REQUEST_METHOD is set
+if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+    // Call the AddInstalledGame stored procedure
+    $stmt = $conn->prepare("CALL BuyGame(?, ?)");
+    $stmt->bind_param("ii", $userID, $gameID);
+    $userID = $_POST['userID']; 
+    $gameID = $_POST['gameID']; 
+    
+    if ($stmt->execute()) {
+        echo "<p>Game added to installed list!</p>";
+    } else {
+        echo "<p>Error: " . $stmt->error . "</p>";
+    }
+    
+    $stmt->close();
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy Game</title>
+</head>
+<body>
+    <h2>Buy game</h2>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <label for="userID">Your User ID:</label>
+        <input type="text" id="userID" name="userID" required><br><br>
+        
+        <label for="gameID">Game ID:</label>
+        <input type="text" id="gameID" name="gameID" required><br><br>
+        
+        <input type="submit" value="Add Game as Installed">
+    </form>
+</body>
+</html>

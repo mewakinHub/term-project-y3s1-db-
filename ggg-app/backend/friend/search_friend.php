@@ -17,7 +17,7 @@ if (isset($_POST['save'])) {
         // Bind the search query parameters
         $stmt->bindParam(':search', $search);
         $stmt->execute();
-        $user_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $user_details = $stmt->fetchAll;
         // print_r($user_details);
     } else {
         $searchErr = "Please enter the information";

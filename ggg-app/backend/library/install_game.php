@@ -1,6 +1,6 @@
 <?php
 //test
-//http://localhost:8888/backend/game/add_game.php
+//http://localhost:8888/backend/library/install_game.php
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

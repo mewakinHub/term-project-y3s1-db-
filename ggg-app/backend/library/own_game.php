@@ -1,6 +1,7 @@
 <?php
+//display owned but not installed games 
 //test
-//http://localhost:8888/backend/game/installed_game.php?user_id=1
+//http://localhost:8888/backend/library/own_game.php?user_id=1
 // Enable error reporting for debugging.
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -10,10 +11,10 @@ require_once("connect.php");
 if (isset($_GET['user_id'])) {
     $currentUserId = $_GET['user_id'];
 
-    // Include 'g.gameID' in the SELECT statement to fetch it.
+    // Update the WHERE clause to fetch games that are owned but not installed.
     $sql = "SELECT g.gameID, g.name, g.icon FROM own o
             JOIN game g ON o.gameID = g.gameID
-            WHERE o.userID = ? AND o.installed = 1";
+            WHERE o.userID = ? AND o.installed = 0"; // Changed installed = 1 to installed = 0
 
     $statement = $conn->prepare($sql);
     if ($statement === false) {
@@ -21,10 +22,10 @@ if (isset($_GET['user_id'])) {
     }
 
     $statement->bind_param("i", $currentUserId);
-    $statement->execute() or die("<b>Error:</b> Problem on Retrieving Installed Games List<br/>" . htmlspecialchars($statement->error));
+    $statement->execute() or die("<b>Error:</b> Problem on Retrieving Owned but Not Installed Games List<br/>" . htmlspecialchars($statement->error));
     $result = $statement->get_result();
 
-    echo "<div class='installed-games'>"; // Start the container for installed games
+    echo "<div class='owned-games'>"; // Start the container for owned but not installed games
     while ($row = $result->fetch_assoc()) {
         echo "<div class='game'>"; // Game container
         // Display the game icon
@@ -32,17 +33,17 @@ if (isset($_GET['user_id'])) {
         // Display the game name
         echo '<p class="game-name">' . htmlspecialchars($row['name']) . '</p>';
 
-        // Form for uninstalling the game
-        echo '<form method="POST" action="uninstall_game.php">';
+        // Form for installing the game
+        echo '<form method="POST" action="install_game.php">';
         echo '<input type="hidden" name="userID" value="' . htmlspecialchars($currentUserId) . '">';
         // Make sure to output the gameID
         echo '<input type="hidden" name="gameID" value="' . htmlspecialchars($row['gameID']) . '">';
-        echo '<input type="submit" name="uninstallGame" value="Uninstall">';
+        echo '<input type="submit" name="installGame" value="Install">';
         echo '</form>';
 
         echo "</div>"; // End game container
     }
-    echo "</div>"; // End the container for installed games
+    echo "</div>"; // End the container for owned but not installed games
 } else {
     echo "User ID not specified.";
 }

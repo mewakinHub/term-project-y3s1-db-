@@ -11,19 +11,37 @@ DELIMITER ;
 -- Installed game
 DELIMITER $$
 
+-- Installed Game
 CREATE PROCEDURE AddInstalledGame(IN user_id INT, IN game_id INT)
 BEGIN
-    -- Check if the game is already owned and installed by the user
-    IF NOT EXISTS (SELECT 1 FROM `own` WHERE `userID` = user_id AND `gameID` = game_id) THEN
-        -- Insert the new game as owned and installed
-        INSERT INTO `own` (`userID`, `gameID`, `playtime`, `installed`)
-        VALUES (user_id, game_id, 0, 1);
-    ELSE
-        -- If the game is already owned, just update the installed status
-        UPDATE `own` SET `installed` = 1
-        WHERE `userID` = user_id AND `gameID` = game_id;
+    -- Check if the game is already owned by the user
+    IF EXISTS (SELECT 1 FROM `own` WHERE `userID` = user_id AND `gameID` = game_id) THEN
+    -- Update the installed status only if it is currently 0
+        UPDATE `own`
+        SET `installed` = 1
+        WHERE `userID` = user_id AND `gameID` = game_id AND `installed` = 0;
     END IF;
 END$$
+
+DELIMITER ;
+
+--Buy Game 
+DELIMITER $$
+
+
+CREATE PROCEDURE BuyGame(IN user_id INT, IN game_id INT)
+BEGIN
+    -- Check if the game is not already owned by the user
+    IF NOT EXISTS (SELECT 1 FROM `own` WHERE `userID` = user_id AND `gameID` = game_id) THEN
+        -- Insert the new game as owned with default values
+        INSERT INTO `own` (`userID`, `gameID`, `playtime`, `latestPlay`, `installed`)
+        VALUES (user_id, game_id, 0, current_time, 0);
+    END IF;
+END$$
+
+DELIMITER ;
+
+
 
 DELIMITER ;
 
