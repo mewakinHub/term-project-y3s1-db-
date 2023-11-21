@@ -16,6 +16,7 @@
    <title>GGG - Friends</title>
    <link rel="stylesheet" href="style/navbar.css">
    <link rel="stylesheet" href="style/pageheader.css">
+   <link rel="stylesheet" href="style/maincontent.css">
    <?php
       session_start();
       include_once('component/navbar.php');
