@@ -26,7 +26,7 @@ if (isset($_POST['uninstallGame'])) { // Change 'deleteFriend' to 'uninstallGame
     // Check if any rows were affected.
     if ($stmt->affected_rows > 0) {
         echo "Game uninstalled successfully.";
-        header("Location: /backend/game/installed_game.php?user_id=" . urlencode($currentUserId)); // Redirect to installed games page
+        header("Location: /backend/game/installed_game.php?userID=" . urlencode($currentUserId)); // Redirect to installed games page
         exit; // Ensure script termination after redirection
     } else {
         echo "No game was uninstalled. Please check the game ID.";

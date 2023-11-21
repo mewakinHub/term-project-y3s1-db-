@@ -142,13 +142,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'], $_POST['user
    $result = $stmt->get_result();
    $row = $result->fetch_assoc();
    
+    
    if (isset($row['profilePicFile']) && !empty($row['profilePicFile'])) {
-       // Display the user's profile picture if available
-       echo '<img src="data:image/jpeg;base64,' . base64_encode($row['profilePicFile']) . '" alt="Profile picture" style="width: 50px; height: 50px; border-radius: 50%;">';
-   } else {
-       // Display a default image or icon if no profile picture is available
-       echo '<img src="/backend/friend/user%20(2).png" style="width: 50px; height: 50px; border-radius: 50%;">';
-   }
+    // Display the user's profile picture if available
+    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['profilePicFile']) . '" alt="Profile picture" style="width: 50px; height: 50px; border-radius: 50%;">';
+} else {
+    // Display a default image or icon if no profile picture is available
+    echo '<img src="/backend/friend/user%20(2).png" style="width: 50px; height: 50px; border-radius: 50%;">';
+}
     ?>
 
 

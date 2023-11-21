@@ -26,7 +26,7 @@ if (isset($_POST['deleteFriend'])) {
     // Check if any rows were affected.
     if ($stmt->affected_rows > 0) {
         echo "Friendship removed successfully.";
-        header("Location: /backend/friend/display_friend.php?user_id=" . urlencode($currentUserId));
+        header("Location: /backend/friend/display_friend.php?userID=" . urlencode($currentUserId));
     } else {
         echo "No friendship was removed. Please check the friend IDs.";
     }

@@ -1,15 +1,17 @@
 <?php
 //display owned but not installed games 
 //test
-//http://localhost:8888/backend/library/own_game.php?user_id=1
+//http://localhost:8888/backend/library/own_game.php?userID=1
 // Enable error reporting for debugging.
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once("connect.php");
-
-if (isset($_GET['user_id'])) {
-    $currentUserId = $_GET['user_id'];
+$userID = $_SESSION['userID'];
+$gameID = $_SESSION['gameID'];
+if (isset($_GET['userID'])) {
+    $currentUserId = $_GET['userID'];
 
     // Update the WHERE clause to fetch games that are owned but not installed.
     $sql = "SELECT g.gameID, g.name, g.icon FROM own o
