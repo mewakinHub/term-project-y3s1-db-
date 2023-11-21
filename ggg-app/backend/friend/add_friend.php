@@ -29,21 +29,23 @@ require_once("connect.php"); ?>
        <?php
         
         // Call the AddFriend stored procedure
-        $stmt = $conn->prepare("CALL AddFriend(?, ?)");
-        $stmt->bind_param("ii", $fromUserID, $toUserID);
-        $fromUserID = $_POST['fromID']; 
-        $toUserID = $_POST['toID']; 
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fromID'], $_POST['toID'])) {
+            // Call the AddFriend stored procedure
+            $stmt = $conn->prepare("CALL AddFriend(?, ?)");
+            $stmt->bind_param("ii", $fromUserID, $toUserID);
+            $fromUserID = $_POST['fromID']; 
+            $toUserID = $_POST['toID']; 
         
+            if ($stmt->execute()) {
+                echo "Friend request sent!";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
         
-        
-        
-        if ($stmt->execute()) {
-            echo "Friend request sent!";
-        } else {
-            echo "Error: " . $stmt->error;
+            $stmt->close();
         }
+
         
-        $stmt->close();
         
         ?>
     </form>
