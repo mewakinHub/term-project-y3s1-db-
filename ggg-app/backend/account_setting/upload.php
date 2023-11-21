@@ -36,7 +36,8 @@ if (isset($_FILES["image"], $_POST["userID"])) {
 
         $stmt->close();
         // Redirect back to the update_user.php
-        header("Location: update_user.php?userID=$userID");
+        header("refresh:2;url=update_user.php?userID=$userID");
+        exit();
     } else {
         // Handle file upload error
         $_SESSION["error"] = "Error uploading image: " . $_FILES["image"]["error"];
