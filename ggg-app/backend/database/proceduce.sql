@@ -147,3 +147,28 @@ END;
 //
 
 DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE UpdateUser(
+    IN p_userID INT,
+    IN p_email VARCHAR(64),
+    IN p_password VARCHAR(64),
+    IN p_username VARCHAR(32),
+    IN p_bio VARCHAR(256),
+    IN p_profilePicFile LONGBLOB
+)
+BEGIN
+    UPDATE `user`
+    SET
+        `email` = p_email,
+        `password` = p_password,
+        `username` = p_username,
+        `bio` = p_bio,
+        `profilePicFile` = p_profilePicFile
+    WHERE
+        `userID` = p_userID;
+END //
+
+DELIMITER ;
