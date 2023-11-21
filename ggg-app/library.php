@@ -43,8 +43,8 @@
             else {
                while ($row = $result->fetch_array()) {
                   echo '
-                  <div class="card" onclick="'; echo"cardPopup('card-popup$row[0]')"; echo'">
-                     <a>
+                  <div class="card">
+                     <a href="script/updatePlayTime.php?gameID='.$row[0].'">
                         <img class="game-poster" draggable="false"
                            src="data:image/png;base64,'.base64_encode($row[1]).'"
                         />
@@ -53,13 +53,13 @@
                      <div class="card-sub">
                         <p class="card-sub-p">'.$row[3].' hours played
                         </p>
-                        <div class="button-icon dots">';
+                        <div class="button-icon dots" onclick="'; echo"cardPopup('card-popup$row[0]')"; echo'">';
                            Icon('dotsHori');
                         echo '
                         </div>
                      </div>
                      <div class="popup card-installed" id="card-popup'.$row[0].'">
-                        <a>
+                        <a href="script/updatePlayTime.php?gameID='.$row[0].'">
                            <p>Launch game</p>
                         </a>
                         <a href="storepage.php?gameID='.$row[0].'">
@@ -85,8 +85,8 @@
             else {
                while ($row = $result->fetch_array()) {
                   echo '
-                  <div class="card disabled" onclick="'; echo"cardPopup('card-popup$row[0]')"; echo'">
-                     <a>
+                  <div class="card disabled">
+                     <a  onclick="'; echo"cardPopup('card-popup$row[0]')"; echo'">
                         <img class="game-poster" draggable="false"
                            src="data:image/png;base64,'.base64_encode($row[1]).'"
                         />
@@ -94,7 +94,7 @@
                      </a>
                      <div class="card-sub">
                         <p class="card-sub-p">Not installed</p>
-                        <div class="button-icon dots">';
+                        <div class="button-icon dots"  onclick="'; echo"cardPopup('card-popup$row[0]')"; echo'">';
                            Icon('dotsHori');
                         echo '
                         </div>
