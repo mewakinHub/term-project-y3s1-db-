@@ -32,7 +32,7 @@ nav .nav-main-buttons {
 }
 
 nav .nav-main-buttons button {
-   height: 55px;
+   height: 65px;
    border-radius: 10px;
    color: var(--gray3);
    background-color: var(--transparent);

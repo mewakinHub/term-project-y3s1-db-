@@ -49,18 +49,18 @@
                         </button>
                      </a>
                   </div>
-                  <hr/>
+                  <!-- <hr/> -->
                </div>
-               <div class='nav-installed'>
+               <!-- <div class='nav-installed'>
                   <div class='installed-header'>
                      <p>Installed</p>
                      <div class='iconbutton-wrapper'>
                         "; Icon('adjust'); echo"
                      </div>
                   </div>
-               </div>
+               </div> -->
                <div class='nav-user' onclick='userPopup()'>
-                  <hr/>
+                  <!-- <hr/> -->
                   <button class='button-user'>
                      <div class='user-container'>
                         <img class='pfp' src='asset/pfp.png' draggable='false'/>
@@ -77,7 +77,7 @@
                      <a>
                         <p>Your profile</p>
                      </a>
-                     <a>
+                     <a href='funds.php'>
                         <p>Funds</p>
                      </a>
                   </div>

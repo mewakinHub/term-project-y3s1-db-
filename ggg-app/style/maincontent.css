@@ -138,7 +138,7 @@ main hr {
    transition: var(--transition-normal);
 }
 
-.red {
+.popup .red {
    color: #FF7777;
 }
 
