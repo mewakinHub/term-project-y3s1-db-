@@ -96,7 +96,7 @@
                ?>
             </h1>
             <span class="buy-container flex-row">
-               <button>BUY NOW</button>
+               <button href='script/buyGame.php'>BUY NOW</button>
                <h3>฿ 
                   <?php
                      $q = "SELECT price FROM game
