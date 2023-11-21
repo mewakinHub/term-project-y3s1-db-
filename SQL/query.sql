@@ -135,9 +135,9 @@ DELIMITER ;
 
 DELIMITER $$
 
-CREATE PROCEDURE UpdateUser(IN user_id INT, IN new_email VARCHAR, IN new_username VARCHAR, IN new_password VARCHAR)
+CREATE PROCEDURE UpdateAccount(IN user_id INT, IN new_pfp LONGBLOB, IN new_email VARCHAR(64), IN new_username VARCHAR(64), IN new_password VARCHAR(64))
 BEGIN
-    UPDATE user SET email = new_email, username = new_username, password = new_password WHERE userID = user_id;
+    UPDATE user SET profilePicFile = new_pfp, email = new_email, username = new_username, password = new_password WHERE userID = user_id;
 END$$
 
 DELIMITER ;

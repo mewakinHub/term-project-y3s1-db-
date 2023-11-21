@@ -13,7 +13,7 @@
       include_once('component/alert.php');
    ?>
    <!--Custom-->
-   <title>GGG - Library</title>
+   <title>GGG - Funds</title>
    <link rel="stylesheet" href="style/navbar.css">
    <link rel="stylesheet" href="style/pageheader.css">
    <link rel="stylesheet" href="style/maincontent.css">

@@ -13,7 +13,7 @@
       include_once('component/alert.php');
    ?>
    <!--Custom-->
-   <title>GGG - Friends</title>
+   <title>GGG - Manage Account</title>
    <link rel="stylesheet" href="style/navbar.css">
    <link rel="stylesheet" href="style/pageheader.css">
    <link rel="stylesheet" href="style/maincontent.css">
@@ -36,6 +36,7 @@
             $username = $row[1];
             $password = $row[2];
          }
+         
       }
    ?>
 </head>
@@ -47,6 +48,10 @@
       <div class="acc-container">
          <form action="script/updateAccount.php" method="post">
             <div class="entry">
+               <label for="pfp"><h4>Picture</h4></label>
+               <input type="file" id="pfp" name="pfp" accept="image/*">
+            </div>
+            <div class="entry">
                <label for="email"><h4>Email</h4></label>
                <input type="text" id="email" name="email" value="<?php echo $email;?>">
             </div>
@@ -56,8 +61,8 @@
             </div>
             <div class="entry">
                <label for="password"><h4>Password</h4></label>
-               <input class="doubleleft" type="password" id="password" name="password" placeholder="New password">
-               <input class="doubleright" type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm">
+               <input class="doubleleft" type="password" id="password" name="password" placeholder="Password" required>
+               <input class="doubleright" type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required>
             </div>
             <button type="submit">Apply changes</button>
          </form>
