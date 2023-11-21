@@ -18,7 +18,7 @@ function displayTable($mysqli, $tableName, $columns)
             echo "<tr>";
             foreach ($columns as $column) {
                 // Check if the column is icon or poster
-                if ($column == 'icon' || $column == 'poster') {
+                if ($column == 'icon' || $column == 'poster' || $column == 'profilePicFile' || $column == 'file') {
                     // Limit the displayed content to a fixed size
                     $limitedContent = substr($row[$column], 0, 50); // Adjust the length as needed
                     echo "<td>$limitedContent...</td>";
@@ -26,6 +26,7 @@ function displayTable($mysqli, $tableName, $columns)
                     echo "<td>{$row[$column]}</td>";
                 }
             }
+            // GET: use url as the way to send variable
             echo "<td><a href='edit_$tableName.php?id={$row[$columns[0]]}'>Edit</a></td>";
             echo "<td><a href='delete_$tableName.php?id={$row[$columns[0]]}' class='delete-btn' onclick='return confirmDelete();'>Delete</a></td>";
             echo "</tr>";

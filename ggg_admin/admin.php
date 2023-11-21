@@ -124,18 +124,18 @@ if (isset($_GET["logout"]) && $_GET["logout"] == true) {
     </section>
 
     <!-- Display section for Game Studios -->
-    <section>
+    <!-- <section>
         <h2>Game Studios</h2>
         <p><a href='add_game_studio.php'>Add New Game Studio</a></p>
         <?php displayTable($mysqli, 'game_studio', ['gameID', 'studioID', 'type']); ?>
-    </section>
+    </section> -->
 
     <!-- Display section for Game Tags -->
-    <section>
+    <!-- <section>
         <h2>Game Tags</h2>
         <p><a href='add_game_tag.php'>Add New Game Tag</a></p>
         <?php displayTable($mysqli, 'game_tag', ['gameID', 'tagID']); ?>
-    </section>
+    </section> -->
 
     <?php
     // Close the database connection
