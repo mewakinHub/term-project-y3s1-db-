@@ -51,3 +51,60 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+--trigger buy game 
+DELIMITER $$
+
+CREATE TRIGGER CheckEnoughBalance
+BEFORE INSERT ON `own` FOR EACH ROW
+BEGIN
+    -- Variables to store game price and user balance.
+    DECLARE gamePrice INT;
+    DECLARE currentBalance FLOAT;
+
+    -- Get the price of the game.
+    SELECT `price` INTO gamePrice FROM `game` WHERE `gameID` = NEW.`gameID`;
+
+    -- Get the user's current balance.
+    SELECT `balance` INTO currentBalance FROM `user` WHERE `userID` = NEW.`userID`;
+
+    -- Check if the user has enough balance.
+    IF currentBalance < gamePrice THEN
+        -- If not, prevent the insertion and show an error.
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Not enough balance to purchase the game';
+    END IF;
+END$$
+
+DELIMITER ;
+
+
+--buyy game 
+DELIMITER $$
+
+CREATE TRIGGER GamePurchase 
+AFTER INSERT ON `own` FOR EACH ROW
+BEGIN
+    -- Variables to store game price and user balance.
+    DECLARE gamePrice INT;
+    DECLARE currentBalance FLOAT;
+
+    -- Get the price of the game.
+    SELECT `price` INTO gamePrice FROM `game` WHERE `gameID` = NEW.`gameID`;
+
+    -- Get the user's current balance.
+    SELECT `balance` INTO currentBalance FROM `user` WHERE `userID` = NEW.`userID`;
+
+    -- Check if the user has enough balance.
+    IF currentBalance >= gamePrice THEN
+        -- Update the user's balance.
+        UPDATE `user` SET `balance` = currentBalance - gamePrice
+        WHERE `userID` = NEW.`userID`;
+    ELSE
+        -- If not enough balance, prevent the operation and show an error.
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Not enough balance to purchase the game';
+    END IF;
+END$$
+
+DELIMITER ;
