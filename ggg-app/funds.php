@@ -27,6 +27,8 @@
 <body>
    <?php Navbar('', $_SESSION['userID']) ?>
    <main class="funds">
+      <h1>Funds</h1>
+      <hr/>
       <div class="funds-container">
          <h2>Current balance</h2>
          <?php

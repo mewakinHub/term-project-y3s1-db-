@@ -6,6 +6,8 @@ CREATE USER IF NOT EXISTS ggguser IDENTIFIED BY 'ggguser';
 GRANT SELECT, EXECUTE ON ggg.* TO ggguser;
 FLUSH PRIVILEGES;
 
+USE ggg;
+
 DELIMITER $$
 
 CREATE PROCEDURE BuyGame(IN user_id INT, IN game_id INT)

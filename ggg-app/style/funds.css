@@ -1,5 +1,5 @@
 main.funds {
-   padding-top: 60px;
+   padding-top: 20px;
 }
 
 .funds h2 {
@@ -19,7 +19,7 @@ main.funds {
 }
 
 .funds h1 {
-   padding-bottom: 40px;
+   padding-bottom: 20px;
 }
 
 .funds button {
@@ -27,3 +27,6 @@ main.funds {
    margin-bottom: 30px;
 }
 
+.funds hr {
+   margin-bottom: 40px;
+}
