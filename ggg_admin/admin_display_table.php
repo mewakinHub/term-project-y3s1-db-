@@ -1,40 +1,39 @@
-<!-- admin_display_table.php -->
 <?php
-
 function displayTable($mysqli, $tableName, $columns)
 {
-    // display the domain(field)
-    echo "<table>
-            <tr>";
-
+    echo "<table>";
+    echo "<tr>";
     foreach ($columns as $column) {
         echo "<th>$column</th>";
     }
+    echo "<th>Edit</th>"; // Add column for edit
+    echo "<th>Delete</th>"; // Add column for delete
+    echo "</tr>";
 
-    echo "<th>Edit</th>
-          <th>Delete</th>
-          </tr>";
-
-    // fetch every records
     $sql = "SELECT * FROM $tableName";
     $result = $mysqli->query($sql);
 
-    if ($result) {
+    if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-
             foreach ($columns as $column) {
-                echo "<td>{$row[$column]}</td>";
+                // Check if the column is icon or poster
+                if ($column == 'icon' || $column == 'poster') {
+                    // Limit the displayed content to a fixed size
+                    $limitedContent = substr($row[$column], 0, 50); // Adjust the length as needed
+                    echo "<td>$limitedContent...</td>";
+                } else {
+                    echo "<td>{$row[$column]}</td>";
+                }
             }
-
-            echo "<td><a href='edit_$tableName.php?id={$row[$columns[0]]}'>Edit</a></td>
-                  <td><button class='delete-btn' onclick='if(confirmDelete()) window.location.href=\"delete_$tableName.php?id={$row[$columns[0]]}\";'>Delete</button></td>
-                  </tr>";
+            echo "<td><a href='edit_$tableName.php?id={$row[$columns[0]]}'>Edit</a></td>";
+            echo "<td><a href='delete_$tableName.php?id={$row[$columns[0]]}' class='delete-btn' onclick='return confirmDelete();'>Delete</a></td>";
+            echo "</tr>";
         }
-
-        echo "</table>";
     } else {
-        echo "<p>Error: " . $mysqli->error . "</p>";
+        echo "<tr><td colspan='" . (count($columns) + 2) . "'>No records found</td></tr>";
     }
+
+    echo "</table>";
 }
 ?>

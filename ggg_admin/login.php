@@ -21,12 +21,12 @@
             if ($mysqli->connect_error) {
                 die("Connection failed: " . $mysqli->connect_error);
             }
-            session_start();
-
             // Enable error reporting for debugging purposes
 			error_reporting(E_ALL);
 			ini_set('display_errors', 1);
 		
+            session_start();
+
 			if (isset($_POST['submit'])) {
                 // Retrieve values from the submitted form
                 $username = mysqli_real_escape_string($mysqli, $_POST['username']);

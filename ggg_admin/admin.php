@@ -32,7 +32,7 @@ if (isset($_GET["logout"]) && $_GET["logout"] == true) {
 }
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -87,11 +87,12 @@ if (isset($_GET["logout"]) && $_GET["logout"] == true) {
     <h1>Welcome, Admin!</h1>
     <p><a href="?logout=true">Logout</a></p>
 
+    <?php include_once('admin_display_table.php'); ?>
     <!-- Display section for Games -->
     <section>
         <h2>Games</h2>
         <p><a href='add_game.php'>Add New Game</a></p>
-        <?php include_once('admin_display_table.php'); displayTable($mysqli, 'game', ['gameID', 'name', 'price', 'releaseDate', 'shortdesc', 'description']); ?>
+        <?php displayTable($mysqli, 'game', ['gameID', 'name', 'price', 'releaseDate', 'shortdesc', 'description', 'icon', 'poster']); ?>
     </section>
 
     <!-- Display section for Studios -->
@@ -134,13 +135,6 @@ if (isset($_GET["logout"]) && $_GET["logout"] == true) {
         <h2>Game Tags</h2>
         <p><a href='add_game_tag.php'>Add New Game Tag</a></p>
         <?php displayTable($mysqli, 'game_tag', ['gameID', 'tagID']); ?>
-    </section>
-
-    <!-- Display section for Featured Games -->
-    <section>
-        <h2>Featured Games</h2>
-        <p><a href='add_featured.php'>Add Featured Game</a></p>
-        <?php displayTable($mysqli, 'featured', ['featuredID', 'type', 'gameID']); ?>
     </section>
 
     <?php

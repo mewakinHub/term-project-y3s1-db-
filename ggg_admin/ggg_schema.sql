@@ -21,17 +21,6 @@ SET time_zone = "+00:00";
 -- Database: `ggg`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `featured`
---
-
-CREATE TABLE `featured` (
-  `featuredID` int(11) NOT NULL,
-  `type` enum('new','trending') NOT NULL,
-  `gameID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
