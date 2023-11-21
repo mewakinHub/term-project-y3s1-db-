@@ -1,0 +1,1 @@
+$sql = "SELECT gameID, name, price, icon, poster FROM game WHERE name LIKE '%$search%' OR shortdesc LIKE '%$search%'";
