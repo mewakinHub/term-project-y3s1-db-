@@ -3,7 +3,7 @@
    session_start();
    $userID = $_SESSION['userID'];
    $gameID = $_SESSION['gameID'];
-   $q = "CALL BuyGame($userID, $gameID)";
+   $stmt = $conn->prepare("CALL BuyGame(?, ?)");
    $stmt->bind_param("ii", $userID, $gameID);
    $result = $stmt->execute();
    if (!$result) {
