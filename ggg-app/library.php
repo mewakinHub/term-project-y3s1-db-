@@ -61,7 +61,46 @@
                         <a href="storepage.php?gameID='.$row[0].'">
                            <p>Visit store page</p>
                         </a>
-                        <a>
+                        <a href="script/installGame.php?gameID='.$row[0].'">
+                           <p>Install</p>
+                        </a>
+                     </div>
+                  </div>
+                  ';
+               }
+            }
+         ?>
+         <?php 
+            $q = "SELECT g.gameID, g.poster, g.name, o.playtime FROM own o
+                  JOIN game g ON o.gameID = g.gameID
+                  WHERE o.userID = '".$_SESSION['userID']."' AND o.installed = 1";
+            $result = $conn->query($q);
+            if (!$result) {
+               Alert("Query error: " . $conn->error);
+            }
+            else {
+               while ($row = $result->fetch_array()) {
+                  echo '
+                  <div class="card" onclick="cardPopup()">
+                     <a>
+                        <img class="game-poster" draggable="false"
+                           src="data:image/png;base64,'.base64_encode($row[1]).'"
+                        />
+                        <p class="game-name webkitclamp">'.$row[2].'</p>
+                     </a>
+                     <div class="card-sub">
+                        <p class="card-sub-p">'.$row[3].' hours played
+                        </p>
+                        <div class="button-icon dots">';
+                           Icon('dotsHori');
+                        echo '
+                        </div>
+                     </div>
+                     <div class="popup" id="card-popup">
+                        <a href="storepage.php?gameID='.$row[0].'">
+                           <p>Visit store page</p>
+                        </a>
+                        <a href="script/installGame.php?gameID='.$row[0].'">
                            <p>Install</p>
                         </a>
                      </div>
