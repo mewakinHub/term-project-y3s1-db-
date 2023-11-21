@@ -199,6 +199,7 @@ hr {
 .button-icon {
    display: block;
    width: 32px;
+   cursor: pointer;
 }
 
 .button-icon svg {
