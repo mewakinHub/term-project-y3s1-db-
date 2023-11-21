@@ -1,3 +1,4 @@
+<!-- add_user.php -->
 <?php
 $servername = "localhost";
 $username = "admin";
@@ -12,11 +13,8 @@ if ($mysqli->errno) {
     echo("Connection failed: " . $mysqli->connect_error);
 }
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-// when the form may not have a specific submit button or when multiple forms are present on a page.
-// }
 // Check if the form is submitted for adding a new user
-if (isset($_POST['submit'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Use mysqli_real_escape_string for each form field(defense against SQL injection attacks.)
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
     $password = mysqli_real_escape_string($mysqli, $_POST['password']);

@@ -12,10 +12,10 @@ if ($mysqli->errno) {
     echo("Connection failed: " . $mysqli->connect_error);
 }
 
+error_reporting(E_ALL);
+ini_set('display_errors', true);
+
 session_start();
-// In PHP, the session_start() function must be called at the beginning of every script where you want to work with session variables. 
-// If you want to access the $_SESSION variables across different files, you need to call session_start() in each of those files.
-// $_SESSION Array: user's session
 
 // Check if the user is logged in, if not, redirect to the login page
 if (!isset($_SESSION["admin_loggedin"]) || $_SESSION["admin_loggedin"] !== true) {
@@ -30,7 +30,6 @@ if (isset($_GET["logout"]) && $_GET["logout"] == true) {
     header("Location: login.php");
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -86,162 +85,62 @@ if (isset($_GET["logout"]) && $_GET["logout"] == true) {
 <body>
 
     <h1>Welcome, Admin!</h1>
-
-    <!-- a logout button -->
     <p><a href="?logout=true">Logout</a></p>
 
+    <!-- Display section for Games -->
     <section>
         <h2>Games</h2>
         <p><a href='add_game.php'>Add New Game</a></p>
-
-        <?php
-        // Perform SQL query for displaying games
-        $sqlGames = "SELECT * FROM game";
-        $resultGames = $mysqli->query($sqlGames);
-
-        if ($resultGames) {
-            echo "<table>
-                    <tr>
-                        <th>Game ID</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Release Date</th>
-                        <th>Short Description</th>
-                        <th>Description</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>";
-
-            while ($row = $resultGames->fetch_assoc()) {
-                echo "<tr>
-                        <td>{$row['gameID']}</td>
-                        <td>{$row['name']}</td>
-                        <td>{$row['price']}</td>
-                        <td>{$row['releaseDate']}</td>
-                        <td>{$row['shortdesc']}</td>
-                        <td>{$row['description']}</td>
-                        <td><a href='edit_game.php?gameID={$row['gameID']}'>Edit</a></td>
-                        <td><button class='delete-btn' onclick='if(confirmDelete()) window.location.href=\"delete_game.php?gameID={$row['gameID']}\";'>Delete</button></td>
-                    </tr>";
-            }
-
-            echo "</table>";
-        } else {
-            echo "<p>Error: " . $mysqli->error . "</p>";
-        }
-        ?>
+        <?php include_once('admin_display_table.php'); displayTable($mysqli, 'game', ['gameID', 'name', 'price', 'releaseDate', 'shortdesc', 'description']); ?>
     </section>
 
+    <!-- Display section for Studios -->
     <section>
         <h2>Studios</h2>
         <p><a href='add_studio.php'>Add New Studio</a></p>
-
-        <?php
-        // Perform SQL query for displaying studios
-        $sqlStudios = "SELECT * FROM studio";
-        $resultStudios = $mysqli->query($sqlStudios);
-
-        if ($resultStudios) {
-            echo "<table>
-                    <tr>
-                        <th>Studio ID</th>
-                        <th>Name</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>";
-
-            while ($row = $resultStudios->fetch_assoc()) {
-                echo "<tr>
-                        <td>{$row['studioID']}</td>
-                        <td>{$row['name']}</td>
-                        <td><a href='edit_studio.php?studioID={$row['studioID']}'>Edit</a></td>
-                        <td><button class='delete-btn' onclick='if(confirmDelete()) window.location.href=\"delete_studio.php?studioID={$row['studioID']}\";'>Delete</button></td>
-                    </tr>";
-            }
-
-            echo "</table>";
-        } else {
-            echo "<p>Error: " . $mysqli->error . "</p>";
-        }
-        ?>
+        <?php displayTable($mysqli, 'studio', ['studioID', 'name']); ?>
     </section>
 
+    <!-- Display section for Tags -->
     <section>
         <h2>Tags</h2>
         <p><a href='add_tag.php'>Add New Tag</a></p>
-
-        <?php
-        // Perform SQL query for displaying tags
-        $sqlTags = "SELECT * FROM tag";
-        $resultTags = $mysqli->query($sqlTags);
-
-        if ($resultTags) {
-            echo "<table>
-                    <tr>
-                        <th>Tag ID</th>
-                        <th>Name</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>";
-
-            while ($row = $resultTags->fetch_assoc()) {
-                echo "<tr>
-                        <td>{$row['tagID']}</td>
-                        <td>{$row['name']}</td>
-                        <td><a href='edit_tag.php?tagID={$row['tagID']}'>Edit</a></td>
-                        <td><button class='delete-btn' onclick='if(confirmDelete()) window.location.href=\"delete_tag.php?tagID={$row['tagID']}\";'>Delete</button></td>
-                    </tr>";
-            }
-
-            echo "</table>";
-        } else {
-            echo "<p>Error: " . $mysqli->error . "</p>";
-        }
-        ?>
+        <?php displayTable($mysqli, 'tag', ['tagID', 'name']); ?>
     </section>
 
+    <!-- Display section for Users -->
     <section>
         <h2>Users</h2>
-        <p><a href='add_users.php'>Add Users</a></p>
+        <p><a href='add_user.php'>Add New User</a></p>
+        <?php displayTable($mysqli, 'user', ['userID', 'email', 'password', 'username', 'balance', 'bio', 'profilePicFile']); ?>
+    </section>
 
-        <?php
-        // Perform SQL query for displaying users
-        $sqlUsers = "SELECT * FROM user";
-        $resultUsers = $mysqli->query($sqlUsers);
+    <!-- Display section for Media -->
+    <section>
+        <h2>Media</h2>
+        <p><a href='add_media.php'>Add New Media</a></p>
+        <?php displayTable($mysqli, 'media', ['mediaID', 'file', 'gameID']); ?>
+    </section>
 
-        if ($resultUsers) {
-            echo "<table>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Username</th>
-                        <th>Balance</th>
-                        <th>Bio</th>
-                        <th>Profile Picture</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>";
+    <!-- Display section for Game Studios -->
+    <section>
+        <h2>Game Studios</h2>
+        <p><a href='add_game_studio.php'>Add New Game Studio</a></p>
+        <?php displayTable($mysqli, 'game_studio', ['gameID', 'studioID', 'type']); ?>
+    </section>
 
-            while ($row = $resultUsers->fetch_assoc()) {
-                echo "<tr>
-                        <td>{$row['userID']}</td>
-                        <td>{$row['email']}</td>
-                        <td>{$row['password']}</td>
-                        <td>{$row['username']}</td>
-                        <td>{$row['balance']}</td>
-                        <td>{$row['bio']}</td>
-                        <td>{$row['profilePicFile']}</td>
-                        <td><a href='edit_user.php?userID={$row['userID']}'>Edit</a></td>
-                        <td><button class='delete-btn' onclick='if(confirmDelete()) window.location.href=\"delete_user.php?userID={$row['userID']}\";'>Delete</button></td>
-                    </tr>";
-            }
+    <!-- Display section for Game Tags -->
+    <section>
+        <h2>Game Tags</h2>
+        <p><a href='add_game_tag.php'>Add New Game Tag</a></p>
+        <?php displayTable($mysqli, 'game_tag', ['gameID', 'tagID']); ?>
+    </section>
 
-            echo "</table>";
-        } else {
-            echo "<p>Error: " . $mysqli->error . "</p>";
-        }
-        ?>
+    <!-- Display section for Featured Games -->
+    <section>
+        <h2>Featured Games</h2>
+        <p><a href='add_featured.php'>Add Featured Game</a></p>
+        <?php displayTable($mysqli, 'featured', ['featuredID', 'type', 'gameID']); ?>
     </section>
 
     <?php

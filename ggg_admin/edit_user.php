@@ -1,3 +1,4 @@
+<!-- edit_user.php -->
 <?php
 $servername = "localhost";
 $username = "admin";
