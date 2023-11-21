@@ -21,84 +21,38 @@ if (!isset($_SESSION["admin_loggedin"]) || $_SESSION["admin_loggedin"] !== true)
     exit;
 }
 
-// Check if the studioID parameter is set
-if (isset($_GET['id'])) {
-    $studioID = $_GET['id'];
+// Edit studio logic
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $studioID = $_POST["studioID"];
+    $name = $_POST["name"];
 
-    // Fetch studio data based on studioID
-    $selectSql = "SELECT studioID, name FROM studio WHERE studioID = ?";
-    $stmtSelect = $mysqli->prepare($selectSql);
+    // Validate input, you can add more validation as needed
 
-    if ($stmtSelect) {
-        $stmtSelect->bind_param('i', $studioID);
+    $sql = "UPDATE studio SET name=? WHERE studioID=?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param('si', $name, $studioID);
 
-        if ($stmtSelect->execute()) {
-            $result = $stmtSelect->get_result();
-
-            if ($result->num_rows > 0) {
-                $studioData = $result->fetch_assoc();
-            } else {
-                echo "Studio not found.";
-                exit;
-            }
-        } else {
-            echo "Error fetching studio data: " . $stmtSelect->error;
-            exit;
-        }
-
-        $stmtSelect->close();
+    if ($stmt->execute()) {
+        header("Location: admin.php");
     } else {
-        echo "Error preparing select statement: " . $mysqli->error;
-        exit;
+        echo "<p>Error: " . $stmt->error . "</p>";
     }
 } else {
-    echo "Studio ID not provided.";
-    exit;
-}
+    $studioID = $_GET["id"];
+    $sql = "SELECT * FROM studio WHERE studioID=?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param('i', $studioID);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-// Check if the form is submitted for updating studio data
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'], $_POST['studioID'])) {
-    // Prepare the update SQL dynamically based on form fields
-
-    $studioID = $_POST['studioID'];
-    $updateSql = "UPDATE studio SET ";
-    $updateParams = array();
-    $paramTypes = '';
-
-    foreach ($_POST as $key => $value) {
-        if ($key == "studioID" || $key == "submit" || empty($value)) {
-            continue;
-        }
-
-        $updateSql .= "$key = ?, ";
-        $updateParams[] = $value;
-        $paramTypes .= 's';
-    }
-
-    $updateSql = rtrim($updateSql, ", ");
-    $updateSql .= " WHERE studioID = ?";
-    $updateParams[] = $studioID;
-    $paramTypes .= 'i';
-
-    $stmtUpdate = $mysqli->prepare($updateSql);
-
-    if ($stmtUpdate) {
-        $stmtUpdate->bind_param($paramTypes, ...$updateParams);
-
-        if ($stmtUpdate->execute()) {
-            echo "Studio data updated successfully!";
-            // Redirect or handle the session update logic here
-        } else {
-            echo "Error updating studio data: " . $stmtUpdate->error;
-        }
-
-        $stmtUpdate->close();
+    if ($result) {
+        $row = $result->fetch_assoc();
+        $name = $row["name"];
     } else {
-        echo "Error preparing update statement: " . $mysqli->error;
+        echo "<p>Error: " . $stmt->error . "</p>";
     }
+    $stmt->close();
 }
-
-// Close the database connection
 $mysqli->close();
 ?>
 
@@ -111,21 +65,15 @@ $mysqli->close();
 </head>
 <body>
 
-    <h1>Edit Studio</h1>
+    <h2>Edit Studio</h2>
 
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <?php
-        // Display form fields dynamically based on studio data columns
-        if (isset($studioData)) {
-            foreach ($studioData as $key => $value) {
-                echo "<label for=\"$key\">$key:</label>";
-                echo "<input type=\"text\" id=\"$key\" name=\"$key\" value=\"$value\"><br>";
-            }
-        }
-        ?>
-        <input type="hidden" name="studioID" value="<?php echo isset($studioID) ? $studioID : ''; ?>">
-        <input type="submit" name="submit" value="Update Studio">
-        <a href='delete_studio.php?id=<?php echo $studioID; ?>' class='delete-btn' onclick='return confirmDelete();'>Delete Studio</a>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <!-- hidden input: studioID [current studioID: can edit] -->
+        <input type="hidden" name="studioID" value="<?php echo $studioID; ?>">
+        <label>Name:</label>
+        <input type="text" name="name" value="<?php echo $name; ?>" required>
+        <br>
+        <input type="submit" value="Update">
     </form>
 
 </body>

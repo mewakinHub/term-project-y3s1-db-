@@ -21,25 +21,23 @@ if (!isset($_SESSION["admin_loggedin"]) || $_SESSION["admin_loggedin"] !== true)
     exit;
 }
 
-// Check if the studioID parameter is set
-if (isset($_GET['id'])) {
-    $studioID = $_GET['id'];
+// Delete studio logic
+// GET: data is sent as parameters in the URL. 
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $studioID = $_GET["id"];
 
-    // Use prepared statement to delete the studio
-    $stmt = $mysqli->prepare("DELETE FROM studio WHERE studioID = ?");
+    // Use prepared statement to avoid SQL injection
+    $stmt = $mysqli->prepare("DELETE FROM studio WHERE studioID=?");
     $stmt->bind_param("i", $studioID);
 
     if ($stmt->execute()) {
-        echo "Studio deleted successfully!";
+        header("Location: admin.php");
     } else {
-        echo "Error deleting studio: " . $stmt->error;
+        echo "<p>Error: " . $stmt->error . "</p>";
     }
 
     $stmt->close();
-} else {
-    echo "Studio ID not provided.";
 }
-
 // Close the database connection
 $mysqli->close();
 ?>

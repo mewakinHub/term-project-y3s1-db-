@@ -30,17 +30,24 @@ if (isset($_GET["logout"]) && $_GET["logout"] == true) {
 }
 
 // Delete game logic
+// GET: data is sent as parameters in the URL. 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $gameID = $_GET["id"];
+    // Use intval to ensure that the parameter is an integer to prevent SQL injection
+    $gameID = intval($_GET["id"]);
 
-    $sql = "DELETE FROM game WHERE gameID='$gameID'";
+    // Use prepared statement to avoid SQL injection
+    $deleteGameSql = "DELETE FROM game WHERE gameID=?";
+    $stmtDeleteGame = $mysqli->prepare($deleteGameSql);
+    $stmtDeleteGame->bind_param('i', $gameID);
 
-    if ($mysqli->query($sql)) {
+    if ($stmtDeleteGame->execute()) {
         header("Location: admin.php");
     } else {
-        echo "<p>Error: " . $mysqli->error . "</p>";
+        echo "<p>Error: " . $stmtDeleteGame->error . "</p>";
     }
-}
 
+    $stmtDeleteGame->close();
+}
+// Close the database connection
 $mysqli->close();
 ?>
