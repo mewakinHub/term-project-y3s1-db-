@@ -108,3 +108,16 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+--update play time game
+DELIMITER $$
+
+CREATE PROCEDURE UpdatePlaytime(IN p_userID INT, IN p_gameID INT)
+BEGIN
+    UPDATE `own`
+    SET `playtime` = `playtime` + 1,
+        `latestPlay` = NOW()
+    WHERE `userID` = p_userID AND `gameID` = p_gameID;
+END$$
+
+DELIMITER ;
