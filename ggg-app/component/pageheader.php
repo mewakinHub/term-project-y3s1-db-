@@ -13,9 +13,11 @@
                Icon('search');
             echo "
             </div>
-         </div>
+         </div>";
+         if ($Page != 'Friends')
+         echo "
          <div class='iconbutton-wrapper'>";
-            Icon('filter');
+         if ($Page != 'Friends') Icon('filter');
          echo "
          </div>
       </div>";

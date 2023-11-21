@@ -17,6 +17,9 @@
    <link rel="stylesheet" href="style/signin.css">
    <?php 
       session_start();
+      if(isset($_SESSION['email'])){
+         header('Location: featured.php');
+      }
       if(isset($_POST['submit'])) {
          $email = $_POST['email'];
          $password = $_POST['password'];

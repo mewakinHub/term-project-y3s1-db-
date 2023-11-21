@@ -19,7 +19,10 @@
    <?php
       session_start();
       include_once('component/navbar.php');
-      include_once('component/pageheader.php');  
+      include_once('component/pageheader.php');
+      if(!isset($_SESSION['email'])){
+         header('Location: signin.php');
+      }  
    ?>
 </head>
 <body>

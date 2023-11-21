@@ -1,3 +1,4 @@
+<script src='script/popup.js'></script>
 <?php
    include_once('component/icon.php');
    function Navbar($page, $email) {
@@ -66,7 +67,7 @@
                      </div>
                   </div>
                </div>
-               <div class='nav-user'>
+               <div class='nav-user' onclick='togglePopup()'>
                   <hr/>
                   <button class='button-user'>
                      <div class='user-container'>
@@ -77,6 +78,17 @@
                         </div>
                      </div>
                   </button>
+               </div>
+               <div class='popup' id='user-popup'>
+                  <a href='script/signout.php'>
+                     <p class='red'>Signout</p>
+                  </a>
+                  <a>
+                     <p>Your profile</p>
+                  </a>
+                  <a>
+                     <p>Funds</p>
+                  </a>
                </div>
             </div> 
          </nav>
