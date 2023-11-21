@@ -132,3 +132,12 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE UpdateUser(IN user_id INT, IN new_email VARCHAR, IN new_username VARCHAR, IN new_password VARCHAR)
+BEGIN
+    UPDATE user SET email = new_email, username = new_username, password = new_password WHERE userID = user_id;
+END$$
+
+DELIMITER ;
