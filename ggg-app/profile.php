@@ -24,7 +24,19 @@
       if(!isset($_SESSION['userID'])){
          header('Location: signin.php');
       }
-      $userID = $_GET['userID'];
+      $userID = $_SESSION['userID'];
+      $q = "SELECT email, username, password FROM user WHERE userID='$userID'";
+      $result = $conn->query($q);
+      if (!$result) {
+         Alert("Query error: " . $conn->error);
+      }
+      else {
+         while ($row = $result->fetch_array()) {
+            $email = $row[0];
+            $username = $row[1];
+            $password = $row[2];
+         }
+      }
    ?>
 </head>
 <body>
@@ -32,9 +44,24 @@
    <main class="profile">
       <h1>Manage Account</h1>
       <hr/>
-      <?php
-
-      ?>
+      <div class="acc-container">
+         <form action="updateAccount.php" method="post">
+            <div class="entry">
+               <label for="email"><h4>Email</h4></label>
+               <input type="text" id="email" name="email" value="<?php echo $email;?>">
+            </div>
+            <div class="entry">
+               <label for="username"><h4>Username</h4></label>
+               <input type="text" id="username" name="username" value="<?php echo $username;?>">
+            </div>
+            <div class="entry">
+               <label for="password"><h4>Password</h4></label>
+               <input class="doubleleft" type="password" id="password" name="password" placeholder="New password">
+               <input class="doubleright" type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm">
+            </div>
+            <button type="submit">Apply changes</button>
+         </form>
+      </div>
    </main>
 </body>
 </html>
