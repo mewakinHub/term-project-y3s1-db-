@@ -13,7 +13,7 @@
       include_once('component/alert.php');
    ?>
    <!--Custom-->
-   <title>GGG - Browse</title>
+   <title>GGG - Store</title>
    <link rel="stylesheet" href="style/navbar.css">
    <link rel="stylesheet" href="style/pageheader.css"> 
    <link rel="stylesheet" href="style/maincontent.css"> 
@@ -27,9 +27,9 @@
    ?>
 </head>
 <body>
-   <?php Navbar('browse', $_SESSION['userID']) ?>
-   <main class="browse">
-      <?php PageHeader('Browse') ?>
+   <?php Navbar('store', $_SESSION['userID']) ?>
+   <main class="store">
+      <?php PageHeader('Store') ?>
       <div class="game-grid">
          <?php 
             $q = "SELECT gameID, poster, name, price FROM game";

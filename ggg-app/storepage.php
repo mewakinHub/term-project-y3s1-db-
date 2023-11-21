@@ -24,7 +24,8 @@
       if(!isset($_SESSION['userID'])){
          header('Location: signin.php');
       }   
-      $gameID = $_GET['gameID']
+      $gameID = $_GET['gameID'];
+      $_SESSION['gameID'] = $gameID;
    ?>
    <script src='script/slides.js'></script>
 </head>
@@ -96,7 +97,28 @@
                ?>
             </h1>
             <span class="buy-container flex-row">
-               <button href='script/buyGame.php'>BUY NOW</button>
+               <?php
+                  $q = "SELECT * FROM own WHERE userID='".$_SESSION['userID']."' and gameID='$gameID'";
+                  $result = $conn->query($q);
+                  if (!$result) {
+                     Alert("Query error: " . $conn->error);
+                  }
+                  else {
+                     $row = $result->fetch_array();
+                     if (!$row) {
+                        echo "
+               <form action='script/buyGame.php'>
+                  <button type='submit'>BUY NOW</button>
+               </form>
+                        ";
+                     }
+                     else {
+                         echo "
+                  <button class='button-off'>You own this game.</button>
+                        ";
+                     }
+                  }
+               ?>
                <h3>฿ 
                   <?php
                      $q = "SELECT price FROM game

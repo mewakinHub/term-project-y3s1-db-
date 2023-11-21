@@ -232,3 +232,15 @@ span, div {
    flex-direction: row;
    align-items: center;
 }
+
+b, #text {
+   color:white;
+}
+
+.button-off {
+   background-color: var(--transparent);
+   outline: 2px solid var(--gray3);
+   outline-offset: -2px;
+   color: var(--gray3);
+   pointer-events: none;
+}

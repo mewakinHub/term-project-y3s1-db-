@@ -24,20 +24,12 @@
                      style='max-width: 70px; height: auto;' draggable='false'
                   />
                   <div class='nav-main-buttons'>
-                     <a"; if($page != 'featured') {echo " href='featured.php'";} echo "
+                     <a"; if($page != 'store') {echo " href='store.php'";} echo "
                         class='button-wrapper' draggable='false'
                      >
-                        <button class='featured"; if($page == 'featured') {echo " selected";} echo"'>
-                           "; Icon('featured'); echo"
-                           Featured
-                        </button>
-                     </a>
-                     <a"; if($page != 'browse') {echo " href='browse.php'";} echo "
-                        class='button-wrapper' draggable='false'
-                     >
-                        <button class='browse"; if($page == 'browse') {echo " selected";} echo"'>
-                           "; Icon('browse'); echo"
-                           Browse
+                        <button class='store"; if($page == 'store') {echo " selected";} echo"'>
+                           "; Icon('store'); echo"
+                           Store
                         </button>
                      </a>
                      <a"; if($page != 'library') {echo " href='library.php'";} echo "

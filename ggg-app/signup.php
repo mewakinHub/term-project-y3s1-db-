@@ -18,7 +18,7 @@
    <?php 
       session_start();
       if(isset($_SESSION['userID'])){
-         header('Location: featured.php');
+         header('Location: store.php');
       }
       if(isset($_POST['submit'])) {
          $email = $_POST['email'];
@@ -36,7 +36,7 @@
             }
             else {
                $_SESSION['userID'] = $email;
-               header('Location: featured.php');
+               header('Location: store.php');
             }
          }
       }

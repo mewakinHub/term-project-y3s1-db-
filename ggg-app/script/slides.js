@@ -11,7 +11,7 @@ function plusSlides(n) {
 function currentSlide(n) {
    showSlides(slideIndex = n);
    clearInterval(myInterval);
-    myInterval = setInterval(autoSlide, 5000);
+    myInterval = setInterval(autoSlide, 4000);
 }
 
 function showSlides(n) {

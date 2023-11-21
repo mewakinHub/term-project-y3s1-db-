@@ -1,17 +1,12 @@
 <?php
-   if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-      // Call the AddInstalledGame stored procedure
-      $stmt = $conn->prepare("CALL BuyGame(?, ?)");
-      $stmt->bind_param("ii", $userID, $gameID);
-      $userID = $_SESSION['userID']; 
-      $gameID = $_POST['gameID']; 
-      
-      if ($stmt->execute()) {
-         echo "<p>Game added to installed list!</p>";
-      } else {
-         echo "<p>Error: " . $stmt->error . "</p>";
-      }
-      
-      $stmt->close();
+   require_once('connect.php');
+   session_start();
+   $userID = $_SESSION['userID'];
+   $gameID = $_SESSION['gameID'];
+   $q = "CALL BuyGame($userID, $gameID)";
+   $result = $conn->query($q);
+   if (!$result) {
+      echo "Query error: " . $conn->error;
    }
+   header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
