@@ -176,38 +176,10 @@ nav .button-user:hover {
 }
 
 nav .popup {
-   position: absolute;
-   margin-bottom: 70px;
    bottom: 0px;
-   position: absolute;
-   width: 100%;
-   background-color: var(--gray6);
-   border-radius: 10px;
-   box-shadow: 0px 3px 5px black;
-   opacity: 0%;
-   pointer-events: none;
-   overflow: hidden;
-   transition: var(--transition-normal);
-}
-
-nav .popup p {
-   padding: 10px 15px;
-   cursor: pointer;
-   transition: var(--transition-fast);
-}
-
-nav .popup p:hover {
-   background-color: var(--gray5);
-   transition: var(--transition-fast);
+   margin-bottom: 70px;
 }
 
 nav .popup.show {
-   opacity: 100%;
-   pointer-events: auto;
-   transition: var(--transition-normal);
    margin-bottom: 85px;
-}
-
-nav .red {
-   color: #FF7777;
 }

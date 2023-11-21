@@ -40,15 +40,17 @@
             else {
                while ($row = $result->fetch_array()) {
                   echo '
-                  <a class="card" href="storepage.php?gameID='.$row[0].'">
-                     <img class="game-poster" draggable="false"
-                        src="data:image/png;base64,'.base64_encode($row[1]).'"
-                     />
-                     <p class="game-name webkitclamp">'.$row[2].'</p>
+                  <div class="card">
+                     <a href="storepage.php?gameID='.$row[0].'">
+                        <img class="game-poster" draggable="false"
+                           src="data:image/png;base64,'.base64_encode($row[1]).'"
+                        />
+                        <p class="game-name webkitclamp">'.$row[2].'</p>
+                     </a>
                      <div class="card-sub">
-                        <p class="game-price">฿ '.$row[3].'</p>
+                        <p class="card-sub-p">฿ '.$row[3].'</p>
                      </div>
-                  </a>
+                  </div>
                   ';
                }
             }

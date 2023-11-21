@@ -32,7 +32,7 @@
 <body onload="currentSlide(1)">
    <?php Navbar('', $_SESSION['userID']) ?>
    <main class="storepage">
-      <a class="button-icon back" onclick="history.back()" draggable="false">
+      <a class="button-icon back" href="store.php" draggable="false">
          <?php Icon('back') ?>
       </a>
       <div class="header-container">
