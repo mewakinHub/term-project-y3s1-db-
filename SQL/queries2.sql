@@ -1,9 +1,11 @@
-SET GLOBAL net_buffer_length=1000000; 
-SET GLOBAL max_allowed_packet=1000000000;
-
 CREATE USER IF NOT EXISTS ggguser IDENTIFIED BY 'ggguser';
 
 GRANT SELECT, EXECUTE ON ggg.* TO ggguser;
+FLUSH PRIVILEGES;
+
+CREATE USER IF NOT EXISTS admin IDENTIFIED BY 'admin';
+
+GRANT ALL PRIVILEGES ON ggg.* TO 'admin';
 FLUSH PRIVILEGES;
 
 USE ggg;
@@ -129,6 +131,24 @@ DELIMITER $$
 CREATE PROCEDURE AddBalance(IN user_id INT, IN top_up_amount FLOAT)
 BEGIN
     UPDATE user SET balance = balance + top_up_amount WHERE userID = user_id;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE UpdateAccount(IN user_id INT, IN new_email VARCHAR(64), IN new_username VARCHAR(32), IN new_password VARCHAR(64))
+BEGIN
+    UPDATE user SET email = new_email, username = new_username, password = new_password WHERE userID = user_id;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE Signup(IN new_email VARCHAR(64), IN new_password VARCHAR(64), IN new_username VARCHAR(32))
+BEGIN
+    INSERT INTO user (email, password, username) VALUES (new_email, new_password, new_username);
 END$$
 
 DELIMITER ;

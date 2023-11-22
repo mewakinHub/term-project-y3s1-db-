@@ -13,7 +13,7 @@
       include_once('component/alert.php');
    ?>
    <!--Custom-->
-   <title>GGG - Library</title>
+   <title>GGG - Funds</title>
    <link rel="stylesheet" href="style/navbar.css">
    <link rel="stylesheet" href="style/pageheader.css">
    <link rel="stylesheet" href="style/maincontent.css">
@@ -27,6 +27,8 @@
 <body>
    <?php Navbar('', $_SESSION['userID']) ?>
    <main class="funds">
+      <h1>Funds</h1>
+      <hr/>
       <div class="funds-container">
          <h2>Current balance</h2>
          <?php
@@ -39,6 +41,7 @@
                $row = $result->fetch_array();
                echo "<h1>฿ $row[0]</h1>";
             }
+            
          ?>
          <a href="script/addBalance.php?topUpAmount=100">
             <button>Add ฿100</button>

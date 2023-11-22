@@ -40,14 +40,6 @@
                            Library
                         </button>
                      </a>
-                     <a"; if($page != 'friends') {echo " href='friends.php'";} echo "
-                        class='button-wrapper' draggable='false'
-                     >
-                        <button class='friends"; if($page == 'friends') {echo " selected";} echo"'>
-                           "; Icon('friends'); echo"
-                           Friends
-                        </button>
-                     </a>
                   </div>
                   <!-- <hr/> -->
                </div>
@@ -72,10 +64,10 @@
                   </button>
                   <div class='popup' id='user-popup'>
                      <a href='script/signout.php'>
-                        <p class='red'>Signout</p>
+                        <p class='red'>Sign Out</p>
                      </a>
-                     <a>
-                        <p>Your profile</p>
+                     <a href='profile.php'>
+                        <p>Manage Account</p>
                      </a>
                      <a href='funds.php'>
                         <p>Funds</p>

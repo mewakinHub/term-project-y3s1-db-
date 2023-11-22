@@ -1,0 +1,53 @@
+main.profile {
+   padding-top: 20px;
+}
+
+.profile h1 {
+   padding-bottom: 20px;
+}
+
+.profile hr {
+   margin-bottom: 40px;
+}
+
+.acc-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+   align-self: center;
+   width: 100%;
+}
+
+.entry {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 30px;
+}
+
+.profile label {
+   margin-right: 20px;
+}
+
+.profile .doubleleft {
+   margin-right: 5px;
+}
+
+.profile .doubleright {
+   margin-left: 5px;
+}
+
+.profile button {
+   font-size: 18px;
+}
+
+.profile form {
+   margin-bottom: 30px;
+}
+
+.profile .button-red {
+   background-color: #ff2828;
+   color: white;
+}
