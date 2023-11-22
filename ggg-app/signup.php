@@ -29,13 +29,16 @@
             Alert('Password mismatch!');
          }
          else {
-            $q = "INSERT INTO user (email, password, username) VALUES ('$email', '$password', '$username')";
+            $q = "CALL Signup('$email', 'password_hash($password, PASSWORD_DEFAULT)', '$username')";
             $result = $conn->query($q);
             if (!$result) {
                Alert("Query error: " . $conn->error);
             }
             else {
-               $_SESSION['userID'] = $email;
+               $q = "SELECT userID FROM user WHERE email='$email'";
+               $result = $conn->query($q);
+               $row = $result->fetch_array();
+               $_SESSION['userID'] = $row[0];
                header('Location: store.php');
             }
          }

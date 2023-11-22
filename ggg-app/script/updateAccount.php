@@ -1,8 +1,8 @@
 <?
    require_once('connect.php');
    session_start();
-   $stmt = $conn->prepare("CALL UpdateAccount(?, ?, ?, ?, ?)");
-   $stmt->bind_param("issss", $userID, $pfp, $email, $username, $password);
+   $stmt = $conn->prepare("CALL UpdateAccount(?, ?, ?, ?)");
+   $stmt->bind_param("issss", $userID, $email, $username, $password);
    $userID = $_SESSION['userID']; 
    $email = $_POST['email'];
    $username = $_POST['username'];

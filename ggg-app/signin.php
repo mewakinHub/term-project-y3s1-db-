@@ -45,7 +45,8 @@
                      Alert("Query error: " . $conn->error);
                   }
                   else {
-                     $_SESSION['userID'] = 1;
+                     $row = $result->fetch_array();
+                     $_SESSION['userID'] = $row[0];
                      header('Location: store.php');
                   }
                }
