@@ -39,24 +39,13 @@
       }
       if(isset($_POST['submit'])){
          if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] === UPLOAD_ERR_OK) {
-            $pfp = file_get_contents($_FILES['pfp']['tmp_name']);
-         } else {
-               // No poster image uploaded, display a message and a button to go back
-               echo "<p>No pfp image uploaded. Please go back to the previous page.</p>";
-               echo "<button onclick='history.go(-1);'>Go Back</button>";
-               exit;
-         }
-         $stmt = $conn->prepare("CALL UpdateAccount(?, ?, ?, ?, ?)");
-         $stmt->bind_param("issss", $userID, $pfp, $email, $username, $password);
-         $userID = $_SESSION['userID']; 
-         $email = $_POST['email'];
-         $username = $_POST['username'];
-         $password = $_POST['password'];
-         $result = $stmt->execute();
-         if (!$result) {
-            echo "Query error: " . $conn->error;
-         }
-         $stmt->close();
+            $pfpData = file_get_contents($_FILES['pfp']['tmp_name']);
+            $updatePosterSql = "CALL UpdateAccount(?, ?, ?, )";
+            $stmtUpdatePoster = $mysqli->prepare($updatePosterSql);
+            $stmtUpdatePoster->bind_param('is', $_SESSION['userID'], $pfpData, $_POST['email'], $_POST['username'], $_POST['password'],);
+            $stmtUpdatePoster->execute();
+            $stmtUpdatePoster->close();
+        }
       }
    ?>
 </head>
@@ -66,7 +55,7 @@
       <h1>Manage Account</h1>
       <hr/>
       <div class="acc-container">
-         <form action="script/updateAccount.php" method="post">
+         <form action="profile.php" method="post">
             <div class="entry">
                <label for="pfp"><h4>Picture</h4></label>
                <input type="file" id="pfp" name="pfp" accept="image/*">

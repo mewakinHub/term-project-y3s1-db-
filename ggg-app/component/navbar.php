@@ -66,7 +66,7 @@
                      <a href='script/signout.php'>
                         <p class='red'>Sign Out</p>
                      </a>
-                     <a href='profile.php?userID=$userID'>
+                     <a href='profile.php'>
                         <p>Manage Account</p>
                      </a>
                      <a href='funds.php'>

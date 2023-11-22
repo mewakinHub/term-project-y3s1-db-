@@ -135,9 +135,18 @@ DELIMITER ;
 
 DELIMITER $$
 
-CREATE PROCEDURE UpdateAccount(IN user_id INT, IN new_pfp LONGBLOB, IN new_email VARCHAR(64), IN new_username VARCHAR(64), IN new_password VARCHAR(64))
+CREATE PROCEDURE UpdateAccount(IN user_id INT, IN new_email VARCHAR(64), IN new_username VARCHAR(32), IN new_password VARCHAR(64))
 BEGIN
-    UPDATE user SET profilePicFile = new_pfp, email = new_email, username = new_username, password = new_password WHERE userID = user_id;
+    UPDATE user SET email = new_email, username = new_username, password = new_password WHERE userID = user_id;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE Signup(IN new_email VARCHAR(64), IN new_password VARCHAR(64), IN new_username VARCHAR(32))
+BEGIN
+    INSERT INTO user (email, password, username) VALUES (new_email, new_password, new_username);
 END$$
 
 DELIMITER ;
