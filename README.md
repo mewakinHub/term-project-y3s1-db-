@@ -54,15 +54,6 @@ we're not deployed to a domain, so you cannot access it through a url(example.co
 * 0.1
     * React and Node -->
 
-## Tool
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
-
 - **Express:** It is primarily used for connecting the frontend (client-side) with the backend (server-side). It handles routing, HTTP requests, middleware, and the overall structure of your application. Express can also be used to manage interactions between the frontend and backend components.
 
 - **Prisma:** Prisma is primarily used for connecting to the database and handling database queries. It provides an elegant, type-safe API for working with databases, including creating, reading, updating, and deleting data. Prisma abstracts the underlying SQL database and simplifies database operations.
