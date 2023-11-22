@@ -61,10 +61,10 @@
             </div>
             <button type="submit" name="submit" value="submit">Apply changes</button>
          </form>
+         <a>
+            <button class="button-red">Delete Account</button>
+         </a>
       </div>
-      <a >
-         <button>Delete Account</button>
-      </a>
    </main>
 </body>
 </html>

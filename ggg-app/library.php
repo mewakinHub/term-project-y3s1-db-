@@ -22,7 +22,13 @@
       include_once('component/navbar.php');
       if(!isset($_SESSION['userID'])){
          header('Location: signin.php');
-      } 
+      }
+      if(!isset($_POST['submit'])){
+         $_SESSION['prevSearch'] = '';
+      }
+      else {
+         $_SESSION['prevSearch'] = $_POST['searchlibrary'];
+      }
    ?>
    <script src='script/cardPopup.js'></script>
 </head>
@@ -34,7 +40,7 @@
          <div class="searchbox-wrapper">
             <div class="inputicon-container searchicon">
                <form action="library.php" method="post">
-                  <input type="text" name="searchlibrary" placeholder="Search Library" maxlength="32" class="iconned">
+                  <input type="text" name="searchlibrary" placeholder="Search Library" maxlength="32" class="iconned" value="<?php echo $_SESSION['prevSearch']; ?>">
                   <input type="submit" hidden />
                </form>
                <svg fill="none" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20">
