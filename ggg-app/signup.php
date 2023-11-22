@@ -21,15 +21,18 @@
          header('Location: store.php');
       }
       if(isset($_POST['submit'])) {
-         $email = $_POST['email'];
-         $password = $_POST['password'];
-         $confirmpassword = $_POST['confirmpassword'];
-         $username = $_POST['username'];
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
+        $confirmpassword = mysqli_real_escape_string($conn, $_POST['confirmpassword']);
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+
          if($password != $confirmpassword) {
             Alert('Password mismatch!');
          }
          else {
-            $q = "CALL Signup('$email', 'password_hash($password, PASSWORD_DEFAULT)', '$username')";
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            $q = "CALL Signup('$email', '$hashedPassword', '$username')";
             $result = $conn->query($q);
             if (!$result) {
                Alert("Query error: " . $conn->error);

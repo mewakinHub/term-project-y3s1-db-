@@ -21,37 +21,29 @@
          header('Location: store.php');
       }
       if(isset($_POST['submit'])) {
-         $email = $_POST['email'];
-         $password = $_POST['password'];
-         $q = "SELECT password FROM user WHERE email='$email'";
-         $result = $conn->query($q);
-         if (!$result) {
-            Alert("Query error: " . $conn->error);
-         }
-         else {
-            $row = $result->fetch_array();
-            if (!$row) {
+         $email = mysqli_real_escape_string($conn, $_POST['email']);
+         $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+         $stmt = $conn->prepare("SELECT * FROM user WHERE email=?");
+         $stmt->bind_param("s", $email);
+         $stmt->execute();
+         $result = $stmt->get_result();
+
+         if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            $hashedPassword = $user['password'];
+    
+            if (password_verify($password, $hashedPassword)) {
+               $_SESSION['userID'] = $user['userID'];
+               header('Location: store.php');
+            } else {
                Alert('Invalid E-mail or Password');
             }
-            else {
-               $correctpassword = $row[0];
-               if ($password != $correctpassword) {
-                  Alert('Invalid E-mail or Password');
-               }
-               else {
-                  $q = "SELECT userID FROM user WHERE email='$email'";
-                  $result = $conn->query($q);
-                  if (!$result) {
-                     Alert("Query error: " . $conn->error);
-                  }
-                  else {
-                     $row = $result->fetch_array();
-                     $_SESSION['userID'] = $row[0];
-                     header('Location: store.php');
-                  }
-               }
-            }
+         } else {
+               Alert('Invalid E-mail or Password');
          }
+    
+         $stmt->close();
       }
    ?>
 </head>
