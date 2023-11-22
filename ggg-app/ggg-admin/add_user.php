@@ -28,11 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if an image is uploaded for profile picture
     if (isset($_FILES['profilePicFile']) && $_FILES['profilePicFile']['error'] === UPLOAD_ERR_OK) {
         $profilePicData = file_get_contents($_FILES['profilePicFile']['tmp_name']);
-    } else {
-        // No profile picture uploaded, display a message and a button to go back
-        echo "<p>No profile picture uploaded. Please go back to the previous page.</p>";
-        echo "<button onclick='history.go(-1);'>Go Back</button>";
-        exit;
     }
 
     $stmt = $mysqli->prepare("INSERT INTO user (email, password, username, balance, bio, profilePicFile) VALUES (?, ?, ?, ?, ?, ?)");
@@ -78,7 +73,7 @@ $mysqli->close();
         <textarea id="bio" name="bio" required></textarea><br>
 
         <label for="profilePicFile">Profile Picture File:</label>
-        <input type="file" id="profilePicFile" name="profilePicFile" accept="image/*" required><br>
+        <input type="file" id="profilePicFile" name="profilePicFile" accept="image/*"><br>
 
         <input type="submit" value="Add User">
     </form>

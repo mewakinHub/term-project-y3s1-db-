@@ -1,4 +1,4 @@
-# Project Title
+# Database Lab Project - GGG App
 
 Project: Good Games Garage - A video game digital storefront
 > This is term-project of 3rd year 1st semester in CSS326 Database lab programming
@@ -10,18 +10,38 @@ Our project is an online platform or marketplace where users can digitally buy, 
 ### Group members:
 
 1. Mr. Piraboon Piyawarapong - 6422781466
-DB design/UI design/Frontend
+DB design/UI design/Cool Frontend
 2. Mr. Kavinrath Jundang - 6422781516
 DB design/Backend
 3. Mr. Teetawat Bussabarati - 6422782423
-DB design/Frontend/Backend
-
+DB design/Admin(CRUD)/Security(Encrypt/Prevent Injection/Session handling)
+DB design: Procedure/Trigger/Relationship/etc.
 
 ## Getting Started
+## Setup Instructions
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/your-username/your-repo.git
+    ```
+
+2. Set up your MySQL database:
+
+    - Create a new database named `ggg`.
+    - Import the `database.sql` file to create the necessary tables.
+
+3. Configure Database Connection:
+
+    - Update the database connection details in `script/connect.php`.
+
+4. Run the Application:
+
+    - Start a local PHP development server or use XAMPP, WAMP, or any other suitable server.
 
 ## Help
 
-we're not deployed to a domain, so you cannot access it through a url(example.com)
+we're not deployed to a domain, so you cannot access it through a url(example.com) {LocalHost}
 
 ```
 "In our project, we have employed Structured Query Language (SQL) as our primary database management system, coupled with the utilization of the Macintosh, Apache, MySQL, and PHP (MAMP) stack as our server environment."
@@ -30,10 +50,9 @@ we're not deployed to a domain, so you cannot access it through a url(example.co
 <!-- ## Version History
 
 * 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
+    * PHP
 * 0.1
-    * Initial Release -->
+    * React and Node -->
 
 ## Tool
 
