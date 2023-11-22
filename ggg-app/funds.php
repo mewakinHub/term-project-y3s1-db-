@@ -21,6 +21,9 @@
    <?php
       session_start();
       include_once('component/navbar.php');
+      if(!isset($_SESSION['userID'])){
+         header('Location: signin.php');
+      }
    ?>
    <script src='script/cardPopup.js'></script>
 </head>
