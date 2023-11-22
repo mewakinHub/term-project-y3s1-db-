@@ -62,6 +62,9 @@
             <button type="submit" name="submit" value="submit">Apply changes</button>
          </form>
       </div>
+      <a >
+         <button>Delete Account</button>
+      </a>
    </main>
 </body>
 </html>
