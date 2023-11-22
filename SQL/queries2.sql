@@ -152,3 +152,12 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE DeleteAccount(IN user_id INT)
+BEGIN
+    DELETE FROM user WHERE userID = user_id;
+END$$
+
+DELIMITER ;

@@ -61,7 +61,7 @@
             </div>
             <button type="submit" name="submit" value="submit">Apply changes</button>
          </form>
-         <a>
+         <a href="script/deleteAccount.php">
             <button class="button-red">Delete Account</button>
          </a>
       </div>
