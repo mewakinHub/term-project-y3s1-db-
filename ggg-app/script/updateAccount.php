@@ -6,7 +6,7 @@
    $userID = $_SESSION['userID']; 
    $email = $_POST['email'];
    $username = $_POST['username'];
-   $password = $_POST['password'];
+   $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
    $result = $stmt->execute();
    if (!$result) {
       echo "Query error: " . $conn->error;
