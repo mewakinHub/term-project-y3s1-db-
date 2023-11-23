@@ -41,6 +41,8 @@ DB design: Procedure/Trigger/Relationship/etc.
 
 ## Help
 
+- userID using as SESSION because we're going to use it on every page!
+
 we're not deployed to a domain, so you cannot access it through a url(example.com) {LocalHost}
 
 ```
