@@ -12,7 +12,7 @@ Our project is an online platform or marketplace where users can digitally buy, 
 1. Mr. Piraboon Piyawarapong - 6422781466
 DB design/UI design/Cool Frontend
 2. Mr. Kavinrath Jundang - 6422781516
-DB design/Backend
+DB design including db design,procedure,trigger and Relationship/Backend(All function on Game website). 
 3. Mr. Teetawat Bussabarati - 6422782423
 DB design/Admin(CRUD)/Security(Encrypt/Prevent Injection/Session handling)
 DB design: Procedure/Trigger/Relationship/etc.
