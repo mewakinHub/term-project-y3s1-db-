@@ -52,7 +52,7 @@
       <div class="game-grid">
          <?php
             if(!isset($_POST['searchstore'])) {
-               $q = "SELECT gameID, poster, name, price FROM game";
+               $q = "SELECT gameID, poster, name, price FROM game ORDER BY name";
             }
             else {
                $q = "SELECT gameID, poster, name, price FROM game WHERE name LIKE '%" . $_POST['searchstore'] . "%'";
