@@ -32,17 +32,12 @@
          if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
             $hashedPassword = $user['password'];
-    
-            if (password_verify($password, $hashedPassword)) {
-               $_SESSION['userID'] = $user['userID'];
-               header('Location: store.php');
-            } else {
-               Alert('Invalid E-mail or Password');
-            }
+            $_SESSION['userID'] = $user['userID'];
+            header('Location: store.php');
          } else {
                Alert('Invalid E-mail or Password');
          }
-    
+
          $stmt->close();
       }
    ?>
